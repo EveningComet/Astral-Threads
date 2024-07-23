@@ -12,18 +12,19 @@
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_bdikr")
 
-[node name="Camera Rig" type="SpringArm3D" parent="." node_paths=PackedStringArray("aim_cast", "target")]
+[node name="Camera Rig" type="SpringArm3D" parent="." node_paths=PackedStringArray("interaction_cast", "target")]
 spring_length = 0.0
 margin = 0.2
 script = ExtResource("1_oii8x")
-aim_cast = NodePath("Camera3D/Aim Cast")
+interaction_cast = NodePath("Camera3D/Interaction Cast")
 target = NodePath("..")
 offset = Vector3(0, 0.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Camera Rig"]
 fov = 90.0
 
-[node name="Aim Cast" type="RayCast3D" parent="Camera Rig/Camera3D"]
+[node name="Interaction Cast" type="RayCast3D" parent="Camera Rig/Camera3D"]
+target_position = Vector3(0, 0, -5)
 
 [node name="PlayerLocomotionController" type="Node" parent="." node_paths=PackedStringArray("camera_controller")]
 script = ExtResource("1_r1d1o")

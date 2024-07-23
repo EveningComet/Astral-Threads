@@ -1,7 +1,7 @@
 ## Controls the camera for the player.
 class_name CameraController extends SpringArm3D
 
-@export var aim_cast: RayCast3D
+@export var interaction_cast: RayCast3D
 
 @export var target: Node3D
 @export var offset: Vector3 = Vector3(0.0, 1.5, 0.0)
@@ -16,7 +16,7 @@ var max_pitch: float = 75.0
 
 func _ready() -> void:
 	add_excluded_object(get_parent())    # Ignore the player
-	aim_cast.add_exception(get_parent()) # Make the raycast ignore the player
+	interaction_cast.add_exception(get_parent()) # Make the raycast ignore the player
 	set_as_top_level(true)
 
 func _unhandled_input(event: InputEvent) -> void:
