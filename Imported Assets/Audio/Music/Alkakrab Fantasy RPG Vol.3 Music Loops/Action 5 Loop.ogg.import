@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://clqwwrbswyhme"
+path="res://.godot/imported/Action 5 Loop.ogg-0f99b1c3c4e7f47ddd207ab1037be6f3.oggvorbisstr"
+
+[deps]
+
+source_file="res://Imported Assets/Audio/Music/Alkakrab Fantasy RPG Vol.3 Music Loops/Action 5 Loop.ogg"
+dest_files=["res://.godot/imported/Action 5 Loop.ogg-0f99b1c3c4e7f47ddd207ab1037be6f3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

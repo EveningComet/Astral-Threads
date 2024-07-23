@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://d20j14agk0xhd"]
+
+[ext_resource type="Script" path="res://Scripts/UI/New Game/NewGameController.gd" id="1_al584"]
+[ext_resource type="Script" path="res://Scripts/UI/New Game/States/NGMSWaiting.gd" id="2_ua7wm"]
+
+[node name="New Game Scene" type="CanvasLayer"]
+
+[node name="NewGameController" type="Node" parent="."]
+script = ExtResource("1_al584")
+initial_state = NodePath("NGMSWaiting")
+
+[node name="NGMSWaiting" type="Node" parent="NewGameController" node_paths=PackedStringArray("buttons_holder_container", "start_game_button")]
+script = ExtResource("2_ua7wm")
+buttons_holder_container = NodePath("../../Buttons Holder")
+start_game_button = NodePath("../../Buttons Holder/Start Game")
+game_scene = "res://Scenes/Game.tscn"
+
+[node name="Buttons Holder" type="VBoxContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -25.0
+offset_right = 299.0
+offset_bottom = 25.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Manage Party" type="Button" parent="Buttons Holder"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Start Game")
+theme_override_font_sizes/font_size = 30
+text = "Manage Party"
+
+[node name="Start Game" type="Button" parent="Buttons Holder"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Manage Party")
+theme_override_font_sizes/font_size = 30
+text = "Begin Adventure"

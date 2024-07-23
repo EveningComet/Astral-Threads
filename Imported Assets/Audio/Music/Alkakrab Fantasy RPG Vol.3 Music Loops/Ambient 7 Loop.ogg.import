@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cw7q2nsk76ed0"
+path="res://.godot/imported/Ambient 7 Loop.ogg-167b0670452c011975423a4884ef5bd6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Imported Assets/Audio/Music/Alkakrab Fantasy RPG Vol.3 Music Loops/Ambient 7 Loop.ogg"
+dest_files=["res://.godot/imported/Ambient 7 Loop.ogg-167b0670452c011975423a4884ef5bd6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

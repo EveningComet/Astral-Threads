@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvcjhhiyqaotu"]
+
+[ext_resource type="Script" path="res://Scripts/Player/CameraController.gd" id="1_oii8x"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerLocomotionController.gd" id="1_r1d1o"]
+[ext_resource type="Script" path="res://Scripts/Player/Player Locomotion States/PLGround.gd" id="2_qohim"]
+[ext_resource type="Script" path="res://Scripts/Player/Player Locomotion States/PLAir.gd" id="3_icero"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bdikr"]
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_bdikr")
+
+[node name="Camera Rig" type="SpringArm3D" parent="." node_paths=PackedStringArray("aim_cast", "target")]
+spring_length = 0.0
+margin = 0.2
+script = ExtResource("1_oii8x")
+aim_cast = NodePath("Camera3D/Aim Cast")
+target = NodePath("..")
+offset = Vector3(0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Camera Rig"]
+fov = 90.0
+
+[node name="Aim Cast" type="RayCast3D" parent="Camera Rig/Camera3D"]
+
+[node name="PlayerLocomotionController" type="Node" parent="." node_paths=PackedStringArray("camera_controller")]
+script = ExtResource("1_r1d1o")
+camera_controller = NodePath("../Camera Rig")
+initial_state = NodePath("PLGround")
+
+[node name="PLGround" type="Node" parent="PlayerLocomotionController"]
+script = ExtResource("2_qohim")
+
+[node name="PLAir" type="Node" parent="PlayerLocomotionController"]
+script = ExtResource("3_icero")
