@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo0nvc14cnaxw"]
+
+[ext_resource type="Script" path="res://Scripts/UI/General/PartyMemberSlot.gd" id="1_j4nxw"]
+
+[node name="Party Member Slot" type="PanelContainer"]
+custom_minimum_size = Vector2(250, 200)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_j4nxw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5

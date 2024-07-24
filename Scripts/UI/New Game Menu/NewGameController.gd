@@ -1,6 +1,9 @@
 ## Responsible for managing what gets done when the player starts a new game.
 class_name NewGameController extends StateMachine
 
+## Keeps track of the currently crated character.
+var curr_created_character: Combatant
+
 func set_me_up() -> void:
 	# TODO: Better way of loading audio.
 	var audio: AudioStream = preload("res://Imported Assets/Audio/Music/Alkakrab Fantasy RPG Vol.3 Music Loops/Ambient 1 Loop.ogg")
@@ -8,3 +11,6 @@ func set_me_up() -> void:
 		audio, 1.0, "Music"
 	)
 	super()
+
+func _input(event: InputEvent) -> void:
+	curr_state.check_for_handle_input(event)

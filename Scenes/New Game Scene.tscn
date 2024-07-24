@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://d20j14agk0xhd"]
+[gd_scene load_steps=11 format=3 uid="uid://d20j14agk0xhd"]
 
-[ext_resource type="Script" path="res://Scripts/UI/New Game/NewGameController.gd" id="1_al584"]
-[ext_resource type="Script" path="res://Scripts/UI/New Game/States/NGMSWaiting.gd" id="2_ua7wm"]
+[ext_resource type="Script" path="res://Scripts/UI/New Game Menu/NewGameController.gd" id="1_al584"]
+[ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSWaiting.gd" id="2_ua7wm"]
+[ext_resource type="Script" path="res://Scripts/UI/New Game Menu/NGMPartyVisualizer.gd" id="3_2t01y"]
+[ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSManageParty.gd" id="3_j8r74"]
+[ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSSelectRace.gd" id="4_55bp8"]
+[ext_resource type="PackedScene" uid="uid://bo0nvc14cnaxw" path="res://Scenes/UI/Party Member Slot.tscn" id="4_k01rt"]
+[ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSSelectJob.gd" id="5_0dnxh"]
+[ext_resource type="PackedScene" uid="uid://b2ro8tps610ld" path="res://Scenes/UI/Character Job Button.tscn" id="6_ij4rg"]
+[ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSSelectStartingSkills.gd" id="7_qa6fg"]
+[ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSEnterName.gd" id="8_bregl"]
 
 [node name="New Game Scene" type="CanvasLayer"]
 
@@ -9,13 +17,35 @@
 script = ExtResource("1_al584")
 initial_state = NodePath("NGMSWaiting")
 
-[node name="NGMSWaiting" type="Node" parent="NewGameController" node_paths=PackedStringArray("buttons_holder_container", "start_game_button")]
+[node name="NGMSWaiting" type="Node" parent="NewGameController" node_paths=PackedStringArray("start_game_button", "manage_party_button", "buttons_holder_container")]
 script = ExtResource("2_ua7wm")
-buttons_holder_container = NodePath("../../Buttons Holder")
-start_game_button = NodePath("../../Buttons Holder/Start Game")
+start_game_button = NodePath("../../Main Buttons Holder/Start Game")
+manage_party_button = NodePath("../../Main Buttons Holder/Manage Party")
+buttons_holder_container = NodePath("../../Main Buttons Holder")
 game_scene = "res://Scenes/Game.tscn"
 
-[node name="Buttons Holder" type="VBoxContainer" parent="."]
+[node name="NGMSManageParty" type="Node" parent="NewGameController" node_paths=PackedStringArray("new_character_button", "remove_character_button", "manage_party_buttons_container")]
+script = ExtResource("3_j8r74")
+new_character_button = NodePath("../../Manage Party Buttons/Create New Character")
+remove_character_button = NodePath("../../Manage Party Buttons/Remove Character")
+manage_party_buttons_container = NodePath("../../Manage Party Buttons")
+
+[node name="NGMSSelectRace" type="Node" parent="NewGameController"]
+script = ExtResource("4_55bp8")
+
+[node name="NGMSSelectJob" type="Node" parent="NewGameController" node_paths=PackedStringArray("buttons_holder")]
+script = ExtResource("5_0dnxh")
+character_job_button_prefab = ExtResource("6_ij4rg")
+buttons_holder = NodePath("../../Race & Class Buttons Holder")
+
+[node name="NGMSSelectStartingSkills" type="Node" parent="NewGameController"]
+script = ExtResource("7_qa6fg")
+
+[node name="NGMSEnterName" type="Node" parent="NewGameController"]
+script = ExtResource("8_bregl")
+
+[node name="Main Buttons Holder" type="VBoxContainer" parent="."]
+visible = false
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -27,19 +57,59 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Manage Party" type="Button" parent="Buttons Holder"]
+[node name="Manage Party" type="Button" parent="Main Buttons Holder"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Start Game")
 theme_override_font_sizes/font_size = 30
 text = "Manage Party"
 
-[node name="Start Game" type="Button" parent="Buttons Holder"]
+[node name="Start Game" type="Button" parent="Main Buttons Holder"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Manage Party")
 theme_override_font_sizes/font_size = 30
 text = "Begin Adventure"
+
+[node name="Manage Party Buttons" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -25.0
+offset_right = 299.0
+offset_bottom = 25.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Create New Character" type="Button" parent="Manage Party Buttons"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Remove Character")
+theme_override_font_sizes/font_size = 30
+text = "New Character"
+
+[node name="Remove Character" type="Button" parent="Manage Party Buttons"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Create New Character")
+theme_override_font_sizes/font_size = 30
+text = "Remove Character"
+
+[node name="Race & Class Buttons Holder" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -25.0
+offset_right = 299.0
+offset_bottom = 25.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
 
 [node name="Active Party Displayer" type="GridContainer" parent="."]
 anchors_preset = 8
@@ -53,3 +123,11 @@ offset_right = 470.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="NGMPartyVisualizer" type="Node" parent="." node_paths=PackedStringArray("active_party_container")]
+script = ExtResource("3_2t01y")
+party_member_slot_prefab = ExtResource("4_k01rt")
+active_party_container = NodePath("../Active Party Displayer")

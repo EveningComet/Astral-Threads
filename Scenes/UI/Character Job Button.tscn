@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2ro8tps610ld"]
+
+[ext_resource type="Script" path="res://Scripts/UI/New Game Menu/CharacterJobButton.gd" id="1_vvcjx"]
+
+[node name="Character Job Button" type="Button"]
+custom_minimum_size = Vector2(200, 50)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 25
+text = "Job"
+script = ExtResource("1_vvcjx")
