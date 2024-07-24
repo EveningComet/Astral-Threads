@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Job" load_steps=2 format=3 uid="uid://d1dpqeqvk2q6p"]
+
+[ext_resource type="Script" path="res://Scripts/Character/Job.gd" id="1_5pnux"]
+
+[resource]
+script = ExtResource("1_5pnux")
+localization_name = "Contender"
+localization_description = "People that get by through sheer determination."

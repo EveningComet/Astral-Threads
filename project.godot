@@ -22,6 +22,7 @@ SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
 PlayerPartyController="*res://Scripts/Autoloads/PlayerPartyController.gd"
 Eventbus="*res://Scripts/Autoloads/Eventbus.gd"
+Database="*res://Scripts/Autoloads/Database.gd"
 
 [display]
 
