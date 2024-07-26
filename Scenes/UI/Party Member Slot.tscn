@@ -2,15 +2,26 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/General/PartyMemberSlot.gd" id="1_j4nxw"]
 
-[node name="Party Member Slot" type="PanelContainer"]
-custom_minimum_size = Vector2(250, 200)
+[node name="Party Member Slot" type="PanelContainer" node_paths=PackedStringArray("char_name_label")]
+custom_minimum_size = Vector2(300, 200)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_j4nxw")
+char_name_label = NodePath("MarginContainer/VBoxContainer/Char Name")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Char Name" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Char Name"

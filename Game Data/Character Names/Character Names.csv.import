@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cgehb73r1o0mc"
+
+[deps]
+
+files=["res://Game Data/Character Names/Character Names.FEMALE.translation", "res://Game Data/Character Names/Character Names.UNISEX.translation"]
+
+source_file="res://Game Data/Character Names/Character Names.csv"
+dest_files=["res://Game Data/Character Names/Character Names.FEMALE.translation", "res://Game Data/Character Names/Character Names.UNISEX.translation"]
+
+[params]
+
+compress=true
+delimiter=0

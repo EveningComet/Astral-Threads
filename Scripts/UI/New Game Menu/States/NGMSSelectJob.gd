@@ -4,16 +4,15 @@ class_name NGMSSelectJob extends NewGameMenuState
 @export var buttons_holder: Container
 
 func enter(msgs: Dictionary = {}) -> void:
-	if my_state_machine.curr_created_character != null:
-		my_state_machine.curr_created_character.queue_free()
-		my_state_machine.curr_created_character = null
-	
+	description_displayer.show()
 	create_job_buttons()
+	active_party_container.hide()
 
 func exit() -> void:
 	for c in buttons_holder.get_children():
 		c.queue_free()
 	buttons_holder.hide()
+	description_displayer.hide()
 
 func check_for_handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -29,13 +28,14 @@ func create_job_buttons() -> void:
 		
 		# Connect to relevant events
 		jb.job_button_pressed.connect( on_job_button_pressed )
+		jb.job_button_focused.connect( on_job_button_focused )
 	
 	buttons_holder.show()
 	buttons_holder.get_child(0).grab_focus()
 
 func on_job_button_pressed(job_data: Job) -> void:
-	var combatant: Combatant = Combatant.new()
-	my_state_machine.add_child(combatant)
-	my_state_machine.curr_created_character = combatant
+	my_state_machine.curr_job = job_data
 	my_state_machine.change_to_state("NGMSSelectStartingSkills")
 	
+func on_job_button_focused(job_data: Job) -> void:
+	description_displayer.update_text(job_data.localization_description)

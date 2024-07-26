@@ -15,6 +15,7 @@ func enter(msgs: Dictionary = {}) -> void:
 	if OS.is_debug_build() == true:
 		print("NGMSWaiting :: Entered.")
 	
+	active_party_container.show()
 	buttons_holder_container.show()
 	buttons_holder_container.get_child(0).grab_focus()
 	start_game_button.pressed.connect( on_start_game_pressed )

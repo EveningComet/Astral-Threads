@@ -2,7 +2,8 @@
 class_name NewGameController extends StateMachine
 
 ## Keeps track of the currently crated character.
-var curr_created_character: Combatant
+var curr_created_character: PlayerCombatant
+var curr_job:               Job
 
 func set_me_up() -> void:
 	# TODO: Better way of loading audio.

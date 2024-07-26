@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d20j14agk0xhd"]
+[gd_scene load_steps=12 format=3 uid="uid://d20j14agk0xhd"]
 
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/NewGameController.gd" id="1_al584"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSWaiting.gd" id="2_ua7wm"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b2ro8tps610ld" path="res://Scenes/UI/Character Job Button.tscn" id="6_ij4rg"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSSelectStartingSkills.gd" id="7_qa6fg"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSEnterName.gd" id="8_bregl"]
+[ext_resource type="Script" path="res://Scripts/UI/New Game Menu/DescriptionDisplayer.gd" id="11_di7lv"]
 
 [node name="New Game Scene" type="CanvasLayer"]
 
@@ -17,35 +18,46 @@
 script = ExtResource("1_al584")
 initial_state = NodePath("NGMSWaiting")
 
-[node name="NGMSWaiting" type="Node" parent="NewGameController" node_paths=PackedStringArray("start_game_button", "manage_party_button", "buttons_holder_container")]
+[node name="NGMSWaiting" type="Node" parent="NewGameController" node_paths=PackedStringArray("start_game_button", "manage_party_button", "buttons_holder_container", "active_party_container", "description_displayer")]
 script = ExtResource("2_ua7wm")
 start_game_button = NodePath("../../Main Buttons Holder/Start Game")
 manage_party_button = NodePath("../../Main Buttons Holder/Manage Party")
 buttons_holder_container = NodePath("../../Main Buttons Holder")
 game_scene = "res://Scenes/Game.tscn"
+active_party_container = NodePath("../../Active Party Displayer")
+description_displayer = NodePath("../../Description Displayer")
 
-[node name="NGMSManageParty" type="Node" parent="NewGameController" node_paths=PackedStringArray("new_character_button", "remove_character_button", "manage_party_buttons_container")]
+[node name="NGMSManageParty" type="Node" parent="NewGameController" node_paths=PackedStringArray("new_character_button", "remove_character_button", "manage_party_buttons_container", "active_party_container", "description_displayer")]
 script = ExtResource("3_j8r74")
 new_character_button = NodePath("../../Manage Party Buttons/Create New Character")
 remove_character_button = NodePath("../../Manage Party Buttons/Remove Character")
 manage_party_buttons_container = NodePath("../../Manage Party Buttons")
+active_party_container = NodePath("../../Active Party Displayer")
+description_displayer = NodePath("../../Description Displayer")
 
-[node name="NGMSSelectRace" type="Node" parent="NewGameController"]
+[node name="NGMSSelectRace" type="Node" parent="NewGameController" node_paths=PackedStringArray("active_party_container", "description_displayer")]
 script = ExtResource("4_55bp8")
+active_party_container = NodePath("../../Active Party Displayer")
+description_displayer = NodePath("../../Description Displayer")
 
-[node name="NGMSSelectJob" type="Node" parent="NewGameController" node_paths=PackedStringArray("buttons_holder")]
+[node name="NGMSSelectJob" type="Node" parent="NewGameController" node_paths=PackedStringArray("buttons_holder", "active_party_container", "description_displayer")]
 script = ExtResource("5_0dnxh")
 character_job_button_prefab = ExtResource("6_ij4rg")
 buttons_holder = NodePath("../../Race & Class Buttons Holder")
+active_party_container = NodePath("../../Active Party Displayer")
+description_displayer = NodePath("../../Description Displayer")
 
-[node name="NGMSSelectStartingSkills" type="Node" parent="NewGameController"]
+[node name="NGMSSelectStartingSkills" type="Node" parent="NewGameController" node_paths=PackedStringArray("active_party_container", "description_displayer")]
 script = ExtResource("7_qa6fg")
+active_party_container = NodePath("../../Active Party Displayer")
+description_displayer = NodePath("../../Description Displayer")
 
-[node name="NGMSEnterName" type="Node" parent="NewGameController"]
+[node name="NGMSEnterName" type="Node" parent="NewGameController" node_paths=PackedStringArray("active_party_container", "description_displayer")]
 script = ExtResource("8_bregl")
+active_party_container = NodePath("../../Active Party Displayer")
+description_displayer = NodePath("../../Description Displayer")
 
 [node name="Main Buttons Holder" type="VBoxContainer" parent="."]
-visible = false
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -131,3 +143,33 @@ columns = 2
 script = ExtResource("3_2t01y")
 party_member_slot_prefab = ExtResource("4_k01rt")
 active_party_container = NodePath("../Active Party Displayer")
+
+[node name="Description Displayer" type="PanelContainer" parent="." node_paths=PackedStringArray("description_label")]
+visible = false
+custom_minimum_size = Vector2(600, 400)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -440.0
+offset_right = 300.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("11_di7lv")
+description_label = NodePath("MarginContainer/Description Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="Description Displayer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Description Label" type="Label" parent="Description Displayer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 25
+text = "This is where the class text gets displayed."

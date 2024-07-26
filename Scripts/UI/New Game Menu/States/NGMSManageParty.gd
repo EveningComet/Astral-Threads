@@ -8,9 +8,13 @@ class_name NGMSManageParty extends NewGameMenuState
 @export var manage_party_buttons_container: Container
 
 func enter(msgs: Dictionary = {}) -> void:
+	active_party_container.show()
 	manage_party_buttons_container.show()
 	manage_party_buttons_container.get_child(0).grab_focus()
+	
 	new_character_button.pressed.connect( on_new_character_button_pressed )
+	new_character_button.disabled = PlayerPartyController.get_party_count() \
+	 == PlayerPartyController.MAX_PMS_IN_ACTIVE_PARTY
 
 func exit() -> void:
 	manage_party_buttons_container.hide()
