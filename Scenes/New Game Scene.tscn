@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d20j14agk0xhd"]
+[gd_scene load_steps=13 format=3 uid="uid://d20j14agk0xhd"]
 
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/NewGameController.gd" id="1_al584"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSWaiting.gd" id="2_ua7wm"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSSelectStartingSkills.gd" id="7_qa6fg"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSEnterName.gd" id="8_bregl"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/DescriptionDisplayer.gd" id="11_di7lv"]
+[ext_resource type="PackedScene" uid="uid://cjo7c4uptsy7i" path="res://Scenes/UI/Character Name Input.tscn" id="12_vp6i1"]
 
 [node name="New Game Scene" type="CanvasLayer"]
 
@@ -173,3 +174,6 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 25
 text = "This is where the class text gets displayed."
+
+[node name="Character Name Input" parent="." instance=ExtResource("12_vp6i1")]
+visible = false
