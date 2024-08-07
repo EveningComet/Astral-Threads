@@ -7,6 +7,9 @@ class_name PlayerHud extends CanvasLayer
 @export var party_container: Container
 
 func _ready() -> void:
+	setup()
+
+func setup() -> void:
 	for pm: PlayerCombatant in PlayerPartyController.get_party():
 		if pm != null:
 			var pm_slot: PartyMemberSlot = party_member_slot_scene.instantiate()

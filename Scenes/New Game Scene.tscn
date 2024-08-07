@@ -53,8 +53,9 @@ script = ExtResource("7_qa6fg")
 active_party_container = NodePath("../../Active Party Displayer")
 description_displayer = NodePath("../../Description Displayer")
 
-[node name="NGMSEnterName" type="Node" parent="NewGameController" node_paths=PackedStringArray("active_party_container", "description_displayer")]
+[node name="NGMSEnterName" type="Node" parent="NewGameController" node_paths=PackedStringArray("character_namer", "active_party_container", "description_displayer")]
 script = ExtResource("8_bregl")
+character_namer = NodePath("../../Character Name Input")
 active_party_container = NodePath("../../Active Party Displayer")
 description_displayer = NodePath("../../Description Displayer")
 
@@ -177,3 +178,14 @@ text = "This is where the class text gets displayed."
 
 [node name="Character Name Input" parent="." instance=ExtResource("12_vp6i1")]
 visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
