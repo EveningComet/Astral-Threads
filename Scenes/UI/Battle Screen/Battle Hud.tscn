@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmwyufeq71yw3"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Battle UI/BattleHud.gd" id="1_57gi0"]
+[ext_resource type="PackedScene" uid="uid://cigoeq7lw4aua" path="res://Scenes/UI/Battle Screen/Battle Action Button.tscn" id="2_36acc"]
+[ext_resource type="PackedScene" uid="uid://bfg0s8vxh3ogg" path="res://Scenes/UI/Battle Screen/Enemy Battle Sprite.tscn" id="2_cwp5j"]
+[ext_resource type="Script" path="res://Scripts/Player/Battle/PlayerBattleController.gd" id="2_ps607"]
+[ext_resource type="Script" path="res://Scripts/Player/Battle/States/PBIdle.gd" id="3_wyq5t"]
+[ext_resource type="Script" path="res://Scripts/Player/Battle/States/PBSelectAction.gd" id="4_lfxgq"]
+[ext_resource type="PackedScene" uid="uid://chvqk786y8c4" path="res://Scenes/UI/Battle Screen/Battle Skills Menu.tscn" id="4_nsqfn"]
+[ext_resource type="Script" path="res://Scripts/Player/Battle/States/PBSelectTarget.gd" id="5_nbnp1"]
+
+[node name="Battle Hud" type="CanvasLayer" node_paths=PackedStringArray("enemy_container")]
+script = ExtResource("1_57gi0")
+enemy_container = NodePath("Control/Enemy Margins/Enemy Container")
+enemy_battle_sprite_prefab = ExtResource("2_cwp5j")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.352941)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player Action Buttons" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -406.0
+offset_top = 235.0
+offset_right = 406.0
+offset_bottom = 285.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Attack" parent="Control/Player Action Buttons" instance=ExtResource("2_36acc")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Flee")
+
+[node name="Skills" parent="Control/Player Action Buttons" instance=ExtResource("2_36acc")]
+layout_mode = 2
+text = "Skills"
+action_type = 7
+
+[node name="Defend" parent="Control/Player Action Buttons" instance=ExtResource("2_36acc")]
+layout_mode = 2
+text = "Defend"
+action_type = 4
+
+[node name="Flee" parent="Control/Player Action Buttons" instance=ExtResource("2_36acc")]
+layout_mode = 2
+focus_neighbor_right = NodePath("../Attack")
+text = "Flee"
+action_type = 6
+
+[node name="Enemy Margins" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -370.0
+offset_top = -122.0
+offset_right = 370.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Enemy Container" type="GridContainer" parent="Control/Enemy Margins"]
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 6
+
+[node name="Battle Skills Menu" parent="Control" instance=ExtResource("4_nsqfn")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerBattleController" type="Node" parent="."]
+script = ExtResource("2_ps607")
+initial_state = NodePath("PBIdle")
+
+[node name="PBIdle" type="Node" parent="PlayerBattleController"]
+script = ExtResource("3_wyq5t")
+
+[node name="PBSelectAction" type="Node" parent="PlayerBattleController" node_paths=PackedStringArray("battle_skills_menu", "action_buttons_holder")]
+script = ExtResource("4_lfxgq")
+battle_skills_menu = NodePath("../../Control/Battle Skills Menu")
+action_buttons_holder = NodePath("../../Control/Player Action Buttons")
+
+[node name="PBSelectTarget" type="Node" parent="PlayerBattleController"]
+script = ExtResource("5_nbnp1")

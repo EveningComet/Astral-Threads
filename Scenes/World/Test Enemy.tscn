@@ -1,0 +1,45 @@
+[gd_scene load_steps=10 format=3 uid="uid://hpxw5wmcqogq"]
+
+[ext_resource type="Script" path="res://Scripts/Combat/Enemy/RoamingEnemy.gd" id="1_ibv0c"]
+[ext_resource type="Script" path="res://Scripts/Combat/BattleStarterArea.gd" id="1_lqjcu"]
+[ext_resource type="Script" path="res://Scripts/Combat/Enemy/EnemyPartyData.gd" id="2_iluab"]
+[ext_resource type="Script" path="res://Scripts/Combat/Enemy/EnemyData.gd" id="3_51s8e"]
+[ext_resource type="Script" path="res://Scripts/Stats/StatModifier.gd" id="4_em4lu"]
+[ext_resource type="Texture2D" uid="uid://d3vlawnvw3k58" path="res://icon.svg" id="5_wk1h7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hya8v"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_de7la"]
+radius = 2.0
+
+[sub_resource type="Resource" id="Resource_t5cut"]
+script = ExtResource("3_51s8e")
+localization_name = "True Villain"
+localization_description = "It do be evil."
+portrait = ExtResource("5_wk1h7")
+vitality = 5
+technique = 5
+will = 5
+stat_modifiers = Array[ExtResource("4_em4lu")]([])
+xp_on_death = 25
+money_on_death = 30
+
+[node name="Test Enemy" type="CharacterBody3D"]
+script = ExtResource("1_ibv0c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_hya8v")
+
+[node name="GFX" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="GFX"]
+
+[node name="BattleStarterArea" type="Area3D" parent="."]
+script = ExtResource("1_lqjcu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BattleStarterArea"]
+shape = SubResource("SphereShape3D_de7la")
+
+[node name="EnemyPartyData" type="Node" parent="."]
+script = ExtResource("2_iluab")
+party = Array[ExtResource("3_51s8e")]([SubResource("Resource_t5cut")])

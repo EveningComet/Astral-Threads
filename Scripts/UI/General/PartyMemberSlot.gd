@@ -1,9 +1,13 @@
 ## Visual representation of a party member.
 class_name PartyMemberSlot extends PanelContainer
 
-# Vitals
+@export var content_container: Container
+
+@export_category("Contents")
+# Vitals + XP
 @export var hp_bar: Vitalbar
 @export var sp_bar: Vitalbar
+@export var xp_bar: ProgressBar
 
 @export var char_name_label: Label
 
@@ -17,10 +21,11 @@ func set_player_character(pc: PlayerCombatant) -> void:
 	if player_character != null:
 		player_character.stat_changed.connect( on_stat_changed )
 		char_name_label.set_text(pc.char_name)
-		char_name_label.show()
-		hp_bar.show()
-		sp_bar.show()
 		on_stat_changed(player_character)
+		
+		# Enable the things the player should see
+		for c in content_container.get_children():
+			c.show()
 
 ## When the stats of the monitored character changes, update the vital bars.
 func on_stat_changed(pc: Combatant) -> void:

@@ -1,6 +1,7 @@
 ## Manages the player's movement.
 class_name PlayerLocomotionController extends StateMachine
 
+@export var input_controller:  PlayerInputController
 @export var camera_controller: CameraController
 
 ## The parent character body that will be controlled.

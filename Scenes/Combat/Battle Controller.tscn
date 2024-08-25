@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://ma6jdj5waylr"]
+
+[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/BattleController.gd" id="1_54j50"]
+[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/Battle States/BattleStart.gd" id="2_j1ygd"]
+[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/Battle States/EndBattle.gd" id="3_5ywlc"]
+[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/Battle States/PlayerTurn.gd" id="4_ipiwj"]
+[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/Battle States/AwaitingBattleStart.gd" id="4_nus2s"]
+[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/Battle States/EnemyTurn.gd" id="6_pj3b2"]
+[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/Battle States/ResolveTurn.gd" id="6_swt0i"]
+
+[node name="Battle Controller" type="Node"]
+script = ExtResource("1_54j50")
+initial_state = NodePath("AwaitingBattleStart")
+
+[node name="AwaitingBattleStart" type="Node" parent="."]
+script = ExtResource("4_nus2s")
+
+[node name="BattleStart" type="Node" parent="."]
+script = ExtResource("2_j1ygd")
+
+[node name="PlayerTurn" type="Node" parent="."]
+script = ExtResource("4_ipiwj")
+
+[node name="EnemyTurn" type="Node" parent="."]
+script = ExtResource("6_pj3b2")
+
+[node name="ResolveTurn" type="Node" parent="."]
+script = ExtResource("6_swt0i")
+
+[node name="EndBattle" type="Node" parent="."]
+script = ExtResource("3_5ywlc")

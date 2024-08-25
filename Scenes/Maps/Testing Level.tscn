@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxdkvgf7831js"]
+[gd_scene load_steps=12 format=3 uid="uid://dxdkvgf7831js"]
 
 [ext_resource type="Texture2D" uid="uid://cxymice35l0bo" path="res://Imported Assets/KenneyNL Prototyping Textures/Dark/texture_01.png" id="1_alguh"]
 [ext_resource type="PackedScene" uid="uid://cvcjhhiyqaotu" path="res://Scenes/Player.tscn" id="2_4df4m"]
 [ext_resource type="Texture2D" uid="uid://clioc8ddhlhag" path="res://Imported Assets/KenneyNL Prototyping Textures/Orange/texture_04.png" id="2_pvgr0"]
 [ext_resource type="PackedScene" uid="uid://bj5fakyx2vebd" path="res://Scenes/UI/Player Hud.tscn" id="4_gmomf"]
 [ext_resource type="PackedScene" uid="uid://bq2c1sqe6bf25" path="res://Scenes/UI/Pause Menu.tscn" id="4_t1nc6"]
+[ext_resource type="PackedScene" uid="uid://hpxw5wmcqogq" path="res://Scenes/World/Test Enemy.tscn" id="6_lofm8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tly4j"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -58,3 +59,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 9.81084)
 [node name="Player Hud" parent="." instance=ExtResource("4_gmomf")]
 
 [node name="Pause Menu" parent="." instance=ExtResource("4_t1nc6")]
+
+[node name="Test Enemy" parent="." instance=ExtResource("6_lofm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -19)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfg0s8vxh3ogg"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Battle UI/EnemyBattleSprite.gd" id="1_4s0rd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7sbdq"]
+
+[node name="Enemy Battle Sprite" type="PanelContainer" node_paths=PackedStringArray("portrait")]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7sbdq")
+script = ExtResource("1_4s0rd")
+portrait = NodePath("MarginContainer/Portrait")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5

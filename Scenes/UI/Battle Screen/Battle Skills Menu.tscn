@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://chvqk786y8c4"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Battle UI/BattleSkillsMenu.gd" id="1_s14xk"]
+[ext_resource type="PackedScene" uid="uid://cigoeq7lw4aua" path="res://Scenes/UI/Battle Screen/Battle Action Button.tscn" id="2_ah2gr"]
+
+[node name="Battle Skills Menu" type="Control" node_paths=PackedStringArray("spawned_buttons_container")]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_s14xk")
+action_button_template = ExtResource("2_ah2gr")
+spawned_buttons_container = NodePath("PanelContainer/MarginContainer/HBoxContainer/Master Buttons Margin/ScrollContainer/MarginContainer/Buttons Container")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Master Buttons Margin" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Master Buttons Margin"]
+layout_mode = 2
+follow_focus = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Master Buttons Margin/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Buttons Container" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Master Buttons Margin/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Description Margin" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
