@@ -51,18 +51,18 @@ focus_neighbor_left = NodePath("../Flee")
 [node name="Skills" parent="Control/Player Action Buttons" instance=ExtResource("2_36acc")]
 layout_mode = 2
 text = "Skills"
-action_type = 7
+action_type = 8
 
 [node name="Defend" parent="Control/Player Action Buttons" instance=ExtResource("2_36acc")]
 layout_mode = 2
 text = "Defend"
-action_type = 4
+action_type = 5
 
 [node name="Flee" parent="Control/Player Action Buttons" instance=ExtResource("2_36acc")]
 layout_mode = 2
 focus_neighbor_right = NodePath("../Attack")
 text = "Flee"
-action_type = 6
+action_type = 7
 
 [node name="Enemy Margins" type="MarginContainer" parent="Control"]
 layout_mode = 1

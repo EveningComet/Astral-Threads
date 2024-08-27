@@ -15,7 +15,7 @@ func enter(msgs: Dictionary = {}) -> void:
 					execute()
 					return
 			
-			# Create the needed cursors
+			# TODO: Create the needed cursors
 
 func exit() -> void:
 	curr_action = null
@@ -25,6 +25,12 @@ func check_for_unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		my_state_machine.change_to_state("PBSelectAction")
 		return
+	
+	# TODO: Confirm the target.
+	if event.is_action_pressed("ui_accept"):
+		return
+	
+	# Checking for keyboard/gamepad input to move the cursor
 
 func execute() -> void:
 	# TODO: Store the targets for the action.
@@ -37,6 +43,7 @@ func execute() -> void:
 		Eventbus.side_finished_turn.emit( actions_to_send )
 		my_state_machine.end_of_turn_cleanup()
 		my_state_machine.change_to_state("PBIdle")
+		print("PBSelectTarget :: Player done with all party members.")
 	
 	# The player still has actions to select
 	else	:

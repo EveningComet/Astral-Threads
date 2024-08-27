@@ -8,3 +8,5 @@ var activator: Combatant
 var recipients: Array[Combatant] = []
 
 var action_type: ActionTypes.ActionTypes
+
+var num_activations: int = 1

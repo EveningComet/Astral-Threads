@@ -6,10 +6,11 @@ func _ready():
 	# TODO: Maybe some sort of input manager should keep track of this.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
+	# TODO: Better place to enable the player hud
+	PlayerHUD.open()
+	
 	# Start the menu off hidden
 	visible = false
-	
-	# TODO: Find a better place to start playing the music.
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):

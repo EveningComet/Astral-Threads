@@ -20,7 +20,7 @@ func enter(msgs: Dictionary = {}) -> void:
 	buttons_holder_container.get_child(0).grab_focus()
 	start_game_button.pressed.connect( on_start_game_pressed )
 	manage_party_button.pressed.connect( on_manage_party_button_pressed )
-	start_game_button.disabled = PlayerPartyController.has_party_members() == false
+	start_game_button.disabled = PlayerPartyController.is_party_fightable() == false
 
 func exit() -> void:
 	buttons_holder_container.hide()

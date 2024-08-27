@@ -26,6 +26,7 @@ Database="*res://Scripts/Autoloads/Database.gd"
 Globals="*res://Scripts/Autoloads/Globals.gd"
 BattleHUD="*res://Scenes/UI/Battle Screen/Battle Hud.tscn"
 Battlecontroller="*res://Scenes/Combat/Battle Controller.tscn"
+PlayerHUD="*res://Scenes/UI/Player Hud.tscn"
 
 [display]
 

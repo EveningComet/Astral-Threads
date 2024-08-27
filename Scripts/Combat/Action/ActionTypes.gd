@@ -4,6 +4,7 @@ enum ActionTypes {
 	SingleEnemy,
 	AllEnemies,
 	SingleAlly,
+	AllAllies,
 	UseItem,
 	Defend,
 	Self,

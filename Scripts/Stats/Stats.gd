@@ -24,8 +24,36 @@ func initialize() -> void:
 	stats[StatHelper.StatTypes.MaxSP]     = Stat.new(50)
 	stats[StatHelper.StatTypes.CurrentSP] = get_max_sp()
 	
+	initialize_derived_stats()
+
+func initialize_derived_stats() -> void:
 	# Other stats
 	stats[StatHelper.StatTypes.Defense] = Stat.new(5)
+	stats[StatHelper.StatTypes.Speed] = Stat.new(
+		0
+	)
+	stats[StatHelper.StatTypes.Perception] = Stat.new(
+		0
+	)
+	
+	# This is the "bonus" evasion
+	stats[StatHelper.StatTypes.Evasion] = Stat.new(
+		0
+	)
+	
+	# This is the "bonus" critical hit chance
+	stats[StatHelper.StatTypes.CriticalHitChance] = Stat.new(
+		0
+	)
+	
+	# Initialize the powers
+	stats[StatHelper.StatTypes.PhysicalPower] = Stat.new(0)
+	stats[StatHelper.StatTypes.SpecialPower]  = Stat.new(0)
+	stats[StatHelper.StatTypes.HeatMods]      = Stat.new(0)
+	stats[StatHelper.StatTypes.ColdMods]      = Stat.new(0)
+	stats[StatHelper.StatTypes.ElectricityMods] = Stat.new(0)
+	stats[StatHelper.StatTypes.PsychicMods]     = Stat.new(0)
+	
 
 func get_max_hp() -> int:
 	return round(stats[StatHelper.StatTypes.MaxHP].get_calculated_value())

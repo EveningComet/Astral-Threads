@@ -24,5 +24,11 @@ func get_party() -> Array[PlayerCombatant]:
 func get_party_count() -> int:
 	return active_party.size()
 
-func has_party_members() -> bool:
-	return active_party.size() > 0
+## Is there at least one party member with at least 1 hp?
+func is_party_fightable() -> bool:
+	var status: bool = false
+	for pm: PlayerCombatant in active_party:
+		if pm != null and pm.stats.get_curr_hp() > 0:
+			status = true
+			break
+	return status

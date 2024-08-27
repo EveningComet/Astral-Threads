@@ -14,9 +14,19 @@ enum StatTypes {
 	CurrentSP,            # Our current mana/stamina/etc.
 	
 	# Other stats
+	# These stats will store the "bonus" value
 	CriticalHitChance,
+	Speed,
+	Evasion,
+	Perception,
+	
+	# Modifiers for damage types
 	PhysicalPower,
 	SpecialPower,
+	HeatMods,
+	ColdMods,
+	ElectricityMods,
+	PsychicMods,
 	
 	# Resistances (Damage Type)
 	# Except for regular damage, the rest are primarily percentage based (0.0-1.0)
