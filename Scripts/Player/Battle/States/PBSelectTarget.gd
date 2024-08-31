@@ -1,6 +1,8 @@
 ## State for where the player can select a target for some action.
 class_name PBSelectTarget extends PlayerBattleState
 
+@export var cursor_controller: CursorController
+
 var curr_action: StoredAction = null
 
 func enter(msgs: Dictionary = {}) -> void:
@@ -15,10 +17,13 @@ func enter(msgs: Dictionary = {}) -> void:
 					execute()
 					return
 			
-			# TODO: Create the needed cursors
+			# Create the needed cursors
+			cursor_controller.spawn_needed_cursors(curr_action)
+			# TODO: Mouse control for convenience.
 
 func exit() -> void:
 	curr_action = null
+	cursor_controller.clear_cursors()
 
 func check_for_unhandled_input(event: InputEvent) -> void:
 	# Back out to the select action state
@@ -26,14 +31,29 @@ func check_for_unhandled_input(event: InputEvent) -> void:
 		my_state_machine.change_to_state("PBSelectAction")
 		return
 	
-	# TODO: Confirm the target.
+	# Confirming the target
 	if event.is_action_pressed("ui_accept"):
+		execute()
 		return
 	
 	# Checking for keyboard/gamepad input to move the cursor
+		# Check for keyboard/gamepad input to move the cursor
+	var input_dir: Vector2 = Vector2.ZERO
+	if event.is_action_pressed("ui_up"):
+		input_dir = Vector2.UP
+	if event.is_action_pressed("ui_right"):
+		input_dir = Vector2.RIGHT
+	if event.is_action_pressed("ui_down"):
+		input_dir = Vector2.DOWN
+	if event.is_action_pressed("ui_left"):
+		input_dir = Vector2.LEFT
+	
+	if input_dir != Vector2.ZERO:
+		cursor_controller.find_closest_target( input_dir )
 
 func execute() -> void:
-	# TODO: Store the targets for the action.
+	# Store the targets for the action and then cache that action
+	curr_action.set_targets( cursor_controller.get_targets() )
 	store_action(curr_combatant, curr_action)
 	
 	# If the player has finished selecting actions for all their characters,
@@ -43,7 +63,6 @@ func execute() -> void:
 		Eventbus.side_finished_turn.emit( actions_to_send )
 		my_state_machine.end_of_turn_cleanup()
 		my_state_machine.change_to_state("PBIdle")
-		print("PBSelectTarget :: Player done with all party members.")
 	
 	# The player still has actions to select
 	else	:

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://8ueywip1r6ra"]
+
+[ext_resource type="Texture2D" uid="uid://d3vlawnvw3k58" path="res://icon.svg" id="1_w5764"]
+[ext_resource type="Script" path="res://Scripts/UI/Battle UI/CombatCursor.gd" id="1_y1ib4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7pulc"]
+
+[node name="Combat Cursor" type="PanelContainer"]
+top_level = true
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7pulc")
+script = ExtResource("1_y1ib4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_w5764")
+expand_mode = 1
+stretch_mode = 5

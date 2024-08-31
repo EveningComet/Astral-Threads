@@ -67,6 +67,11 @@ func execute_action(current_action: StoredAction) -> void:
 				
 			ActionTypes.ActionTypes.SingleAlly, ActionTypes.ActionTypes.AllAllies:
 				pass
+			
+			# TODO: Implement proper fleeing.
+			ActionTypes.ActionTypes.Flee:
+				my_state_machine.change_to_state("EndBattle")
+				return
 	
 	await apply_changes()
 	

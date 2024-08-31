@@ -3,7 +3,7 @@
 class_name SkillData extends Resource
 
 @export_category("Base Info")
-@export var localization_name: String = "New Skill"
+@export var localization_name:                  String = "New Skill"
 @export_multiline var localization_description: String = "New description."
 
 @export_category("Definitions")

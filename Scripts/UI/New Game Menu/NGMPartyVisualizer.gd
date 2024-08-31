@@ -27,7 +27,7 @@ func update_slots() -> void:
 	while index < PlayerPartyController.MAX_PMS_IN_ACTIVE_PARTY:
 		var pc:      PlayerCombatant = PlayerPartyController.get_party()[index]
 		var pm_slot: PartyMemberSlot = pm_slots[index]
-		pm_slot.set_player_character(pc)
+		pm_slot.set_combatant(pc)
 		index += 1
 
 func on_party_composition_changed(party: Array[PlayerCombatant]) -> void:

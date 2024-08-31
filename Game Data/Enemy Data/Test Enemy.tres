@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://chn0kn4yih156"]
+
+[ext_resource type="Texture2D" uid="uid://d3vlawnvw3k58" path="res://icon.svg" id="1_u4t00"]
+[ext_resource type="Script" path="res://Scripts/Combat/Enemy/EnemyData.gd" id="2_xqogn"]
+[ext_resource type="Script" path="res://Scripts/Stats/StatModifier.gd" id="3_6bdv0"]
+
+[resource]
+script = ExtResource("2_xqogn")
+localization_name = "True Villain"
+localization_description = "It do be evil."
+portrait = ExtResource("1_u4t00")
+vitality = 5
+technique = 5
+will = 5
+stat_modifiers = Array[ExtResource("3_6bdv0")]([])
+xp_on_death = 25
+money_on_death = 30
