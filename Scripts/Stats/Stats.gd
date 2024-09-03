@@ -19,9 +19,9 @@ func initialize() -> void:
 	stats[StatHelper.StatTypes.Will]         = Stat.new(5)
 	
 	# Vitals
-	stats[StatHelper.StatTypes.MaxHP]     = Stat.new(50)
+	stats[StatHelper.StatTypes.MaxHP]     = Stat.new(15)
 	stats[StatHelper.StatTypes.CurrentHP] = get_max_hp()
-	stats[StatHelper.StatTypes.MaxSP]     = Stat.new(50)
+	stats[StatHelper.StatTypes.MaxSP]     = Stat.new(15)
 	stats[StatHelper.StatTypes.CurrentSP] = get_max_sp()
 	
 	initialize_derived_stats()
@@ -70,22 +70,32 @@ func get_curr_sp() -> int:
 func get_defense() -> int:
 	return floor(stats[StatHelper.StatTypes.Defense].get_calculated_value())
 
-func add_modifier(stat_type, mod: StatModifier) -> void:
-	pass
+# TODO: Account for raising the max values of certain stats.
+## Wrapper for permanently increasing the base value of a particular stat.
+## Mainly used to raise a character's attributes.
+func raise_base_value_by(stat_raising: StatHelper.StatTypes, amt: int) -> void:
+	stats[stat_raising].raise_base_value_by(amt)
+	combatant.stat_changed.emit( combatant )
 
-func remove_modifier(stat_type, mod: StatModifier) -> void:
-	pass
+func add_modifier(stat_type: StatHelper.StatTypes, mod_to_add: StatModifier) -> void:
+	stats[stat_type].add_modifier( mod_to_add )
+	combatant.stat_changed.emit( combatant )
+
+func remove_modifier(stat_type: StatHelper.StatTypes, mod_to_remove: StatModifier) -> void:
+	stats[stat_type].remove_modifier( mod_to_remove )
+	combatant.stat_changed.emit( combatant )
 	
 func take_damage(damage_data) -> void:
+	# TODO: Account for damage types.
 	damage_data -= get_defense()
 	stats[StatHelper.StatTypes.CurrentHP] -= damage_data
 	combatant.stat_changed.emit(combatant)
+	
 	# Notify anything about dying
 	if get_curr_hp() <= 0:
-		Eventbus.hp_depleted.emit(combatant)
 		stats[StatHelper.StatTypes.CurrentHP] = 0
 		combatant.stat_changed.emit(combatant)
-		combatant.get_parent().queue_free()
+		Eventbus.hp_depleted.emit(combatant)
 
 func heal(amount: int) -> void:
 	stats[StatHelper.StatTypes.CurrentHP] += amount

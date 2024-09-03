@@ -1,10 +1,18 @@
 ## Responsible for managing the player's input.
 class_name PlayerInputController extends Node
 
+## Event that fires when the player the interaction button.
+signal interact_pressed()
+
 var input_dir: Vector3 = Vector3.ZERO
 
 var jump_pressed:  bool = false
 var jump_released: bool = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact"):
+		# TODO: Interaction limit cooldown?
+		interact_pressed.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

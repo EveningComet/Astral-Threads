@@ -25,7 +25,7 @@ offset = Vector3(0, 0.7, 0)
 fov = 90.0
 
 [node name="Interaction Cast" type="RayCast3D" parent="Camera Rig/Camera3D"]
-target_position = Vector3(0, 0, -5)
+target_position = Vector3(0, 0, -3)
 
 [node name="PlayerLocomotionController" type="Node" parent="." node_paths=PackedStringArray("input_controller", "camera_controller")]
 script = ExtResource("1_r1d1o")

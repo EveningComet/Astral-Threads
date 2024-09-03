@@ -28,6 +28,5 @@ func setup_battle(enemy_party_data: EnemyPartyData) -> void:
 		my_state_machine.active_enemies,
 	)
 	
-	
 	# Everything is done, switch to the player's turn
 	my_state_machine.change_to_state("PlayerTurn")

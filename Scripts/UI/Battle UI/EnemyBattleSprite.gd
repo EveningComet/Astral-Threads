@@ -5,7 +5,9 @@ class_name EnemyBattleSprite extends CombatantHUD
 
 func set_combatant(new_com: Combatant, _portrait: Texture2D) -> void:
 	combatant = new_com
+	combatant.stat_changed.connect( on_stat_changed )
 	portrait.set_texture(_portrait)
 
 func on_stat_changed(com: Combatant) -> void:
-	pass
+	if com.stats.get_curr_hp() <= 0:
+		queue_free()

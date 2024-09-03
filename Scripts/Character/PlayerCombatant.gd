@@ -12,6 +12,8 @@ var char_name: String:
 # TODO: Multiclassing.
 var curr_job: Job
 
+var equipment_holder: EquipmentHolder = EquipmentHolder.new(self)
+
 # XP Data
 var experience_growth_percentage: float = 1.10
 var curr_level: int = 1
@@ -47,4 +49,16 @@ func level_up() -> void:
 	curr_level += 1
 	xp_required = get_experience_required( curr_level )
 	
-	# Boost the stats based on the primary class
+	# Boost the attributes based on the primary class
+	stats.raise_base_value_by(
+		StatHelper.StatTypes.Vitality,
+		curr_job.vitality_growth
+	)
+	stats.raise_base_value_by(
+		StatHelper.StatTypes.Technique,
+		curr_job.technique_growth
+	)
+	stats.raise_base_value_by(
+		StatHelper.StatTypes.Will,
+		curr_job.will_growth
+	)
