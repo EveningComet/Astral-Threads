@@ -1,6 +1,9 @@
 ## A class responsible for passing around needed data.
 extends Node
 
+## Fired when the player wants to do something with their inventory or party.
+signal toggle_dashboard()
+
 ## Fired when a character has run out of health.
 signal hp_depleted(combatant: Combatant)
 

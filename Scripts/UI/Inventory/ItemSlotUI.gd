@@ -1,0 +1,24 @@
+## Displays an instance of an item inside an inventory.
+class_name ItemSlotUI extends Button
+
+## The object that will display the item visuals to the player.
+@export var display_icon: TextureRect
+
+@export var amount_label: Label
+
+## The attached slot data.
+var slot: ItemSlotData
+
+func set_slot_data(slot_data: ItemSlotData) -> void:
+	slot = slot_data
+	
+	display_icon.set_texture( slot.stored_item.image )
+	update_quantity_text(slot)
+	
+func update_quantity_text(slot_data: ItemSlotData) -> void:
+	if slot_data.quantity > 1:
+		amount_label.set_text( str(slot_data.quantity) )
+		amount_label.show()
+	else:
+		amount_label.set_text( str(1) )
+		amount_label.hide()

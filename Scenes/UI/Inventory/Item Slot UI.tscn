@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn5nts3ewsda1"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/ItemSlotUI.gd" id="1_24ldo"]
+[ext_resource type="Texture2D" uid="uid://d3vlawnvw3k58" path="res://icon.svg" id="2_508rb"]
+
+[node name="Item Slot UI" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_24ldo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Display Icon" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_508rb")
+expand_mode = 1
+stretch_mode = 5

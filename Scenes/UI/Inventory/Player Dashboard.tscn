@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw34c8yrs3mye"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/PlayerDashboard.gd" id="1_q3o46"]
+[ext_resource type="PackedScene" uid="uid://cxwyyabg6elpq" path="res://Scenes/UI/Inventory/Player Inventory Displayer.tscn" id="2_xqtoy"]
+[ext_resource type="PackedScene" uid="uid://ddxk8hvdarn1v" path="res://Scenes/UI/Inventory/Party Inspector.tscn" id="3_77ttr"]
+
+[node name="Player Dashboard" type="CanvasLayer" node_paths=PackedStringArray("player_inventory_displayer", "party_inspector", "external_inventory_displayer")]
+script = ExtResource("1_q3o46")
+player_inventory_displayer = NodePath("Control/HBoxContainer/Player Inventory Displayer")
+party_inspector = NodePath("Control/HBoxContainer/Party Inspector")
+external_inventory_displayer = NodePath("Control/HBoxContainer/External Inventory")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -300.0
+offset_right = 200.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="External Inventory" parent="Control/HBoxContainer" instance=ExtResource("2_xqtoy")]
+visible = false
+layout_mode = 2
+
+[node name="Party Inspector" parent="Control/HBoxContainer" instance=ExtResource("3_77ttr")]
+layout_mode = 2
+
+[node name="Player Inventory Displayer" parent="Control/HBoxContainer" instance=ExtResource("2_xqtoy")]
+visible = false
+layout_mode = 2

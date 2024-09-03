@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dxdkvgf7831js"]
+[gd_scene load_steps=17 format=3 uid="uid://dxdkvgf7831js"]
 
 [ext_resource type="Texture2D" uid="uid://cxymice35l0bo" path="res://Imported Assets/KenneyNL Prototyping Textures/Dark/texture_01.png" id="1_alguh"]
 [ext_resource type="PackedScene" uid="uid://cvcjhhiyqaotu" path="res://Scenes/Player.tscn" id="2_4df4m"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://hpxw5wmcqogq" path="res://Scenes/World/Test Enemy.tscn" id="6_lofm8"]
 [ext_resource type="Script" path="res://Scripts/Inventory/Inventory.gd" id="7_l3ht2"]
 [ext_resource type="Script" path="res://Scripts/Inventory/ItemSlotData.gd" id="8_11riy"]
+[ext_resource type="PackedScene" uid="uid://cw34c8yrs3mye" path="res://Scenes/UI/Inventory/Player Dashboard.tscn" id="9_845o5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tly4j"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -82,3 +83,5 @@ script = ExtResource("6_ana6k")
 inventory = SubResource("Resource_1njun")
 
 [node name="Pause Menu" parent="." instance=ExtResource("4_t1nc6")]
+
+[node name="Player Dashboard" parent="." instance=ExtResource("9_845o5")]

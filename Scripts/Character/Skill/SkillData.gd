@@ -19,4 +19,6 @@ class_name SkillData extends Resource
 
 ## Get data that can be used based on the attached effects.
 func get_usable_data(activator: Combatant):
+	
+	
 	return 0
