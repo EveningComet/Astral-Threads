@@ -85,17 +85,20 @@ func remove_modifier(stat_type: StatHelper.StatTypes, mod_to_remove: StatModifie
 	stats[stat_type].remove_modifier( mod_to_remove )
 	combatant.stat_changed.emit( combatant )
 	
-func take_damage(damage_data) -> void:
-	# TODO: Account for damage types.
-	damage_data -= get_defense()
-	stats[StatHelper.StatTypes.CurrentHP] -= damage_data
-	combatant.stat_changed.emit(combatant)
-	
-	# Notify anything about dying
-	if get_curr_hp() <= 0:
-		stats[StatHelper.StatTypes.CurrentHP] = 0
+func take_damage(damage_datas: Array[DamageData]) -> void:
+	for dd: DamageData in damage_datas:
+		# TODO: Account for damage types.
+		var amount: int = dd.damage_amount
+		amount -= get_defense()
+		amount = clamp(amount, 1, dd.damage_amount)
+		stats[StatHelper.StatTypes.CurrentHP] -= amount
 		combatant.stat_changed.emit(combatant)
-		Eventbus.hp_depleted.emit(combatant)
+		
+		# Notify anything about dying
+		if get_curr_hp() <= 0:
+			stats[StatHelper.StatTypes.CurrentHP] = 0
+			combatant.stat_changed.emit(combatant)
+			Eventbus.hp_depleted.emit(combatant)
 
 func heal(amount: int) -> void:
 	stats[StatHelper.StatTypes.CurrentHP] += amount

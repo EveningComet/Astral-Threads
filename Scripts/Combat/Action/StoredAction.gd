@@ -4,11 +4,7 @@ class_name StoredAction extends Resource
 ## The character performing the action.
 var activator: Combatant
 
-var damage_amount: int = 0
-
-## Stores the different types of damage that can be applied.
-## {Damage Type, Damage Amount}
-var damage_data: Dictionary = {}
+var damage_datas: Array[DamageData] = []
 
 ## The characters that will targeted by the character performing their action.
 var recipients: Array[Combatant] = []

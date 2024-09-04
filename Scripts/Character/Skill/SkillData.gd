@@ -17,8 +17,27 @@ class_name SkillData extends Resource
 ## The objects that define a how skill work.
 @export var effects: Array[SkillEffect] = []
 
-## Get data that can be used based on the attached effects.
-func get_usable_data(activator: Combatant):
+## Modify the passed action based on the skill user and the skill effects.
+func get_usable_data(activator: Combatant, action: StoredAction) -> StoredAction:
+	var modified_action: StoredAction = action
+	modified_action.damage_datas.clear()
+	for e: SkillEffect in effects:
+		
+		if e is DamageEffect:
+			# Create and add the damage data
+			var damage_effect: DamageEffect = e as DamageEffect
+			var damage_data:   DamageData   = DamageData.new()
+			damage_data.damage_type = damage_effect.damage_type
+			damage_data.damage_amount = 5 # TODO: Get the power output
+			# TODO: Status effect damage
+			# TODO: Lifesteal percentage
+			modified_action.damage_datas.append(damage_data)
+		
+		elif e is HealEffect:
+			var heal_effect: HealEffect = e as HealEffect
+			modified_action.heal_amount += 5 # TODO: Get the power output.
+		
+		elif e is ApplyStatusEffect:
+			var ase: ApplyStatusEffect = e as ApplyStatusEffect
 	
-	
-	return 0
+	return modified_action

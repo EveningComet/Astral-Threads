@@ -54,8 +54,9 @@ func execute_action(current_action: StoredAction) -> void:
 		next_action()
 		return
 	
-	# Check if a new target needs to be found
+	# Check if a new target needs to be found and get any missing needed data
 	current_action = check_if_new_target_needed(current_action)
+	current_action = get_usable_data(current_action)
 	
 	# Run based on the number of activations
 	for i: int in current_action.num_activations:
@@ -67,8 +68,11 @@ func execute_action(current_action: StoredAction) -> void:
 			ActionTypes.ActionTypes.AllEnemies, ActionTypes.ActionTypes.SingleEnemy:
 				for target: Combatant in current_action.get_targets():
 					if target != null:
-						# TODO: Get the damage data from stats and so on.
-						target.stats.take_damage(7)
+						# TODO: Chance to hit.
+						var needed_chance: int = Formulas.get_chance_to_hit(
+							activator, target
+						)
+						target.stats.take_damage(current_action.damage_datas)
 						
 						# TODO: Check for status effects to apply
 						for effect: StatusEffect in current_action.status_effects_to_apply.keys():
@@ -110,17 +114,24 @@ func check_if_new_target_needed(action: StoredAction) -> StoredAction:
 	else:
 		return action
 
-## Returns a more filled out action.
-func get_usable_data(current_action: StoredAction):
+## Taking an action object, fill out any missing data such as needed healing power or damage.
+func get_usable_data(current_action: StoredAction) -> StoredAction:
+	var modified_action: StoredAction = current_action
 	var has_skill: bool = current_action.skill_data != null
 	if has_skill == true:
 		# TODO: Get the chance to hit.
-		current_action.activator.stats.remove_sp(current_action.skill_data.base_cost)
+		var activator: Combatant = modified_action.activator
+		modified_action = current_action.skill_data.get_usable_data(activator, current_action)
+		activator.stats.remove_sp(current_action.skill_data.base_cost)
 	
 	else:
-		# Get some normal damage
-		pass
-	return 0
+		# TODO: Figure out how to handle weapons that should use special damage.
+		var damage_data: DamageData = DamageData.new()
+		damage_data.damage_type = StatHelper.DamageTypes.Base
+		damage_data.damage_amount = 10 # TODO: Get proper damage power.
+		modified_action.damage_datas.append(damage_data)
+		
+	return modified_action
 
 ## This is where the animations, damage, and so on should truly be performed.
 func apply_changes() -> void:
