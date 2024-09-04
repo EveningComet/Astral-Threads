@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dxdkvgf7831js"]
+[gd_scene load_steps=19 format=3 uid="uid://dxdkvgf7831js"]
 
 [ext_resource type="Texture2D" uid="uid://cxymice35l0bo" path="res://Imported Assets/KenneyNL Prototyping Textures/Dark/texture_01.png" id="1_alguh"]
 [ext_resource type="PackedScene" uid="uid://cvcjhhiyqaotu" path="res://Scenes/Player.tscn" id="2_4df4m"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://hpxw5wmcqogq" path="res://Scenes/World/Test Enemy.tscn" id="6_lofm8"]
 [ext_resource type="Script" path="res://Scripts/Inventory/Inventory.gd" id="7_l3ht2"]
 [ext_resource type="Script" path="res://Scripts/Inventory/ItemSlotData.gd" id="8_11riy"]
+[ext_resource type="Resource" uid="uid://dp1ruy7u22143" path="res://Game Data/Items/Test Item.tres" id="8_ch562"]
 [ext_resource type="PackedScene" uid="uid://cw34c8yrs3mye" path="res://Scenes/UI/Inventory/Player Dashboard.tscn" id="9_845o5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tly4j"]
@@ -33,9 +34,14 @@ albedo_texture = ExtResource("2_pvgr0")
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomq3"]
 size = Vector3(3, 1, 1)
 
+[sub_resource type="Resource" id="Resource_muf78"]
+script = ExtResource("8_11riy")
+stored_item = ExtResource("8_ch562")
+quantity = 3
+
 [sub_resource type="Resource" id="Resource_1njun"]
 script = ExtResource("7_l3ht2")
-stored_items = Array[ExtResource("8_11riy")]([])
+stored_items = Array[ExtResource("8_11riy")]([SubResource("Resource_muf78")])
 
 [node name="Testing Level" type="Node3D"]
 

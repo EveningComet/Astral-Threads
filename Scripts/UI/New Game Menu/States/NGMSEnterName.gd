@@ -17,7 +17,13 @@ func on_finalized() -> void:
 	var new_pm: PlayerCombatant = my_state_machine.curr_created_character
 	new_pm.stats.initialize() # TODO: Initialize based on starting class.
 	PlayerPartyController.add_to_party(new_pm)
+	
+	# Setup the job and skills
+	var primary_job: Job = my_state_machine.curr_job
+	new_pm.curr_job = primary_job
+	new_pm.skill_holder.skills.append_array(primary_job.skills)
+	
+	# Cleanup and return
 	my_state_machine.curr_created_character = null
 	my_state_machine.curr_job               = null
-	
 	my_state_machine.change_to_state("NGMSManageParty")

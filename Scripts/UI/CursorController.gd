@@ -33,6 +33,7 @@ func spawn_needed_cursors(new_action: StoredAction) -> void:
 			var cursor: CombatCursor = cursor_prefab.instantiate()
 			target_scan_node = PlayerHUD.party_container
 			spawned_cursors.append(cursor)
+			get_parent().add_child(cursor)
 			set_cursor_target(cursor, target_scan_node.get_child(0))
 		
 		ActionTypes.ActionTypes.AllAllies:
@@ -80,8 +81,8 @@ func get_targets() -> Array[Combatant]:
 	return to_return
 
 func get_center(node: Control) -> Vector2:
-	var center: Vector2 = node.global_position - node.size
-	center /= 2.0
+	# TODO: Figure out how to get the center.
+	var center: Vector2 = node.global_position
 	return center
 
 func clear_cursors() -> void:

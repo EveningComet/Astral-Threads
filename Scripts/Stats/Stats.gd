@@ -46,7 +46,7 @@ func initialize_derived_stats() -> void:
 		0
 	)
 	
-	# Initialize the powers
+	# Initialize the "bonus" powers
 	stats[StatHelper.StatTypes.PhysicalPower] = Stat.new(0)
 	stats[StatHelper.StatTypes.SpecialPower]  = Stat.new(0)
 	stats[StatHelper.StatTypes.HeatMods]      = Stat.new(0)
@@ -54,6 +54,10 @@ func initialize_derived_stats() -> void:
 	stats[StatHelper.StatTypes.ElectricityMods] = Stat.new(0)
 	stats[StatHelper.StatTypes.PsychicMods]     = Stat.new(0)
 	
+	# Initialize the resistances
+	for t in StatHelper.damage_to_res_map:
+		var stat_type = StatHelper.damage_to_res_map[t]
+		stats[stat_type] = Stat.new(0)
 
 func get_max_hp() -> int:
 	return round(stats[StatHelper.StatTypes.MaxHP].get_calculated_value())
@@ -67,6 +71,13 @@ func get_max_sp() -> int:
 func get_curr_sp() -> int:
 	return stats[StatHelper.StatTypes.CurrentSP]
 
+## Return a float percentage for damage resistance.
+func get_resistance(damage_type: StatHelper.DamageTypes) -> float:
+	if StatHelper.damage_to_res_map.has(damage_type) == true:
+		return stats[StatHelper.damage_to_res_map[damage_type]].get_calculated_value()
+	return 0.0
+
+# TODO: Method for resistances.
 func get_defense() -> int:
 	return floor(stats[StatHelper.StatTypes.Defense].get_calculated_value())
 
@@ -87,18 +98,31 @@ func remove_modifier(stat_type: StatHelper.StatTypes, mod_to_remove: StatModifie
 	
 func take_damage(damage_datas: Array[DamageData]) -> void:
 	for dd: DamageData in damage_datas:
-		# TODO: Account for damage types.
 		var amount: int = dd.damage_amount
+		var damage_type = dd.damage_type
+		
+		# Checking if damage needs to be increased based on negative status effects
+		if combatant.status_effect_holder.has_negative_statuses_present() == true:
+			pass
+		
+		# TODO: Account for damage types and resistances.
 		amount -= get_defense()
 		amount = clamp(amount, 1, dd.damage_amount)
 		stats[StatHelper.StatTypes.CurrentHP] -= amount
 		combatant.stat_changed.emit(combatant)
 		
+		# TODO: Lifesteal check
+		if dd.damage_heal_percentage > 0.0:
+			pass
+		
 		# Notify anything about dying
 		if get_curr_hp() <= 0:
-			stats[StatHelper.StatTypes.CurrentHP] = 0
-			combatant.stat_changed.emit(combatant)
-			Eventbus.hp_depleted.emit(combatant)
+			die()
+
+func die() -> void:
+	stats[StatHelper.StatTypes.CurrentHP] = 0
+	combatant.stat_changed.emit(combatant)
+	Eventbus.hp_depleted.emit(combatant)
 
 func heal(amount: int) -> void:
 	stats[StatHelper.StatTypes.CurrentHP] += amount

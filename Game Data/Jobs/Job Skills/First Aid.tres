@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=5 format=3 uid="uid://lbq05qrlklpv"]
+
+[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="1_ikl8b"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_278ei"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/HealEffect.gd" id="2_q8wo5"]
+
+[sub_resource type="Resource" id="Resource_o5kde"]
+script = ExtResource("2_q8wo5")
+power_scale = 1.0
+
+[resource]
+script = ExtResource("2_278ei")
+localization_name = "First Aid"
+localization_description = "Apply medicine."
+base_cost = 5
+is_passive = false
+num_activations = 1
+action_type = 2
+effects = Array[ExtResource("1_ikl8b")]([SubResource("Resource_o5kde")])

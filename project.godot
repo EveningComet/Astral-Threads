@@ -24,9 +24,9 @@ PlayerPartyController="*res://Scripts/Autoloads/PlayerPartyController.gd"
 Eventbus="*res://Scripts/Autoloads/Eventbus.gd"
 Database="*res://Scripts/Autoloads/Database.gd"
 Globals="*res://Scripts/Autoloads/Globals.gd"
+PlayerHUD="*res://Scenes/UI/Player Hud.tscn"
 BattleHUD="*res://Scenes/UI/Battle Screen/Battle Hud.tscn"
 Battlecontroller="*res://Scenes/Combat/Battle Controller.tscn"
-PlayerHUD="*res://Scenes/UI/Player Hud.tscn"
 PlayerInventory="*res://Scripts/Autoloads/PlayerInventory.gd"
 
 [display]

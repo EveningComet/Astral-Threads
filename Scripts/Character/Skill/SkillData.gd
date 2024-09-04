@@ -20,6 +20,7 @@ class_name SkillData extends Resource
 ## Modify the passed action based on the skill user and the skill effects.
 func get_usable_data(activator: Combatant, action: StoredAction) -> StoredAction:
 	var modified_action: StoredAction = action
+	modified_action.num_activations = num_activations
 	modified_action.damage_datas.clear()
 	for e: SkillEffect in effects:
 		
@@ -29,13 +30,15 @@ func get_usable_data(activator: Combatant, action: StoredAction) -> StoredAction
 			var damage_data:   DamageData   = DamageData.new()
 			damage_data.damage_type = damage_effect.damage_type
 			damage_data.damage_amount = 5 # TODO: Get the power output
-			# TODO: Status effect damage
-			# TODO: Lifesteal percentage
+			damage_data.base_power_scale = damage_effect.power_scale
+			damage_data.damage_heal_percentage = damage_effect.attacker_heal_percentage
 			modified_action.damage_datas.append(damage_data)
 		
 		elif e is HealEffect:
 			var heal_effect: HealEffect = e as HealEffect
-			modified_action.heal_amount += 5 # TODO: Get the power output.
+			var will_stat: int = activator.stats.stats[StatHelper.StatTypes.Will].get_calculated_value()
+			var healing_power: int = floor(e.power_scale * will_stat)
+			modified_action.heal_amount += healing_power
 		
 		elif e is ApplyStatusEffect:
 			var ase: ApplyStatusEffect = e as ApplyStatusEffect

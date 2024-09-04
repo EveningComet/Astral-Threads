@@ -8,10 +8,10 @@ class_name BattleSkillsMenu extends Control
 ## This would be the current player character that needs to have an action se.
 var skill_user: Combatant
 
-func open(new_user: Combatant) -> void:
+func setup_buttons_for(new_user: Combatant) -> void:
 	if skill_user != null:
 		clear_buttons()
-		
+	
 	skill_user = new_user
 	var skill_holder = skill_user.skill_holder
 	if skill_holder.get_usable_skills().size() > 0:
@@ -26,7 +26,9 @@ func open(new_user: Combatant) -> void:
 			
 			# Finally, add the button
 			spawned_buttons_container.add_child(b)
-	
+
+## Needs to be called after setup.
+func open() -> void:	
 	# Display and grab focus
 	spawned_buttons_container.get_child(0).grab_focus()
 	show()
@@ -35,6 +37,12 @@ func close() -> void:
 	skill_user = null
 	clear_buttons()
 	hide()
+
+func get_spawned_buttons() -> Array[BattleActionButton]:
+	var to_return: Array[BattleActionButton] = []
+	for c in spawned_buttons_container.get_children():
+		to_return.append(c)
+	return to_return
 
 func on_skill_button_highlighted(s: SkillData) -> void:
 	# TODO: Display the skill information the player.

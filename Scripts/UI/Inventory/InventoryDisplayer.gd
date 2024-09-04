@@ -18,6 +18,7 @@ func set_inventory_to_display(new_inventory: Inventory) -> void:
 func clear_inventory() -> void:
 	inventory_to_display.inventory_updated.disconnect( populate_item_container )
 	inventory_to_display = null
+	clear_contents()
 
 ## Populate the items that should be displayed.
 ## If this is called due to a signal, this simply updates the display.
