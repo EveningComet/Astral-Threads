@@ -14,6 +14,8 @@ func clean_up() -> void:
 	Eventbus.toggle_mouse.emit(false)
 	
 	# TODO: Proper winning and losing
+	# Destroy the enemies since the player won
+	my_state_machine.destroy_tracked_world_enemies()
 	# Give the player experience points
 	reward_experience()
 	

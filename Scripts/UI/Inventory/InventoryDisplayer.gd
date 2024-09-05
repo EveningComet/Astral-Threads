@@ -10,6 +10,10 @@ class_name InventoryDisplayer extends Control
 ## The container that will house the items.
 @export var item_container: Control
 
+@export_category("Money")
+@export var displays_money:    bool  = false
+@export var money_value_label: Label = null
+
 func set_inventory_to_display(new_inventory: Inventory) -> void:
 	inventory_to_display = new_inventory
 	inventory_to_display.inventory_updated.connect( populate_item_container )

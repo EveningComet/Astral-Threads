@@ -34,7 +34,8 @@ func check_for_unhandled_input(event: InputEvent) -> void:
 		# Before anything else, make sure the battle menu is closed
 		if battle_skills_menu.is_visible() == true:
 			action_buttons_holder.show()
-			battle_skills_menu.close()
+			battle_skills_menu.hide()
+			action_buttons_holder.get_child(0).grab_focus()
 			return
 
 func on_action_button_selected(bab: BattleActionButton) -> void:

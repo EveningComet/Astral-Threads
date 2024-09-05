@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Job" load_steps=4 format=3 uid="uid://cpif2tli5do3g"]
+
+[ext_resource type="Script" path="res://Scripts/Character/Job.gd" id="1_ogyeu"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_udf68"]
+[ext_resource type="Resource" uid="uid://con0txiulx7kp" path="res://Game Data/Jobs/Job Skills/Shell.tres" id="3_iyif5"]
+
+[resource]
+script = ExtResource("1_ogyeu")
+localization_name = "Aegis"
+localization_description = "Users of high tech suits of armor."
+skills = Array[ExtResource("2_udf68")]([ExtResource("3_iyif5")])
+vitality_growth = 5
+technique_growth = 5
+will_growth = 5

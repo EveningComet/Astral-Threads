@@ -9,6 +9,8 @@ class_name ItemSlotUI extends Button
 ## The attached slot data.
 var slot: ItemSlotData
 
+# TODO: Connect to events.
+
 func set_slot_data(slot_data: ItemSlotData) -> void:
 	slot = slot_data
 	

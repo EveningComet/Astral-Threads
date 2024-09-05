@@ -26,6 +26,7 @@ func load_jobs() -> void:
 				character_jobs.append( job )
 			file_name = dir.get_next()
 		dir.list_dir_end()
+		character_jobs.sort_custom( sort_name )
 
 func load_character_names() -> void:
 	char_names[MALE]   = []
@@ -63,3 +64,6 @@ func get_female_name() -> String:
 	var index: int = randi_range(0, potential_names.size() - 1)
 	var chosen_name: String = potential_names[index]
 	return chosen_name
+
+func sort_name(a: Job, b: Job) -> bool:
+	return a.localization_name < b.localization_name

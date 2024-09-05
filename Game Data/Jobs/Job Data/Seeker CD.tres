@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Job" load_steps=4 format=3 uid="uid://b6oo8fgm4y4mw"]
+
+[ext_resource type="Script" path="res://Scripts/Character/Job.gd" id="1_y2tuq"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_71pwt"]
+[ext_resource type="Resource" uid="uid://de0dpc63x4jog" path="res://Game Data/Jobs/Job Skills/Seeker/Field Medicine.tres" id="3_a6j6c"]
+
+[resource]
+script = ExtResource("1_y2tuq")
+localization_name = "Seeker"
+localization_description = "Treasure hunters looking for personal or monetary gain."
+skills = Array[ExtResource("2_71pwt")]([ExtResource("3_a6j6c")])
+vitality_growth = 5
+technique_growth = 5
+will_growth = 5

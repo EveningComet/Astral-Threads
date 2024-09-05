@@ -7,7 +7,6 @@ var actions_to_execute: Array[StoredAction]
 var prng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func enter(msgs: Dictionary = {}) -> void:
-	# TODO: Properly implement the resolve turn.
 	execute_actions()
 
 func exit() -> void:

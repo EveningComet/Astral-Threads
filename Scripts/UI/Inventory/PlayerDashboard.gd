@@ -43,7 +43,9 @@ func clear_external_inventory() -> void:
 
 ## Used when the player interacts with an inventory data object.
 func on_inventory_interacted(inventory_data: Inventory) -> void:
-	pass
+	if inventory_data == external_inventory:
+		if OS.is_debug_build() == true:
+			print("PlayerDashboard :: Player is interacting with item in external inventory.")
 
 func open() -> void:
 	player_inventory_displayer.show()

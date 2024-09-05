@@ -1,15 +1,14 @@
-[gd_resource type="Resource" script_class="Job" load_steps=5 format=3 uid="uid://d1dpqeqvk2q6p"]
+[gd_resource type="Resource" script_class="Job" load_steps=4 format=3 uid="uid://d1dpqeqvk2q6p"]
 
 [ext_resource type="Script" path="res://Scripts/Character/Job.gd" id="1_5pnux"]
 [ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_wewmf"]
 [ext_resource type="Resource" uid="uid://b8sevvarbk4t0" path="res://Game Data/Jobs/Job Skills/Sweep.tres" id="3_r2evw"]
-[ext_resource type="Resource" uid="uid://lbq05qrlklpv" path="res://Game Data/Jobs/Job Skills/First Aid.tres" id="4_0woec"]
 
 [resource]
 script = ExtResource("1_5pnux")
 localization_name = "Contender"
 localization_description = "People that get by through sheer perseverance."
-skills = Array[ExtResource("2_wewmf")]([ExtResource("3_r2evw"), ExtResource("4_0woec")])
+skills = Array[ExtResource("2_wewmf")]([ExtResource("3_r2evw")])
 vitality_growth = 5
 technique_growth = 5
 will_growth = 5

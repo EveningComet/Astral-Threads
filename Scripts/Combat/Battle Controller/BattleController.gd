@@ -6,6 +6,9 @@ var current_turn_actions: Array[StoredAction] = []
 
 var active_enemies: Array[EnemyCombatant] = []
 
+## References to the enemy world objects. Used to destroy them when the player wins a fight.
+var enemy_party_owners: Array[Node3D] = []
+
 var xp_to_reward: int = 0
 
 func set_me_up() -> void:
@@ -18,6 +21,7 @@ func set_me_up() -> void:
 func _on_battle_start(enemy_party_data: EnemyPartyData) -> void:
 	# TODO: Checks to see if a battle is already under way.
 	
+	enemy_party_owners.append(enemy_party_data.get_parent())
 	# Time to start the battle
 	xp_to_reward = 0
 	change_to_state(
@@ -33,3 +37,8 @@ func _on_hp_depleted(com: Combatant) -> void:
 
 func add_actions(actions_to_add: Array[StoredAction]) -> void:
 	current_turn_actions.append_array(actions_to_add)
+
+func destroy_tracked_world_enemies() -> void:
+	for e in enemy_party_owners:
+		enemy_party_owners.erase(e)
+		e.queue_free()
