@@ -49,11 +49,13 @@ func open() -> void:
 	player_inventory_displayer.show()
 	party_inspector.show()
 	show()
+	Eventbus.toggle_mouse.emit(true)
 
 func close() -> void:
 	player_inventory_displayer.hide()
 	clear_external_inventory()
 	party_inspector.hide()
+	Eventbus.toggle_mouse.emit(false)
 	hide()
 
 func on_dashboard_toggled(exterior_inv: Inventory = null) -> void:

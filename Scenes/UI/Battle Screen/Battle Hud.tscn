@@ -17,6 +17,7 @@ enemy_container = NodePath("Control/Enemy Margins/Enemy Container")
 enemy_battle_sprite_prefab = ExtResource("2_cwp5j")
 
 [node name="Background" type="ColorRect" parent="."]
+y_sort_enabled = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -90,8 +91,8 @@ theme_override_constants/margin_bottom = 10
 
 [node name="Enemy Container" type="GridContainer" parent="Control/Enemy Margins"]
 layout_mode = 2
-theme_override_constants/h_separation = 5
-theme_override_constants/v_separation = 5
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
 columns = 6
 
 [node name="Battle Skills Menu" parent="Control" instance=ExtResource("4_nsqfn")]

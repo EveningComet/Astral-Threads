@@ -9,6 +9,17 @@ var input_dir: Vector3 = Vector3.ZERO
 var jump_pressed:  bool = false
 var jump_released: bool = false
 
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Eventbus.toggle_mouse.connect( on_mouse_toggled )
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_mouse"):
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		# TODO: Interaction limit cooldown?
@@ -39,3 +50,10 @@ func update_input_dir() -> void:
 	input_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_dir.z = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 	input_dir = input_dir.normalized() if input_dir.length() > 1 else input_dir
+
+## Depending on what the eventbus says, enable/disable the use of the mouse.
+func on_mouse_toggled(enable: bool) -> void:
+	if enable == true:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

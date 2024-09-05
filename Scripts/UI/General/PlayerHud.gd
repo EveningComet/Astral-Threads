@@ -38,3 +38,6 @@ func get_party() -> Array[PartyMemberSlot]:
 	for pm: PartyMemberSlot in party_container.get_children():
 		to_return.append(pm)
 	return to_return
+
+func toggle_mouse() -> void:
+	pass

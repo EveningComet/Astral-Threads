@@ -4,6 +4,7 @@
 
 [node name="Pause Menu" type="CanvasLayer"]
 process_mode = 3
+layer = 100
 script = ExtResource("1_mpwv5")
 
 [node name="Control" type="Control" parent="."]

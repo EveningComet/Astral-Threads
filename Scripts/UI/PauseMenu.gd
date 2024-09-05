@@ -3,9 +3,6 @@ class_name PauseMenu extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# TODO: Maybe some sort of input manager should keep track of this.
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
 	# TODO: Better place to enable the player hud
 	PlayerHUD.open()
 	
@@ -17,9 +14,3 @@ func _input(event: InputEvent) -> void:
 		var pause_state   = not get_tree().paused
 		get_tree().paused = pause_state
 		visible           = pause_state
-	
-	if event.is_action_pressed("toggle_mouse"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

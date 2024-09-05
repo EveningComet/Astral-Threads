@@ -16,6 +16,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var distance = get_parent().global_position.distance_squared_to(curr_world_inventory.get_parent().global_position)
 	if distance > max_distance_before_closing_inventory * max_distance_before_closing_inventory:
+		# TODO: Oversight bug here. Closing inventory and walking away will cause it to reopen.
 		Eventbus.toggle_dashboard.emit()
 		curr_world_inventory = null
 		set_physics_process(false)

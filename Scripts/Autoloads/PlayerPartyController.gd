@@ -21,8 +21,10 @@ func add_to_party(pm: PlayerCombatant) -> void:
 func get_party() -> Array[PlayerCombatant]:
 	return active_party
 
-func get_party_count() -> int:
-	return active_party.size()
+func give_experience(xp: int) -> void:
+	for pm: PlayerCombatant in get_party():
+		if pm != null:
+			pm.gain_experience(xp)
 
 ## Is there at least one party member with at least 1 hp?
 func is_party_fightable() -> bool:

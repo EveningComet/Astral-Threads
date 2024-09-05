@@ -4,6 +4,9 @@ extends Node
 ## Fired when the player wants to do something with their inventory or party.
 signal toggle_dashboard(exterior_inv: Inventory)
 
+## Enables/Disables the mouse.
+signal toggle_mouse(status: bool)
+
 ## Fired when a character has run out of health.
 signal hp_depleted(combatant: Combatant)
 

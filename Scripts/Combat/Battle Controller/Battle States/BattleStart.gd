@@ -19,6 +19,7 @@ func setup_battle(enemy_party_data: EnemyPartyData) -> void:
 		var enemy: EnemyCombatant = EnemyCombatant.new()
 		# TODO: Initialize the enemy stats properly.
 		# TODO: Enemy skills.
+		enemy.enemy_data = ed
 		enemy.stats.initialize()
 		enemy.portrait = ed.portrait
 		my_state_machine.active_enemies.append(enemy)
@@ -27,6 +28,8 @@ func setup_battle(enemy_party_data: EnemyPartyData) -> void:
 	BattleHUD.on_battle_start(
 		my_state_machine.active_enemies,
 	)
+	
+	Eventbus.toggle_mouse.emit(true)
 	
 	# Everything is done, switch to the player's turn
 	my_state_machine.change_to_state("PlayerTurn")
