@@ -75,7 +75,9 @@ func execute_action(current_action: StoredAction) -> void:
 						
 						# TODO: Check for status effects to apply
 						for effect: StatusEffect in current_action.status_effects_to_apply.keys():
-							pass
+							# TODO: Chance.
+							var effect_chance: float
+							target.status_effect_holder
 				
 			ActionTypes.ActionTypes.SingleAlly, ActionTypes.ActionTypes.AllAllies:
 				for target: Combatant in current_action.get_targets():
@@ -85,6 +87,14 @@ func execute_action(current_action: StoredAction) -> void:
 						# TODO: Check for status effects to apply
 						for effect: StatusEffect in current_action.status_effects_to_apply.keys():
 							pass
+			
+			ActionTypes.ActionTypes.Self:
+				for target: Combatant in current_action.get_targets():
+					target.stats.heal(current_action.heal_amount)
+					
+					# TODO: Apply status effects, if able
+					for status_effect: StatusEffect in current_action.status_effects_to_apply.keys():
+						pass
 			
 			# TODO: Implement proper fleeing. For now, just end the battle.
 			ActionTypes.ActionTypes.Flee:

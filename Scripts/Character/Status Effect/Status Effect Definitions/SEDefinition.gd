@@ -7,10 +7,10 @@ class_name SEDefinition extends Resource
 ## For the definitions that change stats.
 @export var stat_modifiers: Array[StatModifier] = []
 
-func apply_modifier(target: Combatant) -> void:
+func apply_modifiers(target: Combatant) -> void:
 	for mod: StatModifier in stat_modifiers:
 		target.stats.add_modifier(mod.stat_changing, mod)
 
-func remove_modifier(target: Combatant) -> void:
+func remove_modifiers(target: Combatant) -> void:
 	for mod: StatModifier in stat_modifiers:
 		target.stats.remove_modifier(mod.stat_changing, mod)
