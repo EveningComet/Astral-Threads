@@ -18,13 +18,25 @@ func initialize() -> void:
 	stats[StatHelper.StatTypes.Technique]    = Stat.new(5)
 	stats[StatHelper.StatTypes.Will]         = Stat.new(5)
 	
-	# Vitals
+	initialize_vitals()
+	initialize_derived_stats()
+
+## Initialize the base attributes based on the passed class.
+func initialize_with_job(job_data: Job) -> void:
+	# Attributes
+	stats[StatHelper.StatTypes.Vitality]     = Stat.new(job_data.starting_vitality)
+	stats[StatHelper.StatTypes.Technique]    = Stat.new(job_data.starting_technique)
+	stats[StatHelper.StatTypes.Will]         = Stat.new(job_data.starting_will)
+	
+	initialize_vitals()
+	initialize_derived_stats()
+
+## Initialize the HP and SP.
+func initialize_vitals() -> void:
 	stats[StatHelper.StatTypes.MaxHP]     = Stat.new(15)
 	stats[StatHelper.StatTypes.CurrentHP] = get_max_hp()
 	stats[StatHelper.StatTypes.MaxSP]     = Stat.new(15)
 	stats[StatHelper.StatTypes.CurrentSP] = get_max_sp()
-	
-	initialize_derived_stats()
 
 func initialize_derived_stats() -> void:
 	# Other stats

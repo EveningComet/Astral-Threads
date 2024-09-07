@@ -21,6 +21,11 @@ var curr_xp:    int = 0
 var xp_required:     int = get_experience_required(curr_level)
 var total_experience_points: int = 0
 
+## Initialize the starting stats based on the passed job.
+func initialize_with_job(job_data: Job) -> void:
+	curr_job = job_data
+	stats.initialize_with_job(curr_job)
+
 ## Return how much experience is required for this character to level up.
 ## Calculation is: 100 * (growth_percent^( current level - 1))
 func get_experience_required(level: int) -> int:

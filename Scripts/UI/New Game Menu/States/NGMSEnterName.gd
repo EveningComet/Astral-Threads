@@ -20,7 +20,7 @@ func on_finalized() -> void:
 	
 	# Setup the job and skills
 	var primary_job: Job = my_state_machine.curr_job
-	new_pm.curr_job = primary_job
+	new_pm.initialize_with_job(primary_job)
 	new_pm.skill_holder.skills.append_array(primary_job.skills)
 	
 	# Cleanup and return

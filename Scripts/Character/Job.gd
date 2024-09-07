@@ -9,6 +9,10 @@ class_name Job extends Resource
 @export var skills: Array[SkillData] = []
 
 @export_category("Growth Data")
+@export var starting_vitality:  int = 5
+@export var starting_technique: int = 5
+@export var starting_will:      int = 5
+
 @export var vitality_growth:  int = 5
 @export var technique_growth: int = 5
 @export var will_growth:      int = 5
