@@ -1,6 +1,9 @@
 ## Displays an instance of an item inside an inventory.
 class_name ItemSlotUI extends Button
 
+## Helps interfacing with the inventory.
+signal item_slot_selected(item_slot_data: ItemSlotData)
+
 ## The object that will display the item visuals to the player.
 @export var display_icon: TextureRect
 
@@ -9,7 +12,8 @@ class_name ItemSlotUI extends Button
 ## The attached slot data.
 var slot: ItemSlotData
 
-# TODO: Connect to events.
+func _ready() -> void:
+	pressed.connect( on_pressed )
 
 func set_slot_data(slot_data: ItemSlotData) -> void:
 	slot = slot_data
@@ -24,3 +28,6 @@ func update_quantity_text(slot_data: ItemSlotData) -> void:
 	else:
 		amount_label.set_text( str(1) )
 		amount_label.hide()
+
+func on_pressed() -> void:
+	item_slot_selected.emit(slot)

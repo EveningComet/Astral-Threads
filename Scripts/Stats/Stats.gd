@@ -105,8 +105,17 @@ func take_damage(damage_datas: Array[DamageData]) -> void:
 		if combatant.status_effect_holder.has_negative_statuses_present() == true:
 			pass
 		
-		# TODO: Account for damage types and resistances.
-		amount -= get_defense()
+		# Account for damage types and resistances.
+		match damage_type:
+			StatHelper.DamageTypes.Base:
+				amount -= get_defense()
+			
+			# All other damage types get scaled
+			_:
+				var a = 1.0 - get_resistance(damage_type)
+				amount = floor(amount * a)
+		
+		# Finally apply the damage
 		amount = clamp(amount, 1, dd.damage_amount)
 		stats[StatHelper.StatTypes.CurrentHP] -= amount
 		combatant.stat_changed.emit(combatant)

@@ -5,7 +5,7 @@ class_name Inventory extends Resource
 signal inventory_updated(inventory: Inventory)
 
 ## When interacted with, we want others to know about the interaction.
-signal inventory_interacted(inventory_data: Inventory, index: int, button: int)
+signal inventory_interacted(inventory_data: Inventory, slot_data: ItemSlotData)
 
 signal money_changed(amt: int)
 
@@ -33,6 +33,13 @@ func grab_slot_data(index: int) -> ItemSlotData:
 		return slot_data
 	else:
 		return null
+
+func grab_and_remove_slot_data(slot_data: ItemSlotData) -> ItemSlotData:
+	var index: int = stored_items.find(slot_data)
+	var slot_to_remove = stored_items[index]
+	stored_items.erase(slot_data)
+	inventory_updated.emit(self)
+	return slot_to_remove
 
 ## Attempt to drop a single slot.
 func drop_single_slot_data(grabbed_slot_data: ItemSlotData, index: int) -> ItemSlotData:
@@ -102,9 +109,9 @@ func add_slot_data(slot_data: ItemSlotData) -> void:
 	stored_items.append( slot_data )
 	inventory_updated.emit( self )
 
-## When the player clicks on an item slot in the ui, we want to keep track of that.
-func on_slot_clicked(index: int, button: int) -> void:
-	inventory_interacted.emit( self, index, button )
+## Gets called through interacting with an item slot in the UI.
+func on_slot_selected(slot_data: ItemSlotData) -> void:
+	inventory_interacted.emit(self, slot_data)
 
 func has_item(item: ItemData) -> bool:
 	for slot: ItemSlotData in stored_items:

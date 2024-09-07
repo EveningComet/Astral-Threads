@@ -29,7 +29,6 @@ func remove_status_effect(status_to_remove: StatusEffect) -> void:
 	statuses[status_to_remove].trigger_on_expire(combatant)
 	statuses.erase(status_to_remove)
 	
-
 ## Are there status effects considered negative?
 func has_negative_statuses_present() -> bool:
 	for status: StatusEffect in statuses.keys():

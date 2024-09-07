@@ -17,6 +17,6 @@ localization_name = "Sweep"
 localization_description = "Hit all of the enemies."
 base_cost = 5
 is_passive = false
-num_activations = 2
+num_activations = 1
 action_type = 1
 effects = Array[ExtResource("1_q4fld")]([SubResource("Resource_kd2jo")])

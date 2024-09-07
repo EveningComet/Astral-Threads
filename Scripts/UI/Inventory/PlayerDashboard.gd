@@ -42,11 +42,26 @@ func clear_external_inventory() -> void:
 		external_inventory_displayer.hide()
 
 ## Used when the player interacts with an inventory data object.
-func on_inventory_interacted(inventory_data: Inventory) -> void:
+func on_inventory_interacted(inventory_data: Inventory, slot_data: ItemSlotData) -> void:
 	if inventory_data == external_inventory:
+		# The player is interacting with an external inventory, so add that item
+		# to the player's inventory
+		var desired_slot: ItemSlotData = inventory_data.grab_and_remove_slot_data(
+			slot_data
+		)
+		player_inventory.add_slot_data(desired_slot)
+		
 		if OS.is_debug_build() == true:
 			print("PlayerDashboard :: Player is interacting with item in external inventory.")
-
+	
+	elif inventory_data == player_inventory:
+		# The player is interacting with an item in their inventory...
+		# If it is a piece of equipment, then equip it to the current character
+		# if it can be equipped
+		if OS.is_debug_build() == true:
+			print("PlayerDashboard :: Player is interacting with item in their inventory.")
+			
+	# TODO: Checking if the item is in a character's equipment inventory 
 func open() -> void:
 	player_inventory_displayer.show()
 	party_inspector.show()

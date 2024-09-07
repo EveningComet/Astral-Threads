@@ -34,6 +34,9 @@ func populate_item_container(inventory_data: Inventory) -> void:
 		var slot: ItemSlotUI = item_slot_prefab.instantiate()
 		item_container.add_child(slot)
 		
+		# Connect to relevant events
+		slot.item_slot_selected.connect( inventory_to_display.on_slot_selected )
+		
 		# If the current slot has something to show
 		if slot_data != null:
 			slot.set_slot_data(slot_data)
