@@ -1,14 +1,28 @@
-[gd_resource type="Resource" script_class="Job" load_steps=4 format=3 uid="uid://d1dpqeqvk2q6p"]
+[gd_resource type="Resource" script_class="Job" load_steps=8 format=3 uid="uid://d1dpqeqvk2q6p"]
 
 [ext_resource type="Script" path="res://Scripts/Character/Job.gd" id="1_5pnux"]
+[ext_resource type="Script" path="res://Scripts/UI/General/PortraitData.gd" id="1_r7fd7"]
 [ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_wewmf"]
 [ext_resource type="Resource" uid="uid://b8sevvarbk4t0" path="res://Game Data/Jobs/Job Skills/Sweep.tres" id="3_r2evw"]
+[ext_resource type="Script" path="res://Scripts/Inventory/ItemData.gd" id="5_86f5d"]
+
+[sub_resource type="Resource" id="Resource_ah6u7"]
+script = ExtResource("1_r7fd7")
+
+[sub_resource type="Resource" id="Resource_dykql"]
+script = ExtResource("1_r7fd7")
 
 [resource]
 script = ExtResource("1_5pnux")
 localization_name = "Contender"
 localization_description = "People that get by through sheer perseverance."
+starting_equipment = Array[ExtResource("5_86f5d")]([])
 skills = Array[ExtResource("2_wewmf")]([ExtResource("3_r2evw")])
+starting_vitality = 5
+starting_technique = 5
+starting_will = 3
 vitality_growth = 5
 technique_growth = 5
 will_growth = 5
+male_portraits = Array[ExtResource("1_r7fd7")]([SubResource("Resource_dykql")])
+female_portraits = Array[ExtResource("1_r7fd7")]([SubResource("Resource_ah6u7")])

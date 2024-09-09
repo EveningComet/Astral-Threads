@@ -37,7 +37,6 @@ func next_action() -> void:
 	
 	# There are no more actions to execute, so go on to the next turn
 	if actions_to_execute.size() == 0:
-		# TODO: Move onto the next turn
 		my_state_machine.change_to_state("PlayerTurn")
 		return
 	
@@ -56,6 +55,7 @@ func execute_action(current_action: StoredAction) -> void:
 	# Check if a new target needs to be found and get any missing needed data
 	current_action = check_if_new_target_needed(current_action)
 	current_action = get_usable_data(current_action)
+	var status_effects_to_apply = current_action.status_effects_to_apply
 	
 	# Run based on the number of activations
 	for i: int in current_action.num_activations:
@@ -67,34 +67,34 @@ func execute_action(current_action: StoredAction) -> void:
 			ActionTypes.ActionTypes.AllEnemies, ActionTypes.ActionTypes.SingleEnemy:
 				for target: Combatant in current_action.get_targets():
 					if target != null:
-						# TODO: Chance to hit.
+						
+						# Calculate the chance to hit 
+						var generated_chance: int = prng.randi() % 101
 						var needed_chance: int = Formulas.get_chance_to_hit(
 							activator, target
 						)
-						target.stats.take_damage(current_action.damage_datas)
+						if generated_chance < needed_chance:
+							# TODO: Critical hit chance here?
 						
-						# TODO: Check for status effects to apply
-						for effect: StatusEffect in current_action.status_effects_to_apply.keys():
-							# TODO: Chance.
-							var effect_chance: float
-							target.status_effect_holder
+							target.stats.take_damage(current_action.damage_datas)
+						
+						# Check for status effects to apply
+						for effect: StatusEffect in status_effects_to_apply.keys():
+							var effect_chance: float = status_effects_to_apply[effect]
+							if prng.randf_range(0.0, 1.0) < effect_chance:
+								target.status_effect_holder.add_status_effect(effect)
 				
-			ActionTypes.ActionTypes.SingleAlly, ActionTypes.ActionTypes.AllAllies:
+			ActionTypes.ActionTypes.Self, ActionTypes.ActionTypes.SingleAlly, ActionTypes.ActionTypes.AllAllies:
 				for target: Combatant in current_action.get_targets():
 					if target != null:
+						# TODO: What about skills that damage the user?
 						target.stats.heal(current_action.heal_amount)
 						
-						# TODO: Check for status effects to apply
-						for effect: StatusEffect in current_action.status_effects_to_apply.keys():
-							pass
-			
-			ActionTypes.ActionTypes.Self:
-				for target: Combatant in current_action.get_targets():
-					target.stats.heal(current_action.heal_amount)
-					
-					# TODO: Apply status effects, if able
-					for status_effect: StatusEffect in current_action.status_effects_to_apply.keys():
-						pass
+						# Check for status effects to apply
+						for effect: StatusEffect in status_effects_to_apply.keys():
+							var effect_chance: float = status_effects_to_apply[effect]
+							if prng.randf_range(0.0, 1.0) < effect_chance:
+								target.status_effect_holder.add_status_effect(effect)
 			
 			# TODO: Implement proper fleeing. For now, just end the battle.
 			ActionTypes.ActionTypes.Flee:

@@ -33,4 +33,4 @@ func check_if_new_characters_can_be_added() -> void:
 	new_character_button.disabled = true
 
 func on_new_character_button_pressed() -> void:
-	my_state_machine.change_to_state("NGMSSelectRace")
+	my_state_machine.change_to_state("NGMSSelectJob")

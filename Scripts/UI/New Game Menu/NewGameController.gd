@@ -1,6 +1,10 @@
 ## Responsible for managing what gets done when the player starts a new game.
 class_name NewGameController extends StateMachine
 
+@export_category("Portrait Related")
+@export var portrait_button_template: PackedScene
+@export var portraits_container: Container
+
 ## Keeps track of the currently crated character.
 var curr_created_character: PlayerCombatant
 var curr_job:               Job

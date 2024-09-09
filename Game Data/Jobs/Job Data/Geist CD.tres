@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Job" load_steps=9 format=3 uid="uid://bqyj3oss77lxu"]
+
+[ext_resource type="Script" path="res://Scripts/UI/General/PortraitData.gd" id="1_vurag"]
+[ext_resource type="Script" path="res://Scripts/Character/Job.gd" id="2_85dcr"]
+[ext_resource type="Texture2D" uid="uid://b7yiwq7kku75" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (35).png" id="2_c5fke"]
+[ext_resource type="Texture2D" uid="uid://cvvsukhjg2ci6" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (124).png" id="2_ckjip"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="3_r2yox"]
+[ext_resource type="Script" path="res://Scripts/Inventory/ItemData.gd" id="4_1gqs0"]
+
+[sub_resource type="Resource" id="Resource_i5gpj"]
+script = ExtResource("1_vurag")
+big_portrait = ExtResource("2_ckjip")
+small_portrait = ExtResource("2_ckjip")
+
+[sub_resource type="Resource" id="Resource_utcbt"]
+script = ExtResource("1_vurag")
+big_portrait = ExtResource("2_c5fke")
+small_portrait = ExtResource("2_c5fke")
+
+[resource]
+script = ExtResource("2_85dcr")
+localization_name = "Geist"
+localization_description = "Burned spies with nowhere else to go."
+starting_equipment = Array[ExtResource("4_1gqs0")]([])
+skills = Array[ExtResource("3_r2yox")]([])
+starting_vitality = 4
+starting_technique = 5
+starting_will = 4
+vitality_growth = 5
+technique_growth = 5
+will_growth = 5
+male_portraits = Array[ExtResource("1_vurag")]([SubResource("Resource_utcbt")])
+female_portraits = Array[ExtResource("1_vurag")]([SubResource("Resource_i5gpj")])

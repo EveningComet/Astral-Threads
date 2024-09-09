@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://d20j14agk0xhd"]
+[gd_scene load_steps=14 format=3 uid="uid://d20j14agk0xhd"]
 
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/NewGameController.gd" id="1_al584"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSWaiting.gd" id="2_ua7wm"]
+[ext_resource type="PackedScene" uid="uid://cyjssyn07bliy" path="res://Scenes/UI/Portrait Displayer Button.tscn" id="2_x7ab2"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/NGMPartyVisualizer.gd" id="3_2t01y"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSManageParty.gd" id="3_j8r74"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSSelectRace.gd" id="4_55bp8"]
@@ -15,8 +16,10 @@
 
 [node name="New Game Scene" type="CanvasLayer"]
 
-[node name="NewGameController" type="Node" parent="."]
+[node name="NewGameController" type="Node" parent="." node_paths=PackedStringArray("portraits_container")]
 script = ExtResource("1_al584")
+portrait_button_template = ExtResource("2_x7ab2")
+portraits_container = NodePath("../Portraits Displayer")
 initial_state = NodePath("NGMSWaiting")
 
 [node name="NGMSWaiting" type="Node" parent="NewGameController" node_paths=PackedStringArray("start_game_button", "manage_party_button", "buttons_holder_container", "active_party_container", "description_displayer")]
@@ -36,15 +39,15 @@ manage_party_buttons_container = NodePath("../../Manage Party Buttons")
 active_party_container = NodePath("../../Active Party Displayer")
 description_displayer = NodePath("../../Description Displayer")
 
-[node name="NGMSSelectRace" type="Node" parent="NewGameController" node_paths=PackedStringArray("active_party_container", "description_displayer")]
-script = ExtResource("4_55bp8")
+[node name="NGMSSelectJob" type="Node" parent="NewGameController" node_paths=PackedStringArray("buttons_holder", "active_party_container", "description_displayer")]
+script = ExtResource("5_0dnxh")
+buttons_holder = NodePath("../../Race & Class Buttons Holder")
+character_job_button_prefab = ExtResource("6_ij4rg")
 active_party_container = NodePath("../../Active Party Displayer")
 description_displayer = NodePath("../../Description Displayer")
 
-[node name="NGMSSelectJob" type="Node" parent="NewGameController" node_paths=PackedStringArray("buttons_holder", "active_party_container", "description_displayer")]
-script = ExtResource("5_0dnxh")
-character_job_button_prefab = ExtResource("6_ij4rg")
-buttons_holder = NodePath("../../Race & Class Buttons Holder")
+[node name="NGMSSelectPortrait" type="Node" parent="NewGameController" node_paths=PackedStringArray("active_party_container", "description_displayer")]
+script = ExtResource("4_55bp8")
 active_party_container = NodePath("../../Active Party Displayer")
 description_displayer = NodePath("../../Description Displayer")
 
@@ -126,6 +129,23 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Active Party Displayer" type="GridContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 430.0
+offset_top = -20.0
+offset_right = 470.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Portraits Displayer" type="GridContainer" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

@@ -20,7 +20,8 @@ var num_activations: int = 1
 
 var heal_amount: int = 0
 
-## Key value pair of the status effect and how many turns it will be exist.
+## The status effects that will be applied.
+## {status effect : the success chance}
 var status_effects_to_apply: Dictionary = {}
 
 func set_targets(targets: Array[Combatant]) -> void:

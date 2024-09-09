@@ -65,5 +65,17 @@ func get_female_name() -> String:
 	var chosen_name: String = potential_names[index]
 	return chosen_name
 
+func is_male_portrait(portrait_data: PortraitData) -> bool:
+	for c in character_jobs:
+		if c.male_portraits.has(portrait_data) == true:
+			return true
+	return false
+
+func is_female_portrait(portrait_data: PortraitData) -> bool:
+	for c in character_jobs:
+		if c.female_portraits.has(portrait_data) == true:
+			return true
+	return false
+
 func sort_name(a: Job, b: Job) -> bool:
 	return a.localization_name < b.localization_name

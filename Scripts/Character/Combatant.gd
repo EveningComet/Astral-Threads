@@ -13,3 +13,6 @@ var status_effect_holder: StatusEffectHolder = StatusEffectHolder.new(self)
 
 ## Container for the character's skills.
 var skill_holder: SkillHolder = SkillHolder.new()
+
+## Stores this participant's visual appearance.
+var portrait_data: PortraitData

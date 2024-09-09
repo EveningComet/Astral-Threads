@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyjssyn07bliy"]
+
+[ext_resource type="Script" path="res://Scripts/UI/General/PortraitDisplayerButton.gd" id="1_k8ett"]
+[ext_resource type="Texture2D" uid="uid://csl78weulk5xi" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (142).png" id="2_7u4cw"]
+
+[node name="Portrait Displayer Button" type="Button" node_paths=PackedStringArray("display_icon")]
+custom_minimum_size = Vector2(256, 256)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_k8ett")
+display_icon = NodePath("MarginContainer/Icon")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Icon" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_7u4cw")
+expand_mode = 1
+stretch_mode = 5

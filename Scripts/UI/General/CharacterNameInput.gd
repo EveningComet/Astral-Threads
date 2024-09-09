@@ -32,11 +32,16 @@ func on_text_submitted(new_name: String) -> void:
 	name_entry.clear()
 	name_entered.emit()
 
-## Select a name based on whether or not the character is male or female.
+##
 func on_randomize_name_button_pressed() -> void:
-	# TODO: Male and female names.
 	var name: String = Database.get_male_name()
-	while name == previous_name:
+	if Database.is_male_portrait(curr_pc.portrait_data) == true:
 		name = Database.get_male_name()
-	previous_name     = name
+		while previous_name == name:
+			name = Database.get_male_name()
+	if Database.is_female_portrait(curr_pc.portrait_data) == true:
+		name = Database.get_female_name()
+		while previous_name == name:
+			name = Database.get_female_name()
 	name_entry.set_text(name)
+	previous_name = name

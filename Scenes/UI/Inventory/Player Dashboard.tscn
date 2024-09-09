@@ -20,16 +20,17 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -300.0
-offset_right = 200.0
-offset_bottom = 300.0
+offset_left = -300.0
+offset_top = -400.0
+offset_right = 300.0
+offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -38,10 +39,14 @@ alignment = 1
 [node name="External Inventory" parent="Control/HBoxContainer" instance=ExtResource("2_xqtoy")]
 visible = false
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="Party Inspector" parent="Control/HBoxContainer" instance=ExtResource("3_77ttr")]
+visible = false
 layout_mode = 2
 
 [node name="Player Inventory Displayer" parent="Control/HBoxContainer" instance=ExtResource("2_xqtoy")]
 visible = false
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4

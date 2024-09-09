@@ -1,14 +1,34 @@
-[gd_resource type="Resource" script_class="Job" load_steps=4 format=3 uid="uid://b6oo8fgm4y4mw"]
+[gd_resource type="Resource" script_class="Job" load_steps=10 format=3 uid="uid://b6oo8fgm4y4mw"]
 
+[ext_resource type="Script" path="res://Scripts/UI/General/PortraitData.gd" id="1_k8s3s"]
 [ext_resource type="Script" path="res://Scripts/Character/Job.gd" id="1_y2tuq"]
+[ext_resource type="Texture2D" uid="uid://d04oamgdpt4d3" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (138).png" id="2_6c5p3"]
+[ext_resource type="Texture2D" uid="uid://fbiacn1aka7f" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (130).png" id="2_7am3t"]
 [ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_71pwt"]
 [ext_resource type="Resource" uid="uid://de0dpc63x4jog" path="res://Game Data/Jobs/Job Skills/Seeker/Field Medicine.tres" id="3_a6j6c"]
+[ext_resource type="Script" path="res://Scripts/Inventory/ItemData.gd" id="6_v2xwd"]
+
+[sub_resource type="Resource" id="Resource_ae5ul"]
+script = ExtResource("1_k8s3s")
+big_portrait = ExtResource("2_7am3t")
+small_portrait = ExtResource("2_7am3t")
+
+[sub_resource type="Resource" id="Resource_njge3"]
+script = ExtResource("1_k8s3s")
+big_portrait = ExtResource("2_6c5p3")
+small_portrait = ExtResource("2_6c5p3")
 
 [resource]
 script = ExtResource("1_y2tuq")
 localization_name = "Seeker"
 localization_description = "Treasure hunters looking for personal or monetary gain."
+starting_equipment = Array[ExtResource("6_v2xwd")]([])
 skills = Array[ExtResource("2_71pwt")]([ExtResource("3_a6j6c")])
+starting_vitality = 4
+starting_technique = 5
+starting_will = 5
 vitality_growth = 5
 technique_growth = 5
 will_growth = 5
+male_portraits = Array[ExtResource("1_k8s3s")]([SubResource("Resource_njge3")])
+female_portraits = Array[ExtResource("1_k8s3s")]([SubResource("Resource_ae5ul")])

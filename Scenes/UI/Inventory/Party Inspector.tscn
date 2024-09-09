@@ -2,17 +2,14 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/Inventory/PartyInspector.gd" id="1_xadsv"]
 
-[node name="Party Inspector" type="Control"]
-custom_minimum_size = Vector2(600, 500)
+[node name="Party Inspector" type="Control" node_paths=PackedStringArray("attributes_container")]
+custom_minimum_size = Vector2(600, 800)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1320.0
-offset_bottom = -580.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 600.0
+offset_bottom = 600.0
 script = ExtResource("1_xadsv")
+attributes_container = NodePath("Attributes Container")
 
 [node name="Background" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -21,3 +18,36 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Attributes Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 51.0
+offset_top = -160.0
+offset_right = 91.0
+offset_bottom = -120.0
+grow_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="Attributes Container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "Vitality"
+
+[node name="Label2" type="Label" parent="Attributes Container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "Technique"
+
+[node name="Label3" type="Label" parent="Attributes Container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "Will"
