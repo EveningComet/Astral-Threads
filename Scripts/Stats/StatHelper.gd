@@ -59,3 +59,7 @@ static var damage_to_res_map: Dictionary = {
 	DamageTypes.Electricity: StatTypes.ElectricityRes,
 	DamageTypes.Psychic: StatTypes.PsychicRes
 }
+
+## Wrapper for getting the attributes.
+static var attributes: Array[StatTypes]:
+	get: return [StatTypes.Vitality, StatTypes.Technique, StatTypes.Will]

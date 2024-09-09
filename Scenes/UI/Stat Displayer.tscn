@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwxfk6xsgr5um"]
+
+[ext_resource type="Script" path="res://Scripts/UI/StatDisplayer.gd" id="1_jpe2h"]
+
+[node name="Stat Displayer" type="MarginContainer" node_paths=PackedStringArray("stat_name_label", "stat_value_label")]
+offset_right = 206.0
+offset_bottom = 40.0
+script = ExtResource("1_jpe2h")
+stat_name_label = NodePath("HBoxContainer/Stat Name")
+stat_value_label = NodePath("HBoxContainer/Value")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Stat Name" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "Stat Name"
+
+[node name="Value" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "42"
+horizontal_alignment = 1
