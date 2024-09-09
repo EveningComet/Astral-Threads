@@ -4,6 +4,9 @@ class_name PartyInspector extends Control
 ## Fired whenever the player changes the character they're looking at.
 signal displayed_character_changed(new_char: PlayerCombatant)
 
+## The UI component that will handle displaying a party member's equipment to the player.
+@export var equipment_displayer: InventoryDisplayer
+
 ## Visually represents what character is currently being looked at.
 @export var portrait_displayer: PortraitDisplayerPanel
 
@@ -27,6 +30,7 @@ func close() -> void:
 func set_pm_to_inspect(new_pm: PlayerCombatant) -> void:
 	if curr_inspected_pm != null:
 		curr_inspected_pm.stat_changed.disconnect( _on_stat_changed )
+		equipment_displayer.clear_inventory()
 	
 	curr_inspected_pm = new_pm
 	update_attributes()
@@ -34,6 +38,12 @@ func set_pm_to_inspect(new_pm: PlayerCombatant) -> void:
 	portrait_displayer.portrait_data = new_pm.portrait_data
 	portrait_displayer.display_icon.set_texture(new_pm.portrait_data.small_portrait)
 	curr_inspected_pm.stat_changed.connect( _on_stat_changed )
+	
+	# Update the equipment displayer to match
+	equipment_displayer.set_inventory_to_display(curr_inspected_pm.equipment_holder)
+	
+	# Notify anything about the changes
+	displayed_character_changed.emit(curr_inspected_pm)
 
 ## Whenever a stat has changed, update to reflect the values.
 func _on_stat_changed(combatant: PlayerCombatant) -> void:

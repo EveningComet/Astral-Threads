@@ -58,7 +58,7 @@ func on_job_button_focused(job_data: Job) -> void:
 	clear_portraits()
 	var portraits: Array[PortraitData] = job_data.get_portraits()
 	for pd: PortraitData in portraits:
-		var portrait_displayer: PortraitDisplayerButton = portrait_button_template.instantiate()
+		var portrait_displayer: PortraitDisplayerPanel = portrait_panel_template.instantiate()
 		portrait_displayer.portrait_data = pd
 		portrait_displayer.display_icon.set_texture(
 			portrait_displayer.portrait_data.big_portrait

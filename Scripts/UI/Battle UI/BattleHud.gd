@@ -14,7 +14,7 @@ func on_battle_start(active_enemies: Array[EnemyCombatant]) -> void:
 	# Create sprites/portraits for the enemies
 	for e in active_enemies:
 		var battle_sprite: EnemyBattleSprite = enemy_battle_sprite_prefab.instantiate()
-		battle_sprite.set_combatant(e, e.portrait)
+		battle_sprite.set_combatant(e)
 		enemy_container.add_child(battle_sprite)
 	
 	# Everything is done, time to display and get ready

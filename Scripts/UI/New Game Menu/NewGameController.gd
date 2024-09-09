@@ -2,6 +2,7 @@
 class_name NewGameController extends StateMachine
 
 @export_category("Portrait Related")
+@export var portrait_panel_template:  PackedScene
 @export var portrait_button_template: PackedScene
 @export var portraits_container: Container
 

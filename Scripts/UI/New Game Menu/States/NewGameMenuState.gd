@@ -12,6 +12,9 @@ class_name NewGameMenuState extends State
 var portraits_container: Container:
 	get: return my_state_machine.portraits_container
 
+var portrait_panel_template: PackedScene:
+	get: return my_state_machine.portrait_panel_template
+
 var portrait_button_template: PackedScene:
 	get: return my_state_machine.portrait_button_template
 

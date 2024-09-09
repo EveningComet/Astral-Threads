@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://qvkhx57j56qi"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/InventoryDisplayer.gd" id="1_bv31x"]
+[ext_resource type="PackedScene" uid="uid://dpcirattn6o47" path="res://Scenes/UI/Inventory/Equip Slot UI.tscn" id="2_2n00o"]
+
+[node name="Equipment Displayer" type="Control" node_paths=PackedStringArray("item_container")]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bv31x")
+item_slot_prefab = ExtResource("2_2n00o")
+item_container = NodePath("MarginContainer/Item Grid")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Item Grid" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Equip Slot UI" parent="MarginContainer/Item Grid" instance=ExtResource("2_2n00o")]
+layout_mode = 2
+
+[node name="Equip Slot UI2" parent="MarginContainer/Item Grid" instance=ExtResource("2_2n00o")]
+layout_mode = 2
+
+[node name="Equip Slot UI3" parent="MarginContainer/Item Grid" instance=ExtResource("2_2n00o")]
+layout_mode = 2
+
+[node name="Equip Slot UI4" parent="MarginContainer/Item Grid" instance=ExtResource("2_2n00o")]
+layout_mode = 2

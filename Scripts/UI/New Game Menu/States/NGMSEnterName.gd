@@ -23,11 +23,13 @@ func on_finalized() -> void:
 	new_pm.skill_holder.skills.append_array(primary_job.skills)
 	
 	# Initialize the starting equipment
-	for e: ItemData in primary_job.starting_equipment:
+	for i: int in primary_job.starting_equipment.size():
 		var slot_data: ItemSlotData = ItemSlotData.new()
-		slot_data.stored_item = e
+		slot_data.stored_item = primary_job.starting_equipment[i]
 		slot_data.quantity    = 1
-		# TODO: Add the equipment
+		var possible_index: int = new_pm.equipment_holder.find_empty_slot(slot_data)
+		if possible_index >= 0:
+			new_pm.equipment_holder.drop_slot_data(slot_data, possible_index)
 	
 	# Cleanup and return
 	my_state_machine.curr_created_character = null

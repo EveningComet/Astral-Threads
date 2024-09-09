@@ -14,13 +14,18 @@ func setup_battle(enemy_party_data: EnemyPartyData) -> void:
 	# TODO: Disable the camera as well
 	Globals.is_movement_disabled = true
 	
+	# TODO: Better way of loading audio.
+	var audio: AudioStream = preload("res://Imported Assets/Audio/Music/Aron Krogh/Aron Krogh - Heated Battle (Loop).mp3")
+	SoundManager.play_music(
+		audio, 1.0, "Music"
+	)
+	
 	# Setup the enemies
 	for ed: EnemyData in enemy_party_data.party:
 		var enemy: EnemyCombatant = EnemyCombatant.new()
-		# TODO: Initialize the enemy stats properly.
 		# TODO: Enemy skills.
 		enemy.enemy_data = ed
-		enemy.stats.initialize()
+		enemy.stats.initialize_with_enemy_data(ed)
 		enemy.portrait = ed.portrait
 		my_state_machine.active_enemies.append(enemy)
 	

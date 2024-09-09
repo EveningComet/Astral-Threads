@@ -89,6 +89,25 @@ func drop_single_slot_data(grabbed_slot_data: ItemSlotData, index: int) -> ItemS
 	
 	return super.drop_single_slot_data( grabbed_slot_data, index )
 
+func find_empty_slot(slot_data: ItemSlotData) -> int:
+	var possible_index: int = -1
+	
+	match slot_data.stored_item.equip_type:
+		ItemTypes.EquipmentTypes.Weapon:
+			if stored_items[0] == null:
+				possible_index = 0
+		
+		ItemTypes.EquipmentTypes.Accessory:
+			for i: int in range(1, stored_items.size()):
+				if stored_items[i] == null:
+					possible_index = i
+					break
+		
+		_:
+			return possible_index
+	
+	return possible_index
+
 ## Used to check if the character meets all the attribute requirements for a
 ## piece of equipment.
 func meets_attribute_requirements(item_data: ItemData) -> bool:

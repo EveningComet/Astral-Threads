@@ -19,6 +19,9 @@ func clean_up() -> void:
 	# Give the player experience points
 	reward_experience()
 	
+	# Fade out the battle music
+	SoundManager.stop_music(1.0)
+	
 	# The battle is finally done. Return to default state
 	my_state_machine.change_to_state("AwaitingBattleStart")
 

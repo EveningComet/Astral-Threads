@@ -1,13 +1,19 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dp1ruy7u22143"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://dp1ruy7u22143"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/ItemData.gd" id="1_boxto"]
+[ext_resource type="Script" path="res://Scripts/Stats/StatRequirement.gd" id="1_bvc3n"]
 [ext_resource type="Texture2D" uid="uid://bgbdmxaeciu2l" path="res://Imported Assets/Lovelyloop Free RPG Item Icons/Head Armor/1.png" id="1_dxtq4"]
+[ext_resource type="Script" path="res://Scripts/Stats/StatModifier.gd" id="4_rwy8q"]
 
 [resource]
 script = ExtResource("1_boxto")
 localization_name = "Test Item"
-localization_description = "The coolest hat you've ever seen."
+localization_description = "An unknown artifact."
 item_type = 2
 image = ExtResource("1_dxtq4")
 max_stack_size = 10
 base_cost = 10
+equip_type = 0
+stat_modifiers = Array[ExtResource("4_rwy8q")]([])
+attribute_requirements = Array[ExtResource("1_bvc3n")]([])
+weapon_type = 0

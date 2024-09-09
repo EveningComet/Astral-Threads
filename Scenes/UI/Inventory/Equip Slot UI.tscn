@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpcirattn6o47"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/EquipSlotUI.gd" id="1_xjcv0"]
+[ext_resource type="Texture2D" uid="uid://d3vlawnvw3k58" path="res://icon.svg" id="2_kmxsb"]
+
+[node name="Equip Slot UI" type="Button" node_paths=PackedStringArray("display_icon", "amount_label")]
+custom_minimum_size = Vector2(64, 64)
+script = ExtResource("1_xjcv0")
+display_icon = NodePath("MarginContainer/HBoxContainer/Display Icon")
+amount_label = NodePath("Amount Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Display Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_kmxsb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Item Name Label" type="Label" parent="MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+text = "Item Name"
+vertical_alignment = 1
+
+[node name="Amount Label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -23.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 15
+text = "1 / 2"
+horizontal_alignment = 2
+vertical_alignment = 1

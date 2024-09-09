@@ -17,11 +17,16 @@ func _ready() -> void:
 
 func set_slot_data(slot_data: ItemSlotData) -> void:
 	slot = slot_data
-	
-	display_icon.set_texture( slot.stored_item.image )
 	update_quantity_text(slot)
+	if slot != null:
+		display_icon.set_texture( slot.stored_item.image )
 	
 func update_quantity_text(slot_data: ItemSlotData) -> void:
+	if slot == null:
+		amount_label.set_text( str(1) )
+		amount_label.hide()
+		return
+	
 	if slot_data.quantity > 1:
 		amount_label.set_text( str(slot_data.quantity) )
 		amount_label.show()

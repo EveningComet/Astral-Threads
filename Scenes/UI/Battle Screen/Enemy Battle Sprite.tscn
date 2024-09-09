@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfg0s8vxh3ogg"]
+[gd_scene load_steps=4 format=3 uid="uid://bfg0s8vxh3ogg"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Battle UI/EnemyBattleSprite.gd" id="1_4s0rd"]
+[ext_resource type="Texture2D" uid="uid://c35wnyaqdw1td" path="res://Imported Assets/Aekashics Librarium Battle Sprites/Fire Volcanic Maiden.png" id="2_o10qa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7sbdq"]
 
@@ -16,7 +17,8 @@ portrait = NodePath("MarginContainer/Portrait")
 layout_mode = 2
 
 [node name="Portrait" type="TextureRect" parent="MarginContainer"]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
+texture = ExtResource("2_o10qa")
 expand_mode = 1
 stretch_mode = 5

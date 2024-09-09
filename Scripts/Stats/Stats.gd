@@ -40,6 +40,16 @@ func initialize_with_job(job_data: Job) -> void:
 	initialize_derived_stats()
 	combatant.stat_changed.emit(combatant)
 
+## Initialize a character based on enemy data.
+func initialize_with_enemy_data(ed: EnemyData) -> void:
+	stats[StatHelper.StatTypes.Vitality]  = Stat.new(ed.vitality)
+	stats[StatHelper.StatTypes.Technique] = Stat.new(ed.technique)
+	stats[StatHelper.StatTypes.Vitality]  = Stat.new(ed.will)
+	
+	initialize_vitals()
+	initialize_derived_stats()
+	combatant.stat_changed.emit(combatant)
+
 ## Initialize the HP and SP.
 func initialize_vitals() -> void:
 	stats[StatHelper.StatTypes.MaxHP]     = Stat.new(

@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://d20j14agk0xhd"]
+[gd_scene load_steps=15 format=3 uid="uid://d20j14agk0xhd"]
 
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/NewGameController.gd" id="1_al584"]
+[ext_resource type="PackedScene" uid="uid://5a4bwrowsmnr" path="res://Scenes/UI/Portrait Displayer Panel.tscn" id="2_o2gpb"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSWaiting.gd" id="2_ua7wm"]
 [ext_resource type="PackedScene" uid="uid://cyjssyn07bliy" path="res://Scenes/UI/Portrait Displayer Button.tscn" id="2_x7ab2"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/NGMPartyVisualizer.gd" id="3_2t01y"]
@@ -18,6 +19,7 @@
 
 [node name="NewGameController" type="Node" parent="." node_paths=PackedStringArray("portraits_container")]
 script = ExtResource("1_al584")
+portrait_panel_template = ExtResource("2_o2gpb")
 portrait_button_template = ExtResource("2_x7ab2")
 portraits_container = NodePath("../Portraits Displayer")
 initial_state = NodePath("NGMSWaiting")

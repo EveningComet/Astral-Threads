@@ -1,16 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddxk8hvdarn1v"]
+[gd_scene load_steps=5 format=3 uid="uid://ddxk8hvdarn1v"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Inventory/PartyInspector.gd" id="1_xadsv"]
 [ext_resource type="PackedScene" uid="uid://dwxfk6xsgr5um" path="res://Scenes/UI/Stat Displayer.tscn" id="2_03gsr"]
 [ext_resource type="PackedScene" uid="uid://5a4bwrowsmnr" path="res://Scenes/UI/Portrait Displayer Panel.tscn" id="2_x37l1"]
+[ext_resource type="PackedScene" uid="uid://qvkhx57j56qi" path="res://Scenes/UI/Equipment Displayer.tscn" id="4_p3jjh"]
 
-[node name="Party Inspector" type="Control" node_paths=PackedStringArray("portrait_displayer", "level_value_label", "attributes_container")]
+[node name="Party Inspector" type="Control" node_paths=PackedStringArray("equipment_displayer", "portrait_displayer", "level_value_label", "attributes_container")]
 custom_minimum_size = Vector2(600, 800)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 600.0
 offset_bottom = 600.0
 script = ExtResource("1_xadsv")
+equipment_displayer = NodePath("Equipment Displayer")
 portrait_displayer = NodePath("VBoxContainer/Portrait Displayer Panel")
 level_value_label = NodePath("VBoxContainer/HBoxContainer/Level Value")
 attributes_container = NodePath("Attributes Container")
@@ -76,3 +78,17 @@ theme_override_font_sizes/font_size = 20
 text = "42"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Equipment Displayer" parent="." instance=ExtResource("4_p3jjh")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
