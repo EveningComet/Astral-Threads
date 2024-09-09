@@ -1,16 +1,22 @@
-[gd_resource type="Resource" script_class="Job" load_steps=8 format=3 uid="uid://d1dpqeqvk2q6p"]
+[gd_resource type="Resource" script_class="Job" load_steps=10 format=3 uid="uid://d1dpqeqvk2q6p"]
 
 [ext_resource type="Script" path="res://Scripts/Character/Job.gd" id="1_5pnux"]
 [ext_resource type="Script" path="res://Scripts/UI/General/PortraitData.gd" id="1_r7fd7"]
+[ext_resource type="Texture2D" uid="uid://c33e2wbfn21k7" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (166).png" id="2_1opeq"]
 [ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_wewmf"]
+[ext_resource type="Texture2D" uid="uid://deq2lu3rkw7ir" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (76).png" id="3_fd8bi"]
 [ext_resource type="Resource" uid="uid://b8sevvarbk4t0" path="res://Game Data/Jobs/Job Skills/Sweep.tres" id="3_r2evw"]
 [ext_resource type="Script" path="res://Scripts/Inventory/ItemData.gd" id="5_86f5d"]
 
 [sub_resource type="Resource" id="Resource_ah6u7"]
 script = ExtResource("1_r7fd7")
+big_portrait = ExtResource("2_1opeq")
+small_portrait = ExtResource("2_1opeq")
 
 [sub_resource type="Resource" id="Resource_dykql"]
 script = ExtResource("1_r7fd7")
+big_portrait = ExtResource("3_fd8bi")
+small_portrait = ExtResource("3_fd8bi")
 
 [resource]
 script = ExtResource("1_5pnux")

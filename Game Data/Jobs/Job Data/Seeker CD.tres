@@ -21,7 +21,7 @@ small_portrait = ExtResource("2_6c5p3")
 [resource]
 script = ExtResource("1_y2tuq")
 localization_name = "Seeker"
-localization_description = "Treasure hunters looking for personal or monetary gain."
+localization_description = "Treasure hunters looking for personal or monetary gain. Although some could be considered honorable, seekers fight to win."
 starting_equipment = Array[ExtResource("6_v2xwd")]([])
 skills = Array[ExtResource("2_71pwt")]([ExtResource("3_a6j6c")])
 starting_vitality = 4

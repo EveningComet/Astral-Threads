@@ -31,8 +31,7 @@ func on_text_submitted(new_name: String) -> void:
 	hide()
 	name_entry.clear()
 	name_entered.emit()
-
-##
+	
 func on_randomize_name_button_pressed() -> void:
 	var name: String = Database.get_male_name()
 	if Database.is_male_portrait(curr_pc.portrait_data) == true:

@@ -16,7 +16,7 @@ func enter(msgs: Dictionary = {}) -> void:
 	portraits_container.show()
 	portraits_container.get_child(0).grab_focus()
 
-func check_for_unhandled_input(event: InputEvent) -> void:
+func check_for_handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		my_state_machine.change_to_state("NGMSSelectJob")
 		return

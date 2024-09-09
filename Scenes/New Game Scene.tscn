@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cyjssyn07bliy" path="res://Scenes/UI/Portrait Displayer Button.tscn" id="2_x7ab2"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/NGMPartyVisualizer.gd" id="3_2t01y"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSManageParty.gd" id="3_j8r74"]
-[ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSSelectRace.gd" id="4_55bp8"]
+[ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSSelectPortrait.gd" id="4_55bp8"]
 [ext_resource type="PackedScene" uid="uid://bo0nvc14cnaxw" path="res://Scenes/UI/Party Member Slot.tscn" id="4_k01rt"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSSelectJob.gd" id="5_0dnxh"]
 [ext_resource type="PackedScene" uid="uid://b2ro8tps610ld" path="res://Scenes/UI/Character Job Button.tscn" id="6_ij4rg"]
@@ -191,10 +191,12 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="Description Label" type="Label" parent="Description Displayer/MarginContainer"]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 25
 text = "This is where the class text gets displayed."
+autowrap_mode = 3
 
 [node name="Character Name Input" parent="." instance=ExtResource("12_vp6i1")]
 visible = false

@@ -64,14 +64,14 @@ func on_inventory_interacted(inventory_data: Inventory, slot_data: ItemSlotData)
 	# TODO: Checking if the item is in a character's equipment inventory 
 func open() -> void:
 	player_inventory_displayer.show()
-	party_inspector.show()
+	party_inspector.open()
 	show()
 	Eventbus.toggle_mouse.emit(true)
 
 func close() -> void:
 	player_inventory_displayer.hide()
 	clear_external_inventory()
-	party_inspector.hide()
+	party_inspector.close()
 	Eventbus.toggle_mouse.emit(false)
 	hide()
 

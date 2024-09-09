@@ -1,14 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddxk8hvdarn1v"]
+[gd_scene load_steps=3 format=3 uid="uid://ddxk8hvdarn1v"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Inventory/PartyInspector.gd" id="1_xadsv"]
+[ext_resource type="PackedScene" uid="uid://5a4bwrowsmnr" path="res://Scenes/UI/Portrait Displayer Panel.tscn" id="2_x37l1"]
 
-[node name="Party Inspector" type="Control" node_paths=PackedStringArray("attributes_container")]
+[node name="Party Inspector" type="Control" node_paths=PackedStringArray("portrait_displayer", "level_value_label", "attributes_container")]
 custom_minimum_size = Vector2(600, 800)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 600.0
 offset_bottom = 600.0
 script = ExtResource("1_xadsv")
+portrait_displayer = NodePath("VBoxContainer/Portrait Displayer Panel")
+level_value_label = NodePath("VBoxContainer/HBoxContainer/Level Value")
 attributes_container = NodePath("Attributes Container")
 
 [node name="Background" type="PanelContainer" parent="."]
@@ -51,3 +54,43 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 20
 text = "Will"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 50.0
+offset_right = 64.0
+offset_bottom = 178.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+
+[node name="Portrait Displayer Panel" parent="VBoxContainer" instance=ExtResource("2_x37l1")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Level Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "Level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level Value" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "42"
+horizontal_alignment = 1
+vertical_alignment = 1
