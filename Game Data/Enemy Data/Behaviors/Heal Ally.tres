@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="UtilityAIBehavior" load_steps=12 format=3 uid="uid://cnsi3v06mccpl"]
+
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_behavior.gd" id="1_753ng"]
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_response_curve.gd" id="1_u7smk"]
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_consideration.gd" id="2_c7m5t"]
+
+[sub_resource type="Curve" id="Curve_qcauv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.79008, 0.0, 0, 0]
+point_count = 2
+script = ExtResource("1_u7smk")
+curve_type = 4
+exponent = 1
+slope = 1
+x_shift = 0.0
+y_shift = 0.0
+
+[sub_resource type="Resource" id="Resource_qqvlb"]
+script = ExtResource("2_c7m5t")
+input_key = "target_hp"
+invert = true
+response_curve = SubResource("Curve_qcauv")
+
+[sub_resource type="Curve" id="Curve_84w8b"]
+_data = [Vector2(0.0277778, 0.990845), 0.0, 0.0, 1, 0, Vector2(1, 0), -2.21624, 0.0, 0, 1]
+point_count = 2
+script = ExtResource("1_u7smk")
+curve_type = 4
+exponent = 1
+slope = 1
+x_shift = 0.0
+y_shift = 0.0
+
+[sub_resource type="Resource" id="Resource_yxn37"]
+script = ExtResource("2_c7m5t")
+input_key = "skill_cost"
+invert = true
+response_curve = SubResource("Curve_84w8b")
+
+[sub_resource type="Curve" id="Curve_rphry"]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(0.1, 0.1), 1.0, 1.0, 1, 1, Vector2(0.2, 0.2), 1.0, 1.0, 1, 1, Vector2(0.3, 0.3), 1.0, 1.0, 1, 1, Vector2(0.4, 0.4), 1.0, 1.0, 1, 1, Vector2(0.5, 0.5), 1.0, 1.0, 1, 1, Vector2(0.6, 0.6), 1.0, 1.0, 1, 1, Vector2(0.7, 0.7), 1.0, 1.0, 1, 1, Vector2(0.8, 0.8), 1.0, 1.0, 1, 1, Vector2(0.9, 0.9), 1.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 11
+script = ExtResource("1_u7smk")
+curve_type = 1
+exponent = 1
+slope = 1
+x_shift = 0.0
+y_shift = 0.0
+
+[sub_resource type="Resource" id="Resource_0iv11"]
+script = ExtResource("2_c7m5t")
+input_key = "current_sp"
+invert = true
+response_curve = SubResource("Curve_rphry")
+
+[sub_resource type="Curve" id="Curve_8evov"]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(0.1, 0.1), 1.0, 1.0, 1, 1, Vector2(0.2, 0.2), 1.0, 1.0, 1, 1, Vector2(0.3, 0.3), 1.0, 1.0, 1, 1, Vector2(0.4, 0.4), 1.0, 1.0, 1, 1, Vector2(0.5, 0.5), 1.0, 1.0, 1, 1, Vector2(0.6, 0.6), 1.0, 1.0, 1, 1, Vector2(0.7, 0.7), 1.0, 1.0, 1, 1, Vector2(0.8, 0.8), 1.0, 1.0, 1, 1, Vector2(0.9, 0.9), 1.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 11
+script = ExtResource("1_u7smk")
+curve_type = 1
+exponent = 1
+slope = 1
+x_shift = 0.0
+y_shift = 0.0
+
+[sub_resource type="Resource" id="Resource_c03p7"]
+script = ExtResource("2_c7m5t")
+input_key = "healing_power"
+invert = true
+response_curve = SubResource("Curve_8evov")
+
+[resource]
+script = ExtResource("1_753ng")
+name = &"Heal Ally"
+aggregation = 2
+considerations = Array[ExtResource("2_c7m5t")]([SubResource("Resource_qqvlb"), SubResource("Resource_yxn37"), SubResource("Resource_0iv11"), SubResource("Resource_c03p7")])

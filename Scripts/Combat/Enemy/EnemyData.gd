@@ -22,6 +22,17 @@ class_name EnemyData extends Resource
 ## Used to further tweak stats for enemies.
 @export var stat_modifiers: Array[StatModifier] = []
 
+## The skills available to this enemy.
+@export var skills: Array[SkillData] = []
+
 @export_category("Rewards")
 @export var xp_on_death:    int = 25
 @export var money_on_death: int = 30
+
+@export_category("AI")
+## How "brutal" an enemy is between 0 and 1. Higher values mean the enemy
+## will perform the better action more often.
+@export_range(0.0, 1.0) var efficiency: float = 0.25
+
+## The possible stuff an AI can do. Attack someone, heal ally, etc.
+@export var behaviors: Array[UtilityAIBehavior] = []

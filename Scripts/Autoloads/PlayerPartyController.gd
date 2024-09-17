@@ -21,6 +21,13 @@ func add_to_party(pm: PlayerCombatant) -> void:
 func get_party() -> Array[PlayerCombatant]:
 	return active_party
 
+func get_targetable_party() -> Array[PlayerCombatant]:
+	var to_return: Array[PlayerCombatant]
+	for pm: PlayerCombatant in get_party():
+		if pm != null and pm.get_curr_hp() > 0:
+			to_return.append(pm)
+	return to_return
+
 func give_experience(xp: int) -> void:
 	for pm: PlayerCombatant in get_party():
 		if pm != null:

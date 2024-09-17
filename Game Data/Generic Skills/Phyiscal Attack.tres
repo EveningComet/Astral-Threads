@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=5 format=3 uid="uid://dkp2f288i1a0v"]
+
+[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="1_sqoow"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/DamageEffect.gd" id="2_mqusd"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_n6m0v"]
+
+[sub_resource type="Resource" id="Resource_donjf"]
+script = ExtResource("2_mqusd")
+damage_type = 0
+bonus_damage_scale_on_debuffs_present = 0.0
+attacker_heal_percentage = 0.0
+power_scale = 1.0
+
+[resource]
+script = ExtResource("2_n6m0v")
+localization_name = "Phyiscal Attack"
+localization_description = "Uses a character's phyiscal power stat to deal damage."
+base_cost = 0
+is_passive = false
+num_activations = 1
+action_type = 0
+effects = Array[ExtResource("1_sqoow")]([SubResource("Resource_donjf")])
