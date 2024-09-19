@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Combat/BattleStarterArea.gd" id="1_lqjcu"]
 [ext_resource type="Script" path="res://Scripts/Combat/Enemy/EnemyPartyData.gd" id="2_iluab"]
 [ext_resource type="Script" path="res://Scripts/Combat/Enemy/EnemyData.gd" id="3_51s8e"]
-[ext_resource type="Resource" path="res://Game Data/Enemy Data/Test Enemy.tres" id="5_c613r"]
+[ext_resource type="Resource" uid="uid://chn0kn4yih156" path="res://Game Data/Enemy Data/Enemies/Test Enemy.tres" id="5_c613r"]
 [ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_behavior.gd" id="6_fpncu"]
 [ext_resource type="Texture2D" uid="uid://gms15vmti50s" path="res://Imported Assets/Aekashics Librarium Battle Sprites/Elemental Titan Ignis.png" id="6_klpjx"]
 [ext_resource type="Script" path="res://Scripts/Stats/StatModifier.gd" id="6_ry665"]

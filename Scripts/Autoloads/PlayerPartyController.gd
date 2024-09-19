@@ -24,7 +24,7 @@ func get_party() -> Array[PlayerCombatant]:
 func get_targetable_party() -> Array[PlayerCombatant]:
 	var to_return: Array[PlayerCombatant]
 	for pm: PlayerCombatant in get_party():
-		if pm != null and pm.get_curr_hp() > 0:
+		if pm != null and pm.stats.get_curr_hp() > 0:
 			to_return.append(pm)
 	return to_return
 

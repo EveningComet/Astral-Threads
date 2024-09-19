@@ -48,7 +48,7 @@ y_shift = 0.0
 
 [sub_resource type="Resource" id="Resource_0iv11"]
 script = ExtResource("2_c7m5t")
-input_key = "current_sp"
+input_key = "curr_sp"
 invert = true
 response_curve = SubResource("Curve_rphry")
 

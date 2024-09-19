@@ -29,3 +29,6 @@ func set_targets(targets: Array[Combatant]) -> void:
 
 func get_targets() -> Array[Combatant]:
 	return recipients
+
+func get_total_possible_damage() -> int:
+	return 0
