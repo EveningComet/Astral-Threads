@@ -57,6 +57,9 @@ func execute_action(current_action: StoredAction) -> void:
 	current_action = get_usable_data(current_action)
 	var status_effects_to_apply = current_action.status_effects_to_apply
 	
+	if OS.is_debug_build() == true:
+		print("ResolveTurn :: ", current_action.action_type)
+	
 	# Run based on the number of activations
 	for i: int in current_action.num_activations:
 		

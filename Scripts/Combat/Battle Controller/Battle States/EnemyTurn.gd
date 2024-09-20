@@ -65,6 +65,7 @@ func _get_action(
 					for skill: SkillData in enemy.enemy_data.skills:
 						potential_action.skill_data = skill
 						potential_action = skill.get_usable_data(enemy, potential_action)
+						potential_action.action_type = skill.action_type
 						context["potential_damage"]
 						
 						# Finally, make the choice and it add it to the choices
@@ -72,12 +73,40 @@ func _get_action(
 							behavior, context, potential_action
 						)
 						choices.append(choice)
-	
+			
+			# TODO: Handling multiple targets.
+			"Heal Ally":
+				for enemy_ally: Combatant in allies:
+					
+					# Generate the stored action
+					var potential_action: StoredAction = StoredAction.new()
+					potential_action.activator = enemy
+					potential_action.get_targets().append(enemy_ally)
+					context["target_hp"] = enemy_ally.stats.get_curr_hp()
+					
+					for skill: SkillData in enemy.enemy_data.skills:
+						potential_action.skill_data = skill
+						potential_action.action_type = skill.action_type
+						potential_action = skill.get_usable_data(enemy, potential_action)
+						
+						# If the skill doesn't benefit allies, throw it out
+						if potential_action.heal_amount < 1:
+							continue
+						
+						context["healing_power"] = potential_action.heal_amount
+						var choice = UtilityAIOption.new(
+							behavior, context, potential_action
+						)
+						choices.append( choice )
+		
 	# Get a decision based on how "smart" the enemy is
 	var decision = UtilityAI.choose_highest(
 		choices,
 		enemy.enemy_data.efficiency
 	)
+	if OS.is_debug_build() == true:
+		print_rich("[color=green]EnemyTurn :: Chosen decision: %s[/color]" % [decision])
+	
 	return decision.action as StoredAction
 
 # TODO: Condense methods into here.

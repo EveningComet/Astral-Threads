@@ -7,6 +7,11 @@ class_name SEDefinition extends Resource
 ## For the definitions that change stats.
 @export var stat_modifiers: Array[StatModifier] = []
 
+## Convert this into something usable.
+func to_action(activator: Combatant) -> StoredAction:
+	var action: StoredAction = StoredAction.new()
+	return action
+
 func apply_modifiers(target: Combatant) -> void:
 	for mod: StatModifier in stat_modifiers:
 		target.stats.add_modifier(mod.stat_changing, mod)

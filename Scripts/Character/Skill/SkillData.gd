@@ -42,5 +42,6 @@ func get_usable_data(activator: Combatant, action: StoredAction) -> StoredAction
 		
 		elif e is ApplyStatusEffect:
 			var ase: ApplyStatusEffect = e as ApplyStatusEffect
+			modified_action.status_effects_to_apply[ase] = ase.chance_to_apply
 	
 	return modified_action
