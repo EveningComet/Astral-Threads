@@ -63,10 +63,15 @@ func _get_action(
 					
 					# Find the skill that will deal the most damage
 					for skill: SkillData in enemy.enemy_data.skills:
-						potential_action.skill_data = skill
-						potential_action = skill.get_usable_data(enemy, potential_action)
+						potential_action.skill_data  = skill
+						potential_action             = skill.get_usable_data(enemy, potential_action)
 						potential_action.action_type = skill.action_type
-						context["potential_damage"]
+						
+						# See how much damage we can do to a target
+						var p_damage: int = potential_action.get_total_possible_damage()
+						p_damage -= com.stats.get_defense()
+						p_damage = max(p_damage, 1)
+						context["potential_damage"] = p_damage
 						
 						# Finally, make the choice and it add it to the choices
 						var choice = UtilityAIOption.new(
@@ -86,11 +91,16 @@ func _get_action(
 					
 					for skill: SkillData in enemy.enemy_data.skills:
 						potential_action.skill_data = skill
-						potential_action.action_type = skill.action_type
 						potential_action = skill.get_usable_data(enemy, potential_action)
+						potential_action.action_type = skill.action_type
 						
 						# If the skill doesn't benefit allies, throw it out
 						if potential_action.heal_amount < 1:
+							continue
+						
+						var max_hp: float = enemy_ally.stats.get_max_hp()
+						var curr_hp: float = enemy_ally.stats.get_curr_hp()
+						if curr_hp / max_hp > max_hp * 0.90:
 							continue
 						
 						context["healing_power"] = potential_action.heal_amount
@@ -98,6 +108,9 @@ func _get_action(
 							behavior, context, potential_action
 						)
 						choices.append( choice )
+						
+						if OS.is_debug_build() == true:
+							print("EnemyTurn :: %s" % [skill.localization_name])
 		
 	# Get a decision based on how "smart" the enemy is
 	var decision = UtilityAI.choose_highest(
@@ -105,7 +118,10 @@ func _get_action(
 		enemy.enemy_data.efficiency
 	)
 	if OS.is_debug_build() == true:
-		print_rich("[color=green]EnemyTurn :: Chosen decision: %s[/color]" % [decision])
+		print_rich("[color=green]EnemyTurn :: %s[/color]" % [decision])
+		var skill_name = decision.action.skill_data.localization_name
+		var enemy_name = enemy.enemy_data.localization_name
+		print_rich("[color=green]EnemyTurn :: %s is going to use: %s[/color]" % [enemy_name, skill_name])
 	
 	return decision.action as StoredAction
 

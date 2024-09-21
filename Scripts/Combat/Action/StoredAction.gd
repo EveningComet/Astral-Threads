@@ -31,4 +31,7 @@ func get_targets() -> Array[Combatant]:
 	return recipients
 
 func get_total_possible_damage() -> int:
-	return 0
+	var total_pd: int = 0
+	for dd: DamageData in damage_datas:
+		total_pd += dd.damage_amount
+	return total_pd

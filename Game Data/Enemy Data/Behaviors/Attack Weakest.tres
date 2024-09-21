@@ -55,5 +55,5 @@ response_curve = SubResource("Curve_1041f")
 [resource]
 script = ExtResource("3_8rhra")
 name = &"Attack Weakest"
-aggregation = 0
+aggregation = 1
 considerations = Array[ExtResource("2_go2a1")]([SubResource("Resource_q1nrc"), SubResource("Resource_3r2jx"), SubResource("Resource_qmy26")])

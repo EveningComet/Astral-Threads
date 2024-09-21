@@ -46,8 +46,21 @@ func initialize_with_enemy_data(ed: EnemyData) -> void:
 	stats[StatHelper.StatTypes.Technique] = Stat.new(ed.technique)
 	stats[StatHelper.StatTypes.Vitality]  = Stat.new(ed.will)
 	
-	initialize_vitals()
+	initialize_enemy_vitals(ed)
+	
+	# Initialize the derived stats and then setup any modifiers
 	initialize_derived_stats()
+	for mod: StatModifier in ed.stat_modifiers:
+		match mod.stat_changing:
+			
+			# Ignore the vital boosters
+			StatHelper.StatTypes.MaxHP, StatHelper.StatTypes.MaxSP:
+				continue
+				
+			# Everything else is fine
+			_:
+				add_modifier( mod.stat_changing, mod )
+
 	combatant.stat_changed.emit(combatant)
 
 ## Initialize the HP and SP.
@@ -60,6 +73,25 @@ func initialize_vitals() -> void:
 		stats[StatHelper.StatTypes.Will].get_calculated_value() * WILL_SP_SCALER
 	)
 	stats[StatHelper.StatTypes.CurrentSP] = get_max_sp()
+
+func initialize_enemy_vitals(ed: EnemyData) -> void:
+	var true_max_hp: Stat = Stat.new(
+		ed.vitality * VITALITY_HP_SCALER
+	)
+	var true_max_sp: Stat = Stat.new(
+		ed.will * WILL_SP_SCALER
+	)
+	
+	for mod: StatModifier in ed.stat_modifiers:
+		if mod.stat_changing == StatHelper.StatTypes.MaxHP:
+			true_max_hp.add_modifier(mod)
+		if mod.stat_changing == StatHelper.StatTypes.MaxSP:
+			true_max_sp.add_modifier(mod)
+	
+	stats[StatHelper.StatTypes.MaxHP]     = true_max_hp
+	stats[StatHelper.StatTypes.CurrentHP] = true_max_hp.get_calculated_value()
+	stats[StatHelper.StatTypes.MaxSP]     = true_max_sp
+	stats[StatHelper.StatTypes.CurrentSP] = true_max_sp.get_calculated_value()
 
 ## Initialize the derived stats. These will typically hold the "bonus" values.
 func initialize_derived_stats() -> void:

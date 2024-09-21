@@ -36,8 +36,8 @@ func get_usable_data(activator: Combatant, action: StoredAction) -> StoredAction
 		
 		elif e is HealEffect:
 			var heal_effect: HealEffect = e as HealEffect
-			var will_stat: int = activator.stats.stats[StatHelper.StatTypes.Will].get_calculated_value()
-			var healing_power: int = floor(e.power_scale * will_stat)
+			var special_power: int = activator.stats.get_special_power()
+			var healing_power: int = floor(e.power_scale * special_power)
 			modified_action.heal_amount += healing_power
 		
 		elif e is ApplyStatusEffect:

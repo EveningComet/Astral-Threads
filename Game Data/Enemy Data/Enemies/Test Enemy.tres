@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=11 format=3 uid="uid://chn0kn4yih156"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=13 format=3 uid="uid://chn0kn4yih156"]
 
 [ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_behavior.gd" id="1_ibd1j"]
 [ext_resource type="Texture2D" uid="uid://c35wnyaqdw1td" path="res://Imported Assets/Aekashics Librarium Battle Sprites/Fire Volcanic Maiden.png" id="1_q0tuh"]
@@ -17,16 +17,30 @@ stat_modifier_type = 0
 value = 50.0
 sort_order = 0
 
+[sub_resource type="Resource" id="Resource_1u04r"]
+script = ExtResource("3_6bdv0")
+stat_changing = 3
+stat_modifier_type = 0
+value = 25.0
+sort_order = 0
+
+[sub_resource type="Resource" id="Resource_uwni7"]
+script = ExtResource("3_6bdv0")
+stat_changing = 12
+stat_modifier_type = 0
+value = 10.0
+sort_order = 0
+
 [resource]
 script = ExtResource("2_xqogn")
 localization_name = "Fire Villain"
 localization_description = "It do be evil."
 portrait = ExtResource("1_q0tuh")
 dimensions = Vector2(157, 211)
-vitality = 5
-technique = 5
+vitality = 3
+technique = 3
 will = 5
-stat_modifiers = Array[ExtResource("3_6bdv0")]([SubResource("Resource_wd50e")])
+stat_modifiers = Array[ExtResource("3_6bdv0")]([SubResource("Resource_wd50e"), SubResource("Resource_1u04r"), SubResource("Resource_uwni7")])
 skills = Array[ExtResource("4_tsosn")]([ExtResource("5_2whxw"), ExtResource("8_rptqs")])
 xp_on_death = 25
 money_on_death = 30
