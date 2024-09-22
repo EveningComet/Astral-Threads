@@ -8,7 +8,7 @@ func enter(msgs: Dictionary = {}) -> void:
 	decide_actions()
 
 func decide_actions() -> void:
-	var actions: Array[StoredAction] = []
+	var actions:            Array[StoredAction] = []
 	var enemies_to_process: Array[EnemyCombatant] = my_state_machine.active_enemies
 	
 	for enemy: Combatant in enemies_to_process:
@@ -48,24 +48,29 @@ func _get_action(
 		
 		# TODO: Make sure the enemy has enough sp for the skill.
 		match behavior.name:
-			# TODO: Convert these to enums
+			# TODO: Convert these to enums.
 			"Attack Weakest":
 				# TODO: Confusion/Possession?
 				for com: Combatant in player_party:
 					
-					# Generate the stored action
-					var potential_action: StoredAction = StoredAction.new()
-					potential_action.activator = enemy
-					potential_action.get_targets().append(com)
-					
-					context["target_hp"] = com.stats.get_curr_hp()
-					context["defense"]   = com.stats.get_defense()
-					
 					# Find the skill that will deal the most damage
 					for skill: SkillData in enemy.enemy_data.skills:
+						
+						# Generate the stored action
+						var potential_action: StoredAction = StoredAction.new()
+						potential_action.activator = enemy
+						potential_action.get_targets().append(com)
+						
+						context["target_hp"] = com.stats.get_curr_hp()
+						context["defense"]   = com.stats.get_defense()
+						
 						potential_action.skill_data  = skill
 						potential_action             = skill.get_usable_data(enemy, potential_action)
 						potential_action.action_type = skill.action_type
+						
+						# Ignore skills that heal
+						if potential_action.heal_amount > 0:
+							continue
 						
 						# See how much damage we can do to a target
 						var p_damage: int = potential_action.get_total_possible_damage()
@@ -83,22 +88,23 @@ func _get_action(
 			"Heal Ally":
 				for enemy_ally: Combatant in allies:
 					
-					# Generate the stored action
-					var potential_action: StoredAction = StoredAction.new()
-					potential_action.activator = enemy
-					potential_action.get_targets().append(enemy_ally)
-					context["target_hp"] = enemy_ally.stats.get_curr_hp()
-					
 					for skill: SkillData in enemy.enemy_data.skills:
-						potential_action.skill_data = skill
-						potential_action = skill.get_usable_data(enemy, potential_action)
+						
+						# Generate the stored action
+						var potential_action: StoredAction = StoredAction.new()
+						potential_action.activator = enemy
+						potential_action.get_targets().append(enemy_ally)
+						context["target_hp"] = enemy_ally.stats.get_curr_hp()
+						
+						potential_action.skill_data  = skill
+						potential_action             = skill.get_usable_data(enemy, potential_action)
 						potential_action.action_type = skill.action_type
 						
 						# If the skill doesn't benefit allies, throw it out
 						if potential_action.heal_amount < 1:
 							continue
 						
-						var max_hp: float = enemy_ally.stats.get_max_hp()
+						var max_hp:  float = enemy_ally.stats.get_max_hp()
 						var curr_hp: float = enemy_ally.stats.get_curr_hp()
 						if curr_hp / max_hp > max_hp * 0.90:
 							continue
@@ -108,9 +114,6 @@ func _get_action(
 							behavior, context, potential_action
 						)
 						choices.append( choice )
-						
-						if OS.is_debug_build() == true:
-							print("EnemyTurn :: %s" % [skill.localization_name])
 		
 	# Get a decision based on how "smart" the enemy is
 	var decision = UtilityAI.choose_highest(

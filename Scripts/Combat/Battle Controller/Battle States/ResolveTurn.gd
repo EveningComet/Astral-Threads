@@ -126,10 +126,10 @@ func check_if_new_target_needed(action: StoredAction) -> StoredAction:
 ## Taking an action object, fill out any missing data such as needed healing power or damage.
 func get_usable_data(current_action: StoredAction) -> StoredAction:
 	var modified_action: StoredAction = current_action
+	var activator: Combatant = modified_action.activator
 	var has_skill: bool = current_action.skill_data != null
 	if has_skill == true:
 		# TODO: Get the chance to hit.
-		var activator: Combatant = modified_action.activator
 		modified_action = current_action.skill_data.get_usable_data(activator, current_action)
 		activator.stats.remove_sp(current_action.skill_data.base_cost)
 	
@@ -137,7 +137,7 @@ func get_usable_data(current_action: StoredAction) -> StoredAction:
 		# TODO: Figure out how to handle weapons that should use special damage.
 		var damage_data: DamageData = DamageData.new()
 		damage_data.damage_type = StatHelper.DamageTypes.Base
-		damage_data.damage_amount = 10 # TODO: Get proper damage power.
+		damage_data.damage_amount = activator.stats.get_physical_power()
 		modified_action.damage_datas.append(damage_data)
 		
 	return modified_action

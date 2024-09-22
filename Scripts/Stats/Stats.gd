@@ -44,7 +44,7 @@ func initialize_with_job(job_data: Job) -> void:
 func initialize_with_enemy_data(ed: EnemyData) -> void:
 	stats[StatHelper.StatTypes.Vitality]  = Stat.new(ed.vitality)
 	stats[StatHelper.StatTypes.Technique] = Stat.new(ed.technique)
-	stats[StatHelper.StatTypes.Vitality]  = Stat.new(ed.will)
+	stats[StatHelper.StatTypes.Will]      = Stat.new(ed.will)
 	
 	initialize_enemy_vitals(ed)
 	
@@ -76,10 +76,10 @@ func initialize_vitals() -> void:
 
 func initialize_enemy_vitals(ed: EnemyData) -> void:
 	var true_max_hp: Stat = Stat.new(
-		ed.vitality * VITALITY_HP_SCALER
+		stats[StatHelper.StatTypes.Vitality].get_calculated_value() * VITALITY_HP_SCALER
 	)
 	var true_max_sp: Stat = Stat.new(
-		ed.will * WILL_SP_SCALER
+		stats[StatHelper.StatTypes.Will].get_calculated_value() * WILL_SP_SCALER
 	)
 	
 	for mod: StatModifier in ed.stat_modifiers:
@@ -89,9 +89,9 @@ func initialize_enemy_vitals(ed: EnemyData) -> void:
 			true_max_sp.add_modifier(mod)
 	
 	stats[StatHelper.StatTypes.MaxHP]     = true_max_hp
-	stats[StatHelper.StatTypes.CurrentHP] = true_max_hp.get_calculated_value()
+	stats[StatHelper.StatTypes.CurrentHP] = get_max_hp()
 	stats[StatHelper.StatTypes.MaxSP]     = true_max_sp
-	stats[StatHelper.StatTypes.CurrentSP] = true_max_sp.get_calculated_value()
+	stats[StatHelper.StatTypes.CurrentSP] = get_max_sp()
 
 ## Initialize the derived stats. These will typically hold the "bonus" values.
 func initialize_derived_stats() -> void:
@@ -129,7 +129,7 @@ func get_curr_sp() -> int:
 
 ## Get the physical power of this character.
 func get_physical_power() -> int:
-	var technique_value: int = stats[StatHelper.StatTypes.Technique].get_calucalted_value()
+	var technique_value: int = stats[StatHelper.StatTypes.Technique].get_calculated_value()
 	var true_physical_power: Stat = Stat.new(
 		technique_value * TECHNIQUE_PHYSICAL_POWER_SCALER
 	)
@@ -161,7 +161,7 @@ func get_defense() -> int:
 	var true_defense:  Stat = Stat.new(vitality_stat * VITALITY_DEFENSE_SCALER)
 	for mod: StatModifier in stats[StatHelper.StatTypes.Defense].get_modifiers():
 		true_defense.add_modifier(mod)
-	return floor(stats[StatHelper.StatTypes.Defense].get_calculated_value())
+	return floor(true_defense.get_calculated_value())
 
 func get_speed() -> int:
 	var vitality_value: int = stats[StatHelper.StatTypes.Vitality].get_calculated_value()
@@ -250,7 +250,7 @@ func take_damage(damage_datas: Array[DamageData]) -> void:
 		var amount: int = dd.damage_amount
 		var damage_type = dd.damage_type
 		
-		# Checking if damage needs to be increased based on negative status effects
+		# TODO: Checking if damage needs to be increased based on negative status effects
 		if combatant.status_effect_holder.has_negative_statuses_present() == true:
 			pass
 		
@@ -262,10 +262,10 @@ func take_damage(damage_datas: Array[DamageData]) -> void:
 			# All other damage types get scaled
 			_:
 				var a = 1.0 - get_resistance(damage_type)
-				amount = floor(amount * a)
+				amount = floor(float(amount) * a)
 		
 		# Finally apply the damage
-		amount = clamp(amount, 1, dd.damage_amount)
+		amount = max(1, amount)
 		stats[StatHelper.StatTypes.CurrentHP] -= amount
 		combatant.stat_changed.emit(combatant)
 		
@@ -279,8 +279,8 @@ func take_damage(damage_datas: Array[DamageData]) -> void:
 
 func die() -> void:
 	stats[StatHelper.StatTypes.CurrentHP] = 0
-	combatant.stat_changed.emit(combatant)
 	Eventbus.hp_depleted.emit(combatant)
+	combatant.stat_changed.emit(combatant)
 
 func heal(amount: int) -> void:
 	stats[StatHelper.StatTypes.CurrentHP] += amount
@@ -290,13 +290,14 @@ func heal(amount: int) -> void:
 
 func remove_sp(amount: int) -> void:
 	stats[StatHelper.StatTypes.CurrentSP] -= amount
-	combatant.stat_changed.emit( combatant )
 	stats[StatHelper.StatTypes.CurrentSP] = max(
 		get_curr_sp(),
 		0
 	)
+	combatant.stat_changed.emit( combatant )
 
 func regain_sp(amount: int) -> void:
 	stats[StatHelper.StatTypes.CurrentSP] += amount
 	if get_curr_sp() > get_max_sp():
 		stats[StatHelper.StatTypes.CurrentSP] = get_max_sp()
+	combatant.stat_changed.emit( combatant )

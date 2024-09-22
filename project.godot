@@ -29,6 +29,7 @@ BattleHUD="*res://Scenes/UI/Battle Screen/Battle Hud.tscn"
 Battlecontroller="*res://Scenes/Combat/Battle Controller.tscn"
 PlayerInventory="*res://Scripts/Autoloads/PlayerInventory.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+NumberPopupHandler="*res://Scenes/UI/Battle Screen/Number Popup Handler.tscn"
 
 [dialogic]
 

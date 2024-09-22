@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvhpfrl5eqa8a"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Battle UI/BattleNumberPopup.gd" id="1_8diey"]
+
+[node name="Battle Number Popup" type="Label"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "42"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_8diey")

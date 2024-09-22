@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://hpxw5wmcqogq"]
+[gd_scene load_steps=18 format=3 uid="uid://hpxw5wmcqogq"]
 
 [ext_resource type="Script" path="res://Scripts/Combat/Enemy/RoamingEnemy.gd" id="1_ibv0c"]
 [ext_resource type="Script" path="res://Scripts/Combat/BattleStarterArea.gd" id="1_lqjcu"]
 [ext_resource type="Script" path="res://Scripts/Combat/Enemy/EnemyPartyData.gd" id="2_iluab"]
 [ext_resource type="Script" path="res://Scripts/Combat/Enemy/EnemyData.gd" id="3_51s8e"]
-[ext_resource type="Resource" uid="uid://chn0kn4yih156" path="res://Game Data/Enemy Data/Enemies/Test Enemy.tres" id="5_c613r"]
+[ext_resource type="Resource" uid="uid://dx2lf7e2hqeoe" path="res://Game Data/Enemy Data/Enemies/Fire Villain.tres" id="5_c613r"]
 [ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_behavior.gd" id="6_fpncu"]
 [ext_resource type="Texture2D" uid="uid://gms15vmti50s" path="res://Imported Assets/Aekashics Librarium Battle Sprites/Elemental Titan Ignis.png" id="6_klpjx"]
 [ext_resource type="Script" path="res://Scripts/Stats/StatModifier.gd" id="6_ry665"]
@@ -31,6 +31,13 @@ stat_modifier_type = 0
 value = 100.0
 sort_order = 0
 
+[sub_resource type="Resource" id="Resource_1mhtg"]
+script = ExtResource("6_ry665")
+stat_changing = 17
+stat_modifier_type = 0
+value = -5.0
+sort_order = 0
+
 [sub_resource type="Resource" id="Resource_5mcwo"]
 script = ExtResource("3_51s8e")
 localization_name = "Dhar Mann"
@@ -40,7 +47,7 @@ dimensions = Vector2(500, 500)
 vitality = 5
 technique = 5
 will = 5
-stat_modifiers = Array[ExtResource("6_ry665")]([SubResource("Resource_b0ui0"), SubResource("Resource_8m0jx")])
+stat_modifiers = Array[ExtResource("6_ry665")]([SubResource("Resource_b0ui0"), SubResource("Resource_8m0jx"), SubResource("Resource_1mhtg")])
 skills = Array[ExtResource("8_yrah6")]([ExtResource("10_qhhya")])
 xp_on_death = 25
 money_on_death = 30

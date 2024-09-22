@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/CursorController.gd" id="9_kmuj5"]
 [ext_resource type="PackedScene" uid="uid://8ueywip1r6ra" path="res://Scenes/UI/Battle Screen/Combat Cursor.tscn" id="10_8e3uq"]
 
-[node name="Battle Hud" type="CanvasLayer" node_paths=PackedStringArray("enemy_container")]
+[node name="Battle HUD" type="CanvasLayer" node_paths=PackedStringArray("enemy_container")]
 script = ExtResource("1_57gi0")
 enemy_container = NodePath("Control/Enemy Margins/Enemy Container")
 enemy_battle_sprite_prefab = ExtResource("2_cwp5j")

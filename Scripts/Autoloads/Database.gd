@@ -54,15 +54,21 @@ func load_character_names() -> void:
 func get_male_name() -> String:
 	var potential_names: PackedStringArray = char_names[MALE]
 	potential_names.append_array(char_names[UNISEX])
-	var index: int = randi_range(0, potential_names.size() - 1)
-	var chosen_name: String = potential_names[index]
+	var s: Array[String] = []
+	s.assign(potential_names)
+	s.shuffle()
+	var index: int = randi_range(0, s.size() - 1)
+	var chosen_name: String = s[index]
 	return chosen_name
 
 func get_female_name() -> String:
 	var potential_names: PackedStringArray = char_names[FEMALE]
 	potential_names.append_array(char_names[UNISEX])
-	var index: int = randi_range(0, potential_names.size() - 1)
-	var chosen_name: String = potential_names[index]
+	var s: Array[String]
+	s.assign(potential_names)
+	s.shuffle()
+	var index: int = randi_range(0, s.size() - 1)
+	var chosen_name: String = s[index]
 	return chosen_name
 
 func is_male_portrait(portrait_data: PortraitData) -> bool:

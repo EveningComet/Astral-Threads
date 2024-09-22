@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnlae2fomqu4n"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Battle UI/NumberPopupHandler.gd" id="1_ue1b7"]
+[ext_resource type="PackedScene" uid="uid://cvhpfrl5eqa8a" path="res://Scenes/UI/Battle Screen/Battle Number Popup.tscn" id="2_g8yko"]
+
+[node name="Number Popup Handler" type="CanvasLayer"]
+script = ExtResource("1_ue1b7")
+number_displayer = ExtResource("2_g8yko")
