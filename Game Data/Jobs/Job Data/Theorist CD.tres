@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Job" load_steps=10 format=3 uid="uid://d1dpqeqvk2q6p"]
+
+[ext_resource type="Script" path="res://Scripts/UI/General/PortraitData.gd" id="1_sxd60"]
+[ext_resource type="Texture2D" uid="uid://c33e2wbfn21k7" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (166).png" id="2_24p5u"]
+[ext_resource type="Texture2D" uid="uid://deq2lu3rkw7ir" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (76).png" id="3_15hnm"]
+[ext_resource type="Script" path="res://Scripts/Character/Job.gd" id="4_k6et5"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="5_nn30b"]
+[ext_resource type="Resource" uid="uid://cmd3sieqnbwmw" path="res://Game Data/Jobs/Job Skills/Theorist/First Aid.tres" id="6_ewsu3"]
+[ext_resource type="Script" path="res://Scripts/Inventory/ItemData.gd" id="6_fgay2"]
+
+[sub_resource type="Resource" id="Resource_ah6u7"]
+script = ExtResource("1_sxd60")
+big_portrait = ExtResource("2_24p5u")
+small_portrait = ExtResource("2_24p5u")
+
+[sub_resource type="Resource" id="Resource_dykql"]
+script = ExtResource("1_sxd60")
+big_portrait = ExtResource("3_15hnm")
+small_portrait = ExtResource("3_15hnm")
+
+[resource]
+script = ExtResource("4_k6et5")
+localization_name = "Theorist"
+localization_description = "Brilliant minds."
+starting_equipment = Array[ExtResource("6_fgay2")]([])
+skills = Array[ExtResource("5_nn30b")]([ExtResource("6_ewsu3")])
+starting_vitality = 3
+starting_technique = 3
+starting_will = 5
+vitality_growth = 2
+technique_growth = 1
+will_growth = 3
+male_portraits = Array[ExtResource("1_sxd60")]([SubResource("Resource_dykql")])
+female_portraits = Array[ExtResource("1_sxd60")]([SubResource("Resource_ah6u7")])

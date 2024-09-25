@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dxdkvgf7831js"]
+[gd_scene load_steps=20 format=3 uid="uid://dxdkvgf7831js"]
 
 [ext_resource type="Texture2D" uid="uid://cxymice35l0bo" path="res://Imported Assets/KenneyNL Prototyping Textures/Dark/texture_01.png" id="1_alguh"]
 [ext_resource type="PackedScene" uid="uid://cvcjhhiyqaotu" path="res://Scenes/Player.tscn" id="2_4df4m"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/Inventory/ItemSlotData.gd" id="8_11riy"]
 [ext_resource type="Resource" uid="uid://dp1ruy7u22143" path="res://Game Data/Items/Test Item.tres" id="8_ch562"]
 [ext_resource type="PackedScene" uid="uid://cw34c8yrs3mye" path="res://Scenes/UI/Inventory/Player Dashboard.tscn" id="9_845o5"]
+[ext_resource type="PackedScene" uid="uid://bj8juo06amjy5" path="res://Scenes/World/Test NPC.tscn" id="11_tniak"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tly4j"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -91,3 +92,6 @@ inventory = SubResource("Resource_1njun")
 [node name="Pause Menu" parent="." instance=ExtResource("4_t1nc6")]
 
 [node name="Player Dashboard" parent="." instance=ExtResource("9_845o5")]
+
+[node name="Test NPC" parent="." instance=ExtResource("11_tniak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 0)

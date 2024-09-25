@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj8juo06amjy5"]
+
+[ext_resource type="Script" path="res://Scripts/World/NPCData.gd" id="1_3jb30"]
+[ext_resource type="Resource" path="res://Game Data/Dialogic Data/Timelines/Testing NPC Timeline.dtl" id="2_tgkqc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0v7q"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tt7mo"]
+
+[node name="Test NPC" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_v0v7q")
+
+[node name="GFX" type="Node3D" parent="."]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="GFX"]
+mesh = SubResource("CapsuleMesh_tt7mo")
+
+[node name="NPCData" type="Node" parent="."]
+script = ExtResource("1_3jb30")
+dialogue_timeline = ExtResource("2_tgkqc")

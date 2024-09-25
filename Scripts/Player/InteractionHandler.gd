@@ -24,11 +24,23 @@ func _physics_process(delta: float) -> void:
 func on_interaction_pressed() -> void:
 	set_physics_process(false)
 	curr_world_inventory = null
+	
+	# Can't interact if this is here
+	if Globals.is_interaction_disabled == true:
+		return
+	
 	if interaction_cast.is_colliding() == true:
 		var collider = interaction_cast.get_collider()
+		
+		# What to do when finding an inventory
 		if collider.has_node("WorldInventory"):
 			var world_inventory: WorldInventory = collider.get_node("WorldInventory")
 			curr_world_inventory = world_inventory
+		
+		# What to do when finding an NPC
+		if collider.has_node("NPCData") == true:
+			var npc_data: NPCData = collider.get_node("NPCData")
+			Eventbus.begin_conversation.emit(npc_data)
 	
 	if curr_world_inventory != null:
 		Eventbus.toggle_dashboard.emit(curr_world_inventory.inventory)

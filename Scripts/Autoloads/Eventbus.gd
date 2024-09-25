@@ -4,6 +4,9 @@ extends Node
 ## Fired when the player wants to do something with their inventory or party.
 signal toggle_dashboard(exterior_inv: Inventory)
 
+## Fired when the player interacts with an NPC.
+signal begin_conversation(target)
+
 ## Enables/Disables the mouse.
 signal toggle_mouse(status: bool)
 
