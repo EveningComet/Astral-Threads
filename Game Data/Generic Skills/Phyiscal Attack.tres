@@ -10,6 +10,7 @@ damage_type = 0
 bonus_damage_scale_on_debuffs_present = 0.0
 attacker_heal_percentage = 0.0
 power_scale = 1.0
+stat_used = 12
 
 [resource]
 script = ExtResource("2_n6m0v")

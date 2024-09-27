@@ -7,6 +7,7 @@
 [sub_resource type="Resource" id="Resource_knp53"]
 script = ExtResource("2_de0pi")
 power_scale = 1.25
+stat_used = 12
 
 [resource]
 script = ExtResource("2_he2rx")

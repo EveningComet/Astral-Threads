@@ -250,9 +250,9 @@ func take_damage(damage_datas: Array[DamageData]) -> void:
 		var amount: int = dd.damage_amount
 		var damage_type = dd.damage_type
 		
-		# TODO: Checking if damage needs to be increased based on negative status effects
+		# Checking if damage needs to be increased based on negative status effects
 		if combatant.status_effect_holder.has_negative_statuses_present() == true:
-			pass
+			amount = dd.get_debuff_scaled_damage()
 		
 		# Account for damage types and resistances.
 		match damage_type:
@@ -269,9 +269,10 @@ func take_damage(damage_datas: Array[DamageData]) -> void:
 		stats[StatHelper.StatTypes.CurrentHP] -= amount
 		combatant.stat_changed.emit(combatant)
 		
-		# TODO: Lifesteal check
+		# Lifesteal check
 		if dd.damage_heal_percentage > 0.0:
-			pass
+			var lifesteal_v: int = dd.get_lifesteal_amount(amount, self)
+			dd.activator.heal(lifesteal_v)
 		
 		# Notify anything about dying
 		if get_curr_hp() <= 0:

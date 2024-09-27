@@ -29,15 +29,17 @@ func get_usable_data(activator: Combatant, action: StoredAction) -> StoredAction
 			var damage_effect: DamageEffect = e as DamageEffect
 			var damage_data:   DamageData   = DamageData.new()
 			damage_data.damage_type = damage_effect.damage_type
-			damage_data.damage_amount = 5 # TODO: Get the power output
-			damage_data.base_power_scale = damage_effect.power_scale
+			damage_data.activator = activator.stats
+			
+			# Get the damage amount
+			damage_data.damage_amount          = damage_effect.get_power(activator.stats)
+			damage_data.base_power_scale       = damage_effect.power_scale
 			damage_data.damage_heal_percentage = damage_effect.attacker_heal_percentage
 			modified_action.damage_datas.append(damage_data)
 		
 		elif e is HealEffect:
 			var heal_effect: HealEffect = e as HealEffect
-			var special_power: int = activator.stats.get_special_power()
-			var healing_power: int = floor(e.power_scale * special_power)
+			var healing_power: int = e.get_power(activator.stats)
 			modified_action.heal_amount += healing_power
 		
 		elif e is ApplyStatusEffect:
