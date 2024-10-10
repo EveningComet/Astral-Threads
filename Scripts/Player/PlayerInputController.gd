@@ -21,6 +21,7 @@ func _input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event: InputEvent) -> void:
+	# TODO: Prevent opening the inventory and interacting when Dialogic is opened.
 	if event.is_action_pressed("interact"):
 		# TODO: Interaction limit cooldown?
 		interact_pressed.emit()
