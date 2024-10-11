@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=5 format=3 uid="uid://ciiary04ee22j"]
+
+[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="1_hr50j"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/DamageEffect.gd" id="2_03i0d"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_y5tsa"]
+
+[sub_resource type="Resource" id="Resource_g2xcb"]
+script = ExtResource("2_03i0d")
+damage_type = 1
+bonus_damage_scale_on_debuffs_present = 0.0
+attacker_heal_percentage = 0.0
+power_scale = 1.0
+stat_used = 12
+
+[resource]
+script = ExtResource("2_y5tsa")
+localization_name = "Flare Shot"
+localization_description = "Attack a single enemy with a ball of fire."
+base_cost = 5
+is_passive = false
+num_activations = 1
+action_type = 0
+effects = Array[ExtResource("1_hr50j")]([SubResource("Resource_g2xcb")])

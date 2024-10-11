@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/Battle UI/BattleSkillsMenu.gd" id="1_s14xk"]
 [ext_resource type="PackedScene" uid="uid://cigoeq7lw4aua" path="res://Scenes/UI/Battle Screen/Battle Action Button.tscn" id="2_ah2gr"]
 
-[node name="Battle Skills Menu" type="Control" node_paths=PackedStringArray("spawned_buttons_container")]
+[node name="Battle Skills Menu" type="Control" node_paths=PackedStringArray("spawned_buttons_container", "skill_description_label")]
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 3
 anchors_preset = 0
@@ -12,6 +12,7 @@ offset_bottom = 40.0
 script = ExtResource("1_s14xk")
 action_button_template = ExtResource("2_ah2gr")
 spawned_buttons_container = NodePath("PanelContainer/MarginContainer/HBoxContainer/Master Buttons Margin/ScrollContainer/MarginContainer/Buttons Container")
+skill_description_label = NodePath("PanelContainer/MarginContainer/HBoxContainer/Description Margin/ScrollContainer/Skill Description Label")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -62,3 +63,24 @@ alignment = 1
 [node name="Description Margin" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 200)
 layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Description Margin"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Skill Description Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Description Margin/ScrollContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "Placeholder text for cool skills.
+
+Lorem ipsum."
+autowrap_mode = 2

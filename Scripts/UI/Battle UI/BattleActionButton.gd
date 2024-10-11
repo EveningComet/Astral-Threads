@@ -2,6 +2,7 @@
 class_name BattleActionButton extends Button
 # TODO: Better name for skills outside of combat?
 
+## Used to help certain UI elements know when this is being focused.
 signal skill_button_highlighted(s: SkillData)
 
 ## Fired when the player selects this button.

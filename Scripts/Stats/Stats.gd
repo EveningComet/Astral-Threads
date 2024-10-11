@@ -302,3 +302,9 @@ func regain_sp(amount: int) -> void:
 	if get_curr_sp() > get_max_sp():
 		stats[StatHelper.StatTypes.CurrentSP] = get_max_sp()
 	combatant.stat_changed.emit( combatant )
+
+## Fully restore the character's hp and sp.
+func full_restore() -> void:
+	stats[StatHelper.StatTypes.CurrentHP] = get_max_hp()
+	stats[StatHelper.StatTypes.CurrentSP] = get_max_sp()
+	combatant.stat_changed.emit(combatant)

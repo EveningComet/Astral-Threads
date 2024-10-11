@@ -41,3 +41,9 @@ func is_party_fightable() -> bool:
 			status = true
 			break
 	return status
+
+## Fully heal the party.
+func fully_restore_party() -> void:
+	for pm: PlayerCombatant in active_party:
+		if pm != null:
+			pm.full_restore()

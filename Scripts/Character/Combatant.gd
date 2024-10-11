@@ -16,3 +16,8 @@ var skill_holder: SkillHolder = SkillHolder.new()
 
 ## Stores this participant's visual appearance.
 var portrait_data: PortraitData
+
+## Fully restore the character to the max strength.
+func full_restore() -> void:
+	stats.full_restore()
+	
