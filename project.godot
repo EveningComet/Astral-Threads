@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="Astral Threads"
-config/description="A 3D, turnbased RPG inspired the likes of the latter Wizardry & Might & Magic games."
+config/description="A 3D, turnbased RPG inspired by the likes of the latter Wizardry & Might & Magic games."
 run/main_scene="res://Scenes/Main Menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Imported Assets/Icon/cyborg-face.svg"
 
 [autoload]
 
@@ -35,11 +35,7 @@ NpcInteractionListener="*res://Scripts/Autoloads/NPCInteractionListener.gd"
 [dialogic]
 
 directories/dch_directory={}
-directories/dtl_directory={
-"Erika Sai Initial Meeting Timeline": "res://Game Data/Dialogic Data/Timelines/Erika Sai Initial Meeting Timeline.dtl",
-"Reno Dex Initial Meeting Timeline": "res://Game Data/Dialogic Data/Timelines/Reno Dex Initial Meeting Timeline.dtl",
-"Testing NPC Timeline": "res://Game Data/Dialogic Data/Timelines/Testing NPC Timeline.dtl"
-}
+directories/dtl_directory={}
 layout/style_list=["res://Game Data/Dialogic Data/Dialogic Style.tres"]
 layout/default_style="Default"
 glossary/default_case_sensitive=true
