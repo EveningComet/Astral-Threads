@@ -4,6 +4,8 @@ extends Node
 ## Fired when the player wants to do something with their inventory or party.
 signal toggle_dashboard(exterior_inv: Inventory)
 
+signal toggle_skill_menu(turn_on: bool)
+
 ## Fired when the player interacts with an NPC.
 signal begin_conversation(target)
 
