@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5xtovj8asaxe"]
+
+[ext_resource type="PackedScene" uid="uid://5a4bwrowsmnr" path="res://Scenes/UI/Portrait Displayer Panel.tscn" id="1_dhysq"]
+[ext_resource type="Script" path="res://Scripts/Inventory/PartyInspectorSlot.gd" id="1_qt0pg"]
+
+[node name="Party Inspector Slot" type="VBoxContainer" node_paths=PackedStringArray("portrait_displayer", "level_value_label")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -960.0
+offset_right = -832.0
+offset_bottom = 166.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+script = ExtResource("1_qt0pg")
+portrait_displayer = NodePath("Portrait Displayer Panel")
+level_value_label = NodePath("HBoxContainer/Level Value")
+
+[node name="Portrait Displayer Panel" parent="." instance=ExtResource("1_dhysq")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Level Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "Level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level Value" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "42"
+horizontal_alignment = 1
+vertical_alignment = 1
