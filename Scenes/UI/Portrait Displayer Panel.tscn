@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://5a4bwrowsmnr"]
+[gd_scene load_steps=4 format=3 uid="uid://5a4bwrowsmnr"]
 
 [ext_resource type="Script" path="res://Scripts/UI/General/PortraitDisplayerPanel.gd" id="1_6u7wf"]
 [ext_resource type="Texture2D" uid="uid://csl78weulk5xi" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (142).png" id="2_7xv7e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_magyf"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Portrait Displayer Panel" type="PanelContainer" node_paths=PackedStringArray("display_icon")]
 custom_minimum_size = Vector2(256, 256)
@@ -9,6 +12,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_6u7wf")
 display_icon = NodePath("MarginContainer/Icon")
+highlighted_style = SubResource("StyleBoxFlat_magyf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
