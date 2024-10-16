@@ -13,6 +13,7 @@ stat_used = 12
 script = ExtResource("2_hfrum")
 localization_name = "Field Medicine"
 localization_description = "Apply rudimentary medicine to an ally."
+is_starting_skill = true
 base_cost = 5
 is_passive = false
 num_activations = 1

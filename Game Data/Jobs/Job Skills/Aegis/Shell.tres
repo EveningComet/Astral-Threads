@@ -16,6 +16,7 @@ stat_used = 12
 script = ExtResource("2_us88w")
 localization_name = "Shell"
 localization_description = "Bombard the enemy team with rockets."
+is_starting_skill = true
 base_cost = 5
 is_passive = false
 num_activations = 1

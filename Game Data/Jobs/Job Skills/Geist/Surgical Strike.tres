@@ -10,11 +10,13 @@ damage_type = 0
 bonus_damage_scale_on_debuffs_present = 0.5
 attacker_heal_percentage = 0.0
 power_scale = 1.0
+stat_used = 11
 
 [resource]
 script = ExtResource("2_sga6w")
 localization_name = "Surgical Strike"
 localization_description = "Attacks a single target. Does extra damage if the target has a negative status effect."
+is_starting_skill = true
 base_cost = 5
 is_passive = false
 num_activations = 1

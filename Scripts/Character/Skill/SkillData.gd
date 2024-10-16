@@ -6,6 +6,9 @@ class_name SkillData extends Resource
 @export var localization_name:                  String = "New Skill"
 @export_multiline var localization_description: String = "New description."
 
+## For player characters, is this skill automatically usable from the start?
+@export var is_starting_skill: bool = false
+
 @export_category("Definitions")
 @export var base_cost:       int  = 5
 @export var is_passive:      bool = false

@@ -35,7 +35,11 @@ NpcInteractionListener="*res://Scripts/Autoloads/NPCInteractionListener.gd"
 [dialogic]
 
 directories/dch_directory={}
-directories/dtl_directory={}
+directories/dtl_directory={
+"Erika Sai Initial Meeting Timeline": "res://Game Data/Dialogic Data/Timelines/Erika Sai Initial Meeting Timeline.dtl",
+"Reno Dex Initial Meeting Timeline": "res://Game Data/Dialogic Data/Timelines/Reno Dex Initial Meeting Timeline.dtl",
+"Testing NPC Timeline": "res://Game Data/Dialogic Data/Timelines/Testing NPC Timeline.dtl"
+}
 layout/style_list=["res://Game Data/Dialogic Data/Dialogic Style.tres"]
 layout/default_style="Default"
 glossary/default_case_sensitive=true

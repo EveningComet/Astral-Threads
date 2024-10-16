@@ -17,10 +17,12 @@ func on_finalized() -> void:
 	var new_pm: PlayerCombatant = my_state_machine.curr_created_character
 	PlayerPartyController.add_to_party(new_pm)
 	
-	# Setup the job and skills
+	# Setup the job and starting skills
 	var primary_job: Job = my_state_machine.curr_job
 	new_pm.initialize_with_job(primary_job)
-	new_pm.skill_holder.skills.append_array(primary_job.skills)
+	for sd: SkillData in primary_job.skills:
+		if sd.is_starting_skill == true:
+			new_pm.skill_holder.add_skill(sd)
 	
 	# Initialize the starting equipment
 	for i: int in primary_job.starting_equipment.size():
