@@ -3,6 +3,7 @@ class_name PartyInspectorSlot extends Control
 ## Visually represents what character is currently being looked at.
 @export var portrait_displayer: PortraitDisplayerPanel
 
+@export var name_label: Label
 @export var level_value_label: Label
 
 var party_member: PlayerCombatant
@@ -12,6 +13,7 @@ func set_party_member(new_pm: PlayerCombatant) -> void:
 		party_member.stat_changed.disconnect( _on_stat_changed )
 	
 	party_member = new_pm
+	name_label.set_text(party_member.char_name)
 	level_value_label.set_text( str(party_member.curr_level) )
 	portrait_displayer.portrait_data = new_pm.portrait_data
 	portrait_displayer.display_icon.set_texture(new_pm.portrait_data.small_portrait)
