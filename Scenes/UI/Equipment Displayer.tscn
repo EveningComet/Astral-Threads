@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dpcirattn6o47" path="res://Scenes/UI/Inventory/Equip Slot UI.tscn" id="2_2n00o"]
 
 [node name="Equipment Displayer" type="Control" node_paths=PackedStringArray("item_container")]
-custom_minimum_size = Vector2(300, 300)
+custom_minimum_size = Vector2(300, 200)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
