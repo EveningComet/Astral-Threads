@@ -70,13 +70,16 @@ func clear_members_container() -> void:
 		child.queue_free()
 
 func spawn_slots_for_party() -> void:
-	for member in PlayerPartyController.get_party():
-		if (member != null):
-			var slot: PartyInspectorSlot = slot_prefab.instantiate()
-			slot.portrait_displayer.gui_input.connect(_on_gui_input.bind(member))
-			slot.set_party_member(member)
-			members_container.add_child(slot)
-			party_member_to_slot[member] = slot
+	var margins: float = 25
+	var active_members = PlayerPartyController.get_party().filter(func(m): return m != null);
+	for member in active_members:
+		var slot: PartyInspectorSlot = slot_prefab.instantiate()
+		slot.portrait_displayer.gui_input.connect(_on_gui_input.bind(member))
+		if active_members.size() > int(PlayerPartyController.MAX_PMS_IN_ACTIVE_PARTY / 2):
+			slot.portrait_displayer.custom_minimum_size = Vector2.ONE * (custom_minimum_size.x/active_members.size() - margins)
+		slot.set_party_member(member)
+		members_container.add_child(slot)
+		party_member_to_slot[member] = slot
 
 func _on_gui_input(event, member: PlayerCombatant):
 	if event is InputEventMouseButton and event.is_pressed():
