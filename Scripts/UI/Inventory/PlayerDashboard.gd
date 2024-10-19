@@ -104,4 +104,4 @@ func on_dashboard_toggled(exterior_inv: Inventory = null) -> void:
 	else:
 		if exterior_inv != null:
 			set_external_inventory(exterior_inv)
-			open()
+		open()
