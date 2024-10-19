@@ -16,6 +16,7 @@ stat_used = 11
 script = ExtResource("2_hhqiq")
 localization_name = "Special Attack"
 localization_description = "Uses the character's special attack to deal damage."
+is_starting_skill = true
 base_cost = 0
 is_passive = false
 num_activations = 1
