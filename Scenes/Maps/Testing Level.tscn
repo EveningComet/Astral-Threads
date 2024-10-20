@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dxdkvgf7831js"]
+[gd_scene load_steps=28 format=3 uid="uid://dxdkvgf7831js"]
 
 [ext_resource type="Texture2D" uid="uid://cxymice35l0bo" path="res://Imported Assets/KenneyNL Prototyping Textures/Dark/texture_01.png" id="1_alguh"]
 [ext_resource type="PackedScene" uid="uid://cvcjhhiyqaotu" path="res://Scenes/Player.tscn" id="2_4df4m"]
@@ -10,8 +10,12 @@
 [ext_resource type="Script" path="res://Scripts/Inventory/ItemSlotData.gd" id="8_11riy"]
 [ext_resource type="Resource" uid="uid://dp1ruy7u22143" path="res://Game Data/Items/Test Item.tres" id="8_ch562"]
 [ext_resource type="PackedScene" uid="uid://cw34c8yrs3mye" path="res://Scenes/UI/Inventory/Player Dashboard.tscn" id="9_845o5"]
+[ext_resource type="Script" path="res://Scripts/Stats/StatRequirement.gd" id="10_htflv"]
+[ext_resource type="Texture2D" uid="uid://vfurdpam4ni6" path="res://Imported Assets/Lovelyloop Free RPG Item Icons/Boots/8.png" id="11_1m0w6"]
 [ext_resource type="PackedScene" uid="uid://bj8juo06amjy5" path="res://Scenes/World/Test NPC.tscn" id="11_tniak"]
+[ext_resource type="Script" path="res://Scripts/Inventory/ItemData.gd" id="12_0oyl1"]
 [ext_resource type="PackedScene" uid="uid://24t7j5vea0bq" path="res://Scenes/UI/Skills/Skill Menu.tscn" id="12_aack8"]
+[ext_resource type="Script" path="res://Scripts/Stats/StatModifier.gd" id="13_72q8j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tly4j"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -41,9 +45,34 @@ script = ExtResource("8_11riy")
 stored_item = ExtResource("8_ch562")
 quantity = 3
 
+[sub_resource type="Resource" id="Resource_wml1s"]
+script = ExtResource("13_72q8j")
+stat_changing = 0
+stat_modifier_type = 0
+value = 5.0
+sort_order = 0
+
+[sub_resource type="Resource" id="Resource_v1dvm"]
+script = ExtResource("12_0oyl1")
+localization_name = "New Item"
+localization_description = "An item."
+item_type = 1
+image = ExtResource("11_1m0w6")
+max_stack_size = 1
+base_cost = 10
+equip_type = 2
+stat_modifiers = Array[ExtResource("13_72q8j")]([SubResource("Resource_wml1s")])
+attribute_requirements = Array[ExtResource("10_htflv")]([])
+weapon_type = 0
+
+[sub_resource type="Resource" id="Resource_s5rb1"]
+script = ExtResource("8_11riy")
+stored_item = SubResource("Resource_v1dvm")
+quantity = 1
+
 [sub_resource type="Resource" id="Resource_1njun"]
 script = ExtResource("7_l3ht2")
-stored_items = Array[ExtResource("8_11riy")]([SubResource("Resource_muf78")])
+stored_items = Array[ExtResource("8_11riy")]([SubResource("Resource_muf78"), SubResource("Resource_s5rb1")])
 
 [node name="Testing Level" type="Node3D"]
 

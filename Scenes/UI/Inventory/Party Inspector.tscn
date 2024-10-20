@@ -5,28 +5,25 @@
 [ext_resource type="PackedScene" uid="uid://c5xtovj8asaxe" path="res://Scenes/UI/Inventory/Party Inspector Slot.tscn" id="3_830j5"]
 [ext_resource type="PackedScene" uid="uid://qvkhx57j56qi" path="res://Scenes/UI/Equipment Displayer.tscn" id="4_p3jjh"]
 
-[node name="Party Inspector" type="Control" node_paths=PackedStringArray("equipment_displayer", "attributes_container", "members_container")]
-custom_minimum_size = Vector2(600, 800)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 600.0
-offset_bottom = 600.0
+[node name="Party Inspector" type="PanelContainer" node_paths=PackedStringArray("equipment_displayer", "attributes_container", "members_container")]
+custom_minimum_size = Vector2(500, 600)
+offset_right = 500.0
+offset_bottom = 866.0
 script = ExtResource("1_xadsv")
-equipment_displayer = NodePath("Background/VBoxContainer/Equipment Displayer")
-attributes_container = NodePath("Background/VBoxContainer/Attributes Container")
+equipment_displayer = NodePath("MarginContainer/VBoxContainer/Equipment Displayer")
+attributes_container = NodePath("MarginContainer/VBoxContainer/Attributes Container")
 stat_displayer_prefab = ExtResource("2_03gsr")
 slot_prefab = ExtResource("3_830j5")
-members_container = NodePath("Background/VBoxContainer/CenterContainer/MarginContainer/Party Members")
+members_container = NodePath("MarginContainer/VBoxContainer/CenterContainer/Party Members")
 
-[node name="Background" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -34,19 +31,13 @@ size_flags_vertical = 4
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="Background/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_horizontal = 4
+size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer/CenterContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="Party Members" type="GridContainer" parent="Background/VBoxContainer/CenterContainer/MarginContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="Party Members" type="GridContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
@@ -54,29 +45,30 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
 
-[node name="Party Inspector Slot" parent="Background/VBoxContainer/CenterContainer/MarginContainer/Party Members" instance=ExtResource("3_830j5")]
+[node name="Party Inspector Slot" parent="MarginContainer/VBoxContainer/CenterContainer/Party Members" instance=ExtResource("3_830j5")]
 layout_mode = 2
 
-[node name="Party Inspector Slot2" parent="Background/VBoxContainer/CenterContainer/MarginContainer/Party Members" instance=ExtResource("3_830j5")]
+[node name="Party Inspector Slot2" parent="MarginContainer/VBoxContainer/CenterContainer/Party Members" instance=ExtResource("3_830j5")]
 layout_mode = 2
 
-[node name="Party Inspector Slot3" parent="Background/VBoxContainer/CenterContainer/MarginContainer/Party Members" instance=ExtResource("3_830j5")]
+[node name="Party Inspector Slot3" parent="MarginContainer/VBoxContainer/CenterContainer/Party Members" instance=ExtResource("3_830j5")]
 layout_mode = 2
 
-[node name="Party Inspector Slot4" parent="Background/VBoxContainer/CenterContainer/MarginContainer/Party Members" instance=ExtResource("3_830j5")]
+[node name="Party Inspector Slot4" parent="MarginContainer/VBoxContainer/CenterContainer/Party Members" instance=ExtResource("3_830j5")]
 layout_mode = 2
 
-[node name="Party Inspector Slot5" parent="Background/VBoxContainer/CenterContainer/MarginContainer/Party Members" instance=ExtResource("3_830j5")]
+[node name="Party Inspector Slot5" parent="MarginContainer/VBoxContainer/CenterContainer/Party Members" instance=ExtResource("3_830j5")]
 layout_mode = 2
 
-[node name="Party Inspector Slot6" parent="Background/VBoxContainer/CenterContainer/MarginContainer/Party Members" instance=ExtResource("3_830j5")]
+[node name="Party Inspector Slot6" parent="MarginContainer/VBoxContainer/CenterContainer/Party Members" instance=ExtResource("3_830j5")]
 layout_mode = 2
 
-[node name="Equipment Displayer" parent="Background/VBoxContainer" instance=ExtResource("4_p3jjh")]
+[node name="Equipment Displayer" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_p3jjh")]
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Attributes Container" type="VBoxContainer" parent="Background/VBoxContainer"]
+[node name="Attributes Container" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
-alignment = 1

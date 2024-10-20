@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw34c8yrs3mye"]
+[gd_scene load_steps=5 format=3 uid="uid://cw34c8yrs3mye"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Inventory/PlayerDashboard.gd" id="1_q3o46"]
 [ext_resource type="PackedScene" uid="uid://cxwyyabg6elpq" path="res://Scenes/UI/Inventory/Player Inventory Displayer.tscn" id="2_xqtoy"]
 [ext_resource type="PackedScene" uid="uid://ddxk8hvdarn1v" path="res://Scenes/UI/Inventory/Party Inspector.tscn" id="3_77ttr"]
+[ext_resource type="PackedScene" uid="uid://bn5nts3ewsda1" path="res://Scenes/UI/Inventory/Item Slot UI.tscn" id="4_qetuj"]
 
-[node name="Player Dashboard" type="CanvasLayer" node_paths=PackedStringArray("player_inventory_displayer", "party_inspector", "external_inventory_displayer")]
+[node name="Player Dashboard" type="CanvasLayer" node_paths=PackedStringArray("player_inventory_displayer", "party_inspector", "external_inventory_displayer", "grabbed_slot_ui")]
 layer = 2
 script = ExtResource("1_q3o46")
 player_inventory_displayer = NodePath("Control/HBoxContainer/Player Inventory Displayer")
 party_inspector = NodePath("Control/HBoxContainer/Party Inspector")
 external_inventory_displayer = NodePath("Control/HBoxContainer/External Inventory")
+grabbed_slot_ui = NodePath("Grabbed Slot")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -50,3 +52,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="Grabbed Slot" parent="." instance=ExtResource("4_qetuj")]
+visible = false
+mouse_filter = 2

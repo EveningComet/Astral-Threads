@@ -5,7 +5,7 @@ class_name Inventory extends Resource
 signal inventory_updated(inventory: Inventory)
 
 ## When interacted with, we want others to know about the interaction.
-signal inventory_interacted(inventory_data: Inventory, slot_data: ItemSlotData)
+signal inventory_interacted(inventory_data: Inventory, index: int, button: int)
 
 signal money_changed(amt: int)
 
@@ -33,13 +33,6 @@ func grab_slot_data(index: int) -> ItemSlotData:
 		return slot_data
 	else:
 		return null
-
-func grab_and_remove_slot_data(slot_data: ItemSlotData) -> ItemSlotData:
-	var index: int = stored_items.find(slot_data)
-	var slot_to_remove = stored_items[index]
-	stored_items.erase(slot_data)
-	inventory_updated.emit(self)
-	return slot_to_remove
 
 ## Attempt to drop a single slot.
 func drop_single_slot_data(grabbed_slot_data: ItemSlotData, index: int) -> ItemSlotData:
@@ -95,6 +88,10 @@ func use_slot_data(index: int) -> void:
 	if OS.is_debug_build() == true:
 		print("Inventory :: Attempting to use item: %s." % [slot_data.stored_item.localization_name])
 
+## Used when we know a slot exists in an inventory, but we don't know where.
+func find_slot_data(slot_data: ItemSlotData) -> int:
+	return stored_items.find(slot_data)
+
 ## Used when adding a single slot data.
 func add_slot_data(slot_data: ItemSlotData) -> void:
 	
@@ -110,8 +107,9 @@ func add_slot_data(slot_data: ItemSlotData) -> void:
 	inventory_updated.emit( self )
 
 ## Gets called through interacting with an item slot in the UI.
-func on_slot_selected(slot_data: ItemSlotData) -> void:
-	inventory_interacted.emit(self, slot_data)
+## Index is where the slot is located and the button is what button was used.
+func on_slot_selected(index: int, button: int) -> void:
+	inventory_interacted.emit( self, index, button )
 
 func has_item(item: ItemData) -> bool:
 	for slot: ItemSlotData in stored_items:

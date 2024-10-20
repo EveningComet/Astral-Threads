@@ -1,5 +1,5 @@
 ## Responsible for displaying the current party and their stats to the player.
-class_name PartyInspector extends Control
+class_name PartyInspector extends PanelContainer
 
 ## Fired whenever the player changes the character they're looking at.
 signal displayed_character_changed(new_char: PlayerCombatant)
@@ -11,6 +11,7 @@ signal displayed_character_changed(new_char: PlayerCombatant)
 
 @export var stat_displayer_prefab: PackedScene
 
+## The prefab for displaying a party member.
 @export var slot_prefab : PackedScene
 
 @export var members_container: Container
@@ -23,7 +24,7 @@ var curr_inspected_pm: PlayerCombatant
 func _ready() -> void:
 	clear_members_container()
 	spawn_slots_for_party()
-		
+
 func open() -> void:
 	set_pm_to_inspect(PlayerPartyController.get_party()[0])
 	show()
