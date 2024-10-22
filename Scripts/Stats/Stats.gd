@@ -14,7 +14,7 @@ var stats: Dictionary = {}
 ## The attached character.
 var combatant: Combatant
 
-func _init(_com: Combatant) -> void:
+func _init(_com: Combatant = null) -> void:
 	combatant = _com
 	initialize()
 

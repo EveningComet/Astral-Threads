@@ -1,29 +1,37 @@
 ## The state where the game resolves the actions.
 class_name ResolveTurn extends BattleState
 
-var actions_to_execute: Array[StoredAction]
+var _actions_to_execute: Array[StoredAction]
 
 ## Random number generator for calculating chances and the like.
 var prng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func enter(msgs: Dictionary = {}) -> void:
-	execute_actions()
+	_execute_actions()
 
 func exit() -> void:
-	actions_to_execute.clear()
+	_actions_to_execute.clear()
 
-func execute_actions() -> void:
+func _execute_actions() -> void:
 	# First, do all the setup
 	prng.randomize()
-	actions_to_execute.append_array(my_state_machine.current_turn_actions)
-	actions_to_execute.sort_custom( sort_actions_based_on_activator_speed )
+	_actions_to_execute.append_array(my_state_machine.current_turn_actions)
+	_actions_to_execute.sort_custom( sort_actions_based_on_activator_speed )
 	my_state_machine.current_turn_actions.clear()
 	
+	# Tick all the status effects
+	_tick_status_effects()
+	
 	# Now, go through all the actions
-	next_action()
+	_next_action()
+
+func _tick_status_effects() -> void:
+	for combatant: Combatant in get_all_active_combatants():
+		if combatant != null:
+			combatant.status_effect_holder.tick_statuses()
 
 ## Recursive method that goes through the actions.
-func next_action() -> void:
+func _next_action() -> void:
 	
 	# Checking to see which side won
 	if PlayerPartyController.is_party_fightable() == false:
@@ -36,12 +44,12 @@ func next_action() -> void:
 		return
 	
 	# There are no more actions to execute, so go on to the next turn
-	if actions_to_execute.size() == 0:
+	if _actions_to_execute.size() == 0:
 		my_state_machine.change_to_state("PlayerTurn")
 		return
 	
 	# Perform the next action
-	var current_action: StoredAction = actions_to_execute.pop_front()
+	var current_action: StoredAction = _actions_to_execute.pop_front()
 	execute_action(current_action)
 
 func execute_action(current_action: StoredAction) -> void:
@@ -49,12 +57,12 @@ func execute_action(current_action: StoredAction) -> void:
 	
 	# Safety check for making sure the activator still exists
 	if activator == null or activator.stats.get_curr_hp() <= 0:
-		next_action()
+		_next_action()
 		return
 	
 	# Check if a new target needs to be found and get any missing needed data
-	current_action = check_if_new_target_needed(current_action)
-	current_action = get_usable_data(current_action)
+	current_action = _check_if_new_target_needed(current_action)
+	current_action = _get_usable_data(current_action)
 	var status_effects_to_apply = current_action.status_effects_to_apply
 	
 	# Run based on the number of activations
@@ -78,11 +86,10 @@ func execute_action(current_action: StoredAction) -> void:
 						
 							target.stats.take_damage(current_action.damage_datas)
 						
-						# Check for status effects to apply
-						for effect: StatusEffect in status_effects_to_apply.keys():
-							var effect_chance: float = status_effects_to_apply[effect]
-							if prng.randf_range(0.0, 1.0) < effect_chance:
-								target.status_effect_holder.add_status_effect(effect)
+						_handle_status_effect_applications(
+							target,
+							status_effects_to_apply
+						)
 				
 			ActionTypes.ActionTypes.Self, ActionTypes.ActionTypes.SingleAlly, ActionTypes.ActionTypes.AllAllies:
 				for target: Combatant in current_action.get_targets():
@@ -90,23 +97,22 @@ func execute_action(current_action: StoredAction) -> void:
 						# TODO: What about skills that damage the user?
 						target.stats.heal(current_action.heal_amount)
 						
-						# Check for status effects to apply
-						for effect: StatusEffect in status_effects_to_apply.keys():
-							var effect_chance: float = status_effects_to_apply[effect]
-							if prng.randf_range(0.0, 1.0) < effect_chance:
-								target.status_effect_holder.add_status_effect(effect)
+						_handle_status_effect_applications(
+							target,
+							status_effects_to_apply
+						)
 			
 			# TODO: Implement proper fleeing. For now, just end the battle.
 			ActionTypes.ActionTypes.Flee:
 				my_state_machine.change_to_state("EndBattle")
 				return
 	
-	await apply_changes()
+	await _apply_changes()
 	
 	# Everything for this action is finished, move onto the next one
-	next_action()
+	_next_action()
 
-func check_if_new_target_needed(action: StoredAction) -> StoredAction:
+func _check_if_new_target_needed(action: StoredAction) -> StoredAction:
 	# Try to look for a new enemy target
 	if action.action_type == ActionTypes.ActionTypes.SingleEnemy:
 		var activator = action.activator
@@ -124,7 +130,7 @@ func check_if_new_target_needed(action: StoredAction) -> StoredAction:
 		return action
 
 ## Taking an action object, fill out any missing data such as needed healing power or damage.
-func get_usable_data(current_action: StoredAction) -> StoredAction:
+func _get_usable_data(current_action: StoredAction) -> StoredAction:
 	var modified_action: StoredAction = current_action
 	var activator: Combatant = modified_action.activator
 	var has_skill: bool = current_action.skill_data != null
@@ -142,8 +148,15 @@ func get_usable_data(current_action: StoredAction) -> StoredAction:
 		
 	return modified_action
 
+func _handle_status_effect_applications(target: Combatant, status_effects_to_apply: Dictionary) -> void:
+	# Check for status effects to apply
+	for effect: StatusEffect in status_effects_to_apply.keys():
+		var effect_chance: float = status_effects_to_apply[effect]
+		if prng.randf_range(0.0, 1.0) < effect_chance:
+			target.status_effect_holder.add_status_effect(effect)
+
 ## This is where the animations, damage, and so on should truly be performed.
-func apply_changes() -> void:
+func _apply_changes() -> void:
 	# TODO: Perform the animations, do the damage, etc.
 	await get_tree().create_timer(0.5, false, true).timeout
 

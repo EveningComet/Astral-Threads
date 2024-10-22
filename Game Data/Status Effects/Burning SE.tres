@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=8 format=3 uid="uid://cmhhp6hrikoa3"]
+
+[ext_resource type="Script" path="res://Scripts/Character/Status Effect/Status Effect Definitions/OnApplySED.gd" id="1_0ujld"]
+[ext_resource type="Script" path="res://Scripts/Character/Status Effect/Status Effect Definitions/OnExpireSED.gd" id="2_ilmx3"]
+[ext_resource type="Script" path="res://Scripts/Character/Status Effect/Status Effect Definitions/OnTickSED.gd" id="3_xk13n"]
+[ext_resource type="Script" path="res://Scripts/Character/Status Effect/StatusEffect.gd" id="4_ca0y4"]
+[ext_resource type="Script" path="res://Scripts/Stats/StatModifier.gd" id="4_t3cx0"]
+
+[sub_resource type="Resource" id="Resource_ifsne"]
+script = ExtResource("4_t3cx0")
+stat_changing = 4
+stat_modifier_type = 0
+value = 5.0
+sort_order = 0
+
+[sub_resource type="Resource" id="Resource_va175"]
+script = ExtResource("3_xk13n")
+increase_ratio_per_turn = 0.0
+mod = SubResource("Resource_ifsne")
+damage_type = 1
+base_power_scale = 1.0
+status_damage_scaler = 0.0
+
+[resource]
+script = ExtResource("4_ca0y4")
+localization_name = "Burned"
+localization_description = "The character is currently on fire."
+is_negative = true
+duration_in_turns = 3
+on_apply_effects = Array[ExtResource("1_0ujld")]([])
+on_tick_effects = Array[ExtResource("3_xk13n")]([SubResource("Resource_va175")])
+on_expire_effects = Array[ExtResource("2_ilmx3")]([])

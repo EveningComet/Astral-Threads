@@ -46,7 +46,9 @@ func get_usable_data(activator: Combatant, action: StoredAction) -> StoredAction
 			modified_action.heal_amount += healing_power
 		
 		elif e is ApplyStatusEffect:
-			var ase: ApplyStatusEffect = e as ApplyStatusEffect
-			modified_action.status_effects_to_apply[ase] = ase.chance_to_apply
+			var ase:           ApplyStatusEffect = e as ApplyStatusEffect
+			var status_effect: StatusEffect      = ase.status_effect
+			var chance:        float             = ase.chance_to_apply
+			modified_action.status_effects_to_apply[status_effect] = chance
 	
 	return modified_action

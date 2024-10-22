@@ -12,19 +12,27 @@ class_name StatusEffect extends Resource
 @export_category("Definitions")
 
 ## By default, how long this status effect applies in turns.
-@export var base_duration_in_turns: int = 3
+@export var duration_in_turns: int = 3
 
 @export var on_apply_effects:  Array[OnApplySED]  = []
 @export var on_tick_effects:   Array[OnTickSED]   = []
 @export var on_expire_effects: Array[OnExpireSED] = []
 
-func trigger_on_apply(combatant: Combatant) -> void:
+# Instanced variables
+## How long has this status effect been active?
+var lifetime_in_turns: int = 0
+
+## The character that originally applied this status effect.
+var activator: Combatant
+
+func trigger_on_apply(target: Combatant) -> void:
 	for effect in on_apply_effects:
-		effect.trigger(combatant)
+		effect.trigger(target, lifetime_in_turns)
 
-func trigger_on_tick(combatant: Combatant) -> void:
-	pass
+func trigger_on_tick(target: Combatant) -> void:
+	for effect in on_tick_effects:
+		effect.trigger(target, lifetime_in_turns)
 
-func trigger_on_expire(combatant: Combatant) -> void:
+func trigger_on_expire(target: Combatant) -> void:
 	for effect in on_expire_effects:
-		effect.trigger(combatant)
+		effect.trigger(target, lifetime_in_turns)

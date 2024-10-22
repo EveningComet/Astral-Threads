@@ -1,17 +1,15 @@
-###
-# Class for a stat belonging to a character.
-###
+## Class for a stat belonging to a character.
 class_name Stat
 
 ## Base value before any calculations
-var base_value: float = 0
+var base_value: float = 0.0
 
 ## The things that will change the modified value
 var modifiers: Array[StatModifier] = []
 
 ## Initialize the stat.
-func _init(init_value: float):
-	base_value    = init_value
+func _init(init_value: float = 0.0):
+	base_value = init_value
 
 ## Raise the base value by the passed amount. Usually called when leveling up.
 func raise_base_value_by(raise_amount: float) -> void:
@@ -33,6 +31,7 @@ func add_modifier(modifier_to_add: StatModifier):
 ## Remove the passed modifier, if it exists within the stored modifiers.
 func remove_modifier(modifier_to_remove: StatModifier) -> void:
 	modifiers.erase( modifier_to_remove )
+	modifiers.sort_custom(sort_ascending)
 
 func sort_ascending(mod_a, mod_b):
 	if mod_a.sort_order < mod_b.sort_order:
