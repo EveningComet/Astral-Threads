@@ -10,14 +10,6 @@ var cb: CharacterBody3D
 @export var friction:        float = 50.0
 @export var rot_speed:       float = 10.0 # How fast we rotate
 
-# Jump & gravity
-@export var time_to_jump_apex: float = 0.4 # How long, in seconds, it takes us to reach the height of our jump
-@export var max_jump_height:   float = 4   # How high we can jump
-@export var min_jump_height:   float = 1   # How low we can jump
-var max_jump_velocity: float = 0
-var min_jump_velocity: float = 0
-var gravity:           float = 9.8
-
 # Every state needs to keep track of their movement vector and input
 var velocity:  Vector3 = Vector3.ZERO
 var input_dir: Vector3 = Vector3.ZERO
@@ -31,9 +23,6 @@ func setup_state(new_sm: PlayerLocomotionController) -> void:
 	super(new_sm)
 	cb               = new_sm.cb
 	input_controller = new_sm.input_controller
-
-func handle_animations(delta: float) -> void:
-	pass
 
 func physics_update(delta: float) -> void:
 	get_input_vector()
@@ -55,10 +44,14 @@ func handle_gravity(delta: float) -> void:
 	pass
 
 func apply_movement(delta: float) -> void:
-	pass
+	if input_dir != Vector3.ZERO:
+		velocity.x = velocity.move_toward(input_dir * move_speed, acceleration * delta).x
+		velocity.z = velocity.move_toward(input_dir * move_speed, acceleration * delta).z
 
 func apply_friction(delta: float) -> void:
-	pass
+	if input_dir == Vector3.ZERO:
+		velocity.x = velocity.move_toward(input_dir * move_speed, friction * delta).x
+		velocity.z = velocity.move_toward(input_dir * move_speed, friction * delta).z
 	
 ## Many of the movement states need to update the character's facing direction
 ## based on the camera.
@@ -71,8 +64,3 @@ func orient_to_face_camera_direction(camera: CameraController, delta: float) -> 
 	
 	# Prevent weird stuff from happening
 	cb.transform.basis = cb.transform.basis.orthonormalized()
-
-func check_if_on_ground_or_ceiling() -> void:
-	# Don't calculate gravity if we're on the ground and make us fall down when hitting the ceiling
-	if cb.is_on_floor() == true or cb.is_on_ceiling() == true:
-		velocity.y = 0
