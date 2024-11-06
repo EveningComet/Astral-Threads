@@ -50,9 +50,9 @@ func _next_action() -> void:
 	
 	# Perform the next action
 	var current_action: StoredAction = _actions_to_execute.pop_front()
-	execute_action(current_action)
+	_execute_action(current_action)
 
-func execute_action(current_action: StoredAction) -> void:
+func _execute_action(current_action: StoredAction) -> void:
 	var activator: Combatant = current_action.activator
 	
 	# Safety check for making sure the activator still exists
