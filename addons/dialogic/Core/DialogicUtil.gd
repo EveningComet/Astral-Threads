@@ -363,6 +363,74 @@ static func get_scene_export_defaults(node:Node) -> Dictionary:
 
 #endregion
 
+#region MAKE CUSTOM
+
+static func make_file_custom(original_file:String, target_folder:String, new_file_name := "", new_folder_name := "") -> String:
+	if not ResourceLoader.exists(original_file):
+		push_error("[Dialogic] Unable to make file with invalid path custom!")
+		return ""
+
+	if new_folder_name:
+		target_folder = target_folder.path_join(new_folder_name)
+		DirAccess.make_dir_absolute(target_folder)
+
+	if new_file_name.is_empty():
+		new_file_name = "custom_" + original_file.get_file()
+
+	if not new_file_name.ends_with(original_file.get_extension()):
+		new_file_name += "." + original_file.get_extension()
+
+	var target_file := target_folder.path_join(new_file_name)
+
+	customize_file(original_file, target_file)
+
+	get_dialogic_plugin().get_editor_interface().get_resource_filesystem().scan_sources()
+
+	return target_file
+
+
+static func customize_file(original_file:String, target_file:String) -> String:
+	#print("\nCUSTOMIZE FILE")
+	#printt(original_file, "->", target_file)
+
+	DirAccess.copy_absolute(original_file, target_file)
+
+	var file := FileAccess.open(target_file, FileAccess.READ)
+	var file_text := file.get_as_text()
+	file.close()
+
+	# If we are customizing a scene, we check for any resources used in that scene that are in the same folder.
+	# Those will be copied as well and the scene will be modified to point to them.
+	if file_text.begins_with('[gd_'):
+		var base_path: String = original_file.get_base_dir()
+
+		var remove_uuid_regex := r'\[gd_.* (?<uid>uid="uid:[^"]*")'
+		var result := RegEx.create_from_string(remove_uuid_regex).search(file_text)
+		if result:
+			file_text = file_text.replace(result.get_string("uid"), "")
+
+		# This regex also removes the UID referencing the original resource
+		var file_regex := r'(uid="[^"]*" )?\Qpath="'+base_path+r'\E(?<file>[^"]*)"'
+		result = RegEx.create_from_string(file_regex).search(file_text)
+		while result:
+			var found_file_name := result.get_string('file')
+			var found_file_path := base_path.path_join(found_file_name)
+			var target_file_path := target_file.get_base_dir().path_join(found_file_name)
+
+			# Files found in this file will ALSO be customized.
+			customize_file(found_file_path, target_file_path)
+
+			file_text = file_text.replace(found_file_path, target_file_path)
+
+			result = RegEx.create_from_string(file_regex).search(file_text)
+
+	file = FileAccess.open(target_file, FileAccess.WRITE)
+	file.store_string(file_text)
+	file.close()
+
+	return target_file
+
+#endregion
 
 #region INSPECTOR FIELDS
 ################################################################################
@@ -447,9 +515,14 @@ static func setup_script_property_edit_node(property_info: Dictionary, value:Var
 				if value != null:
 					input.text = value
 				input.text_submitted.connect(DialogicUtil._on_export_input_text_submitted.bind(property_info.name, property_changed))
+		TYPE_DICTIONARY:
+			input = load("res://addons/dialogic/Editor/Events/Fields/field_dictionary.tscn").instantiate()
+			input.property_name = property_info["name"]
+			input.value_changed.connect(_on_export_dict_submitted.bind(property_changed))
 		TYPE_OBJECT:
 			input = load("res://addons/dialogic/Editor/Common/hint_tooltip_icon.tscn").instantiate()
 			input.hint_text = "Objects/Resources as settings are currently not supported. \nUse @export_file('*.extension') instead and load the resource once needed."
+
 		_:
 			input = LineEdit.new()
 			if value != null:
@@ -480,6 +553,9 @@ static func _on_export_string_enum_submitted(value:int, property_name:String, li
 	callable.call(property_name, var_to_str(list[value]))
 
 static func _on_export_vector_submitted(property_name:String, value:Variant, callable: Callable) -> void:
+	callable.call(property_name, var_to_str(value))
+
+static func _on_export_dict_submitted(property_name:String, value:Variant, callable: Callable) -> void:
 	callable.call(property_name, var_to_str(value))
 
 #endregion
@@ -583,7 +659,7 @@ static func get_portrait_suggestions(search_text:String, character:DialogicChara
 
 
 static func get_portrait_position_suggestions(search_text := "") -> Dictionary:
-	var icon := load(DialogicUtil.get_module_path("Character").path_join('event_portrait_position.svg'))
+	var icon := load(DialogicUtil.get_module_path("Character").path_join('portrait_position.svg'))
 
 	var setting: String = ProjectSettings.get_setting('dialogic/portraits/position_suggestion_names', 'leftmost, left, center, right, rightmost')
 
@@ -598,4 +674,3 @@ static func get_portrait_position_suggestions(search_text := "") -> Dictionary:
 			suggestions.erase(search_text)
 
 	return suggestions
-

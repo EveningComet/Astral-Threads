@@ -66,13 +66,22 @@ func to_text() -> String:
 
 	result_string = "- "+text.strip_edges()
 	var shortcode := store_to_shortcode_parameters()
-	if (condition and _has_condition) or shortcode:
+	if (condition and _has_condition) or shortcode or extra_data:
 		result_string += " |"
 	if condition and _has_condition:
-		result_string += " [if "+condition+"]"
+		result_string += " [if " + condition + "]"
 
-	if shortcode:
-		result_string += " ["+shortcode+"]"
+	if shortcode or extra_data:
+		result_string += " [" + shortcode
+		if extra_data:
+			var extra_data_string := ""
+			for i in extra_data:
+				extra_data_string += " " + i + '="' + value_to_string(extra_data[i]) + '"'
+			if shortcode:
+				result_string += " "
+			result_string += extra_data_string.strip_edges()
+		result_string += "]"
+
 	return result_string
 
 
@@ -85,6 +94,10 @@ func from_text(string:String) -> void:
 	_has_condition = not condition.is_empty()
 	if result.get_string('shortcode'):
 		load_from_shortcode_parameters(result.get_string("shortcode"))
+		var shortcode := parse_shortcode_parameters(result.get_string('shortcode'))
+		shortcode.erase("else")
+		shortcode.erase("alt_text")
+		extra_data = shortcode.duplicate()
 
 
 func get_shortcode_parameters() -> Dictionary:
@@ -95,7 +108,7 @@ func get_shortcode_parameters() -> Dictionary:
 										"Hide"		:{'value':ElseActions.HIDE,'text_alt':['hide'] },
 										"Disable"	:{'value':ElseActions.DISABLE,'text_alt':['disable']}}},
 		"alt_text"		: {"property": "disabled_text", 	"default": ""},
-		"extra_data"	: {"property": "extra_data", 		"default": {}},
+		"extra_data"	: {"property": "extra_data", 		"default": {}, "custom_stored":true},
 		}
 
 
@@ -217,4 +230,3 @@ func _get_syntax_highlighting(Highlighter:SyntaxHighlighter, dict:Dictionary, li
 		dict = Highlighter.color_shortcode_content(dict, line, shortcode_begin, 0, event_color)
 	return dict
 #endregion
-
