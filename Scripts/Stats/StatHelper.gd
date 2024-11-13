@@ -1,6 +1,7 @@
 ## A class that stores variables related to different types of stats.
 class_name StatHelper
 
+## Used to assist with accessing stats easily.
 enum StatTypes {
 	# Attributes
 	Vitality,             ## For health, defense, etc.
@@ -62,4 +63,17 @@ static var damage_to_res_map: Dictionary = {
 
 ## Wrapper for getting the attributes.
 static var attributes: Array[StatTypes]:
-	get: return [StatTypes.Vitality, StatTypes.Technique, StatTypes.Will]
+	get:
+		var to_return: Array[StatTypes]
+		for i in range(StatTypes.MaxHP - 1, -1, -1):
+			to_return.append(i)
+		return to_return
+
+## Return a list of the stat indexes without the attributes.
+static func get_non_attributes_as_list() -> Array[int]:
+	var to_return: Array[int] = []
+	for i in range(StatTypes.size()):
+		to_return.append(i)
+	for i in range(StatTypes.MaxHP, -1, -1):
+		to_return.erase(i)
+	return to_return

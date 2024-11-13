@@ -9,6 +9,8 @@ signal displayed_character_changed(new_char: PlayerCombatant)
 
 @export var attributes_container: Container
 
+@export var derived_stats_container: Container
+
 @export var stat_displayer_prefab: PackedScene
 
 ## The prefab for displaying a party member.
@@ -39,8 +41,8 @@ func set_pm_to_inspect(new_pm: PlayerCombatant) -> void:
 		equipment_displayer.clear_inventory()
 	
 	curr_inspected_pm = new_pm
-	update_attributes()
 	curr_inspected_pm.stat_changed.connect( _on_stat_changed )
+	_on_stat_changed(curr_inspected_pm)
 	mark_active_member(curr_inspected_pm)
 	
 	# Update the equipment displayer to match
@@ -51,19 +53,44 @@ func set_pm_to_inspect(new_pm: PlayerCombatant) -> void:
 
 ## Whenever a stat has changed, update to reflect the values.
 func _on_stat_changed(combatant: PlayerCombatant) -> void:
-	update_attributes()
+	_update_displayed_stats()
 
-func update_attributes() -> void:
+func _update_displayed_stats() -> void:
+	_update_attributes()
+	_update_derived_stats()
+
+func _update_attributes() -> void:
 	for c in attributes_container.get_children():
 		c.queue_free()
 	
 	for attribute in StatHelper.attributes:
-		var stat_displayer: StatDisplayer = stat_displayer_prefab.instantiate()
-		stat_displayer.update_display(
-			str(StatHelper.StatTypes.keys()[attribute]),
-			str(curr_inspected_pm.stats.get_calculated_value(attribute))
+		_spawn_stat_displayer(
+			attribute,
+			curr_inspected_pm.stats.get_calculated_value(attribute),
+			attributes_container
 		)
-		attributes_container.add_child(stat_displayer)
+
+func _update_derived_stats() -> void:
+	for c in derived_stats_container.get_children():
+		c.queue_free()
+	
+	for i in range(StatHelper.StatTypes.MaxHP, StatHelper.StatTypes.size()):
+		match i:
+			StatHelper.StatTypes.CurrentHP, StatHelper.StatTypes.CurrentSP:
+				continue
+				
+			_:
+				_spawn_stat_displayer(
+					i, curr_inspected_pm.stats.get_calculated_value(i), derived_stats_container
+				)
+
+func _spawn_stat_displayer(stat_type: StatHelper.StatTypes, value, container: Container) -> void:
+	var stat_displayer: StatDisplayer = stat_displayer_prefab.instantiate()
+	stat_displayer.update_display(
+		str(StatHelper.StatTypes.keys()[stat_type]),
+		str(value)
+	)
+	container.add_child(stat_displayer)
 
 func clear_members_container() -> void:
 	for child in members_container.get_children():

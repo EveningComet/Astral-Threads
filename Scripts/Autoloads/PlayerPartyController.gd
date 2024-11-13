@@ -46,4 +46,4 @@ func is_party_fightable() -> bool:
 func fully_restore_party() -> void:
 	for pm: PlayerCombatant in active_party:
 		if pm != null:
-			pm.full_restore()
+			pm.stats.full_restore()

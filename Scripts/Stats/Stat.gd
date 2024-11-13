@@ -1,8 +1,8 @@
 ## Class for a stat belonging to a character.
-class_name Stat
+class_name Stat extends Resource
 
 ## Base value before any calculations
-var base_value: float = 0.0
+@export var base_value: float = 0.0
 
 ## The things that will change the modified value
 var modifiers: Array[StatModifier] = []

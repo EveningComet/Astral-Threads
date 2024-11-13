@@ -19,6 +19,7 @@ func set_inventory_to_display(new_inventory: Inventory) -> void:
 	inventory_to_display.inventory_updated.connect( populate_item_container )
 	populate_item_container( inventory_to_display )
 
+## Clear the displayed inventory.
 func clear_inventory() -> void:
 	inventory_to_display.inventory_updated.disconnect( populate_item_container )
 	inventory_to_display = null
