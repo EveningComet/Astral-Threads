@@ -65,7 +65,7 @@ static var damage_to_res_map: Dictionary = {
 static var attributes: Array[StatTypes]:
 	get:
 		var to_return: Array[StatTypes]
-		for i in range(StatTypes.MaxHP - 1, -1, -1):
+		for i in range(StatTypes.Vitality, StatTypes.MaxHP):
 			to_return.append(i)
 		return to_return
 
