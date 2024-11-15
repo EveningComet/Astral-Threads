@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5xtovj8asaxe"]
 
 [ext_resource type="PackedScene" uid="uid://5a4bwrowsmnr" path="res://Scenes/UI/Portrait Displayer Panel.tscn" id="1_dhysq"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/PartyInspectorSlot.gd" id="1_qt0pg"]
+[ext_resource type="Script" path="res://Scripts/UI/Party/PartyInspectorSlot.gd" id="1_qt0pg"]
 
 [node name="Party Inspector Slot" type="VBoxContainer" node_paths=PackedStringArray("portrait_displayer", "name_label", "level_value_label")]
 anchors_preset = 5

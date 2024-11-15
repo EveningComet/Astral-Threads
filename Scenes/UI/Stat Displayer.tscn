@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dwxfk6xsgr5um"]
 
-[ext_resource type="Script" path="res://Scripts/UI/StatDisplayer.gd" id="1_jpe2h"]
+[ext_resource type="Script" path="res://Scripts/UI/Party/StatDisplayer.gd" id="1_jpe2h"]
 
 [node name="Stat Displayer" type="MarginContainer" node_paths=PackedStringArray("stat_name_label", "stat_value_label")]
 offset_right = 206.0

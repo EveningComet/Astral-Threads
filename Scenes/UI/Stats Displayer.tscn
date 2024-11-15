@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt3brxt02moq0"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Party/StatsDisplayer.gd" id="1_ysebq"]
+[ext_resource type="PackedScene" uid="uid://dwxfk6xsgr5um" path="res://Scenes/UI/Stat Displayer.tscn" id="2_qu05o"]
+
+[node name="Stats Displayer" type="PanelContainer" node_paths=PackedStringArray("attributes_container", "derived_stats_container")]
+custom_minimum_size = Vector2(300, 200)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ysebq")
+stat_displayer_prefab = ExtResource("2_qu05o")
+attributes_container = NodePath("HBoxContainer/Attributes Container")
+derived_stats_container = NodePath("HBoxContainer/ScrollContainer/Derived Stats Container")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Attributes Container" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Derived Stats Container" type="VBoxContainer" parent="HBoxContainer/ScrollContainer"]
+layout_mode = 2

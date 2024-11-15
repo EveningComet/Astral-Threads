@@ -1,5 +1,6 @@
 ## Modified inventory to only allow equipment.
 class_name EquipmentHolder extends Inventory
+
 const MAX_NUMBER_OF_EQUIP_SLOTS: int = 4
 
 ## The combatant that will have their stats altered.
@@ -35,7 +36,7 @@ func drop_slot_data(grabbed_slot_data: ItemSlotData, index: int) -> ItemSlotData
 	if grabbed_slot_data.stored_item.item_type != ItemTypes.ItemTypes.Equipment:
 		return grabbed_slot_data
 	
-	if meets_attribute_requirements(grabbed_slot_data.stored_item) == false:
+	if _meets_attribute_requirements(grabbed_slot_data.stored_item) == false:
 		return grabbed_slot_data
 	
 	# TODO: Cleaner way to do this?
@@ -63,7 +64,7 @@ func drop_single_slot_data(grabbed_slot_data: ItemSlotData, index: int) -> ItemS
 	if grabbed_slot_data.stored_item == null:
 		return grabbed_slot_data
 		
-	if meets_attribute_requirements(grabbed_slot_data.stored_item) == false:
+	if _meets_attribute_requirements(grabbed_slot_data.stored_item) == false:
 		return grabbed_slot_data
 	
 	# If something wants to place an item in us that is not equipment, stop it
@@ -110,7 +111,7 @@ func find_empty_slot(slot_data: ItemSlotData) -> int:
 
 ## Used to check if the character meets all the attribute requirements for a
 ## piece of equipment.
-func meets_attribute_requirements(item_data: ItemData) -> bool:
+func _meets_attribute_requirements(item_data: ItemData) -> bool:
 	if item_data.attribute_requirements.size() == 0:
 		return true
 	

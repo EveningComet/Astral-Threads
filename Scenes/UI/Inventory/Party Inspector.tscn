@@ -1,19 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddxk8hvdarn1v"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/PartyInspector.gd" id="1_xadsv"]
-[ext_resource type="PackedScene" uid="uid://dwxfk6xsgr5um" path="res://Scenes/UI/Stat Displayer.tscn" id="2_03gsr"]
+[ext_resource type="Script" path="res://Scripts/UI/Party/PartyInspector.gd" id="1_xadsv"]
 [ext_resource type="PackedScene" uid="uid://c5xtovj8asaxe" path="res://Scenes/UI/Inventory/Party Inspector Slot.tscn" id="3_830j5"]
 [ext_resource type="PackedScene" uid="uid://qvkhx57j56qi" path="res://Scenes/UI/Equipment Displayer.tscn" id="4_p3jjh"]
+[ext_resource type="PackedScene" uid="uid://dt3brxt02moq0" path="res://Scenes/UI/Stats Displayer.tscn" id="5_c24mv"]
 
-[node name="Party Inspector" type="PanelContainer" node_paths=PackedStringArray("equipment_displayer", "attributes_container", "derived_stats_container", "members_container")]
+[node name="Party Inspector" type="PanelContainer" node_paths=PackedStringArray("stats_displayer", "equipment_displayer", "members_container")]
 custom_minimum_size = Vector2(500, 600)
 offset_right = 500.0
 offset_bottom = 866.0
 script = ExtResource("1_xadsv")
+stats_displayer = NodePath("MarginContainer/VBoxContainer/Stats Displayer")
 equipment_displayer = NodePath("MarginContainer/VBoxContainer/Equipment Displayer")
-attributes_container = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Attributes Container")
-derived_stats_container = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/Derived Stats Container")
-stat_displayer_prefab = ExtResource("2_03gsr")
 slot_prefab = ExtResource("3_830j5")
 members_container = NodePath("MarginContainer/VBoxContainer/CenterContainer/Party Members")
 
@@ -70,18 +68,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="Attributes Container" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(250, 100)
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="Derived Stats Container" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
+[node name="Stats Displayer" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_c24mv")]
 layout_mode = 2

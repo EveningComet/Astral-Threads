@@ -31,12 +31,14 @@ func initialize() -> void:
 ## Initialize the base attributes based on the passed class.
 func initialize_with_job(job_data: Job) -> void:
 	# Attributes
-	stats[StatHelper.StatTypes.Vitality]     = Stat.new(job_data.starting_vitality)
-	stats[StatHelper.StatTypes.Technique]    = Stat.new(job_data.starting_technique)
-	stats[StatHelper.StatTypes.Will]         = Stat.new(job_data.starting_will)
+	stats[StatHelper.StatTypes.Vitality]  = Stat.new(job_data.starting_vitality)
+	stats[StatHelper.StatTypes.Technique] = Stat.new(job_data.starting_technique)
+	stats[StatHelper.StatTypes.Will]      = Stat.new(job_data.starting_will)
 	
 	_initialize_vitals()
 	_initialize_other_stats()
+	_update_vitals()
+	full_restore()
 	combatant.stat_changed.emit(combatant)
 
 ## Initialize a character based on enemy data.

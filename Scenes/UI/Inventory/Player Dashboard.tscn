@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cw34c8yrs3mye"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/PlayerDashboard.gd" id="1_q3o46"]
+[ext_resource type="Script" path="res://Scripts/UI/Party/PlayerDashboard.gd" id="1_q3o46"]
 [ext_resource type="PackedScene" uid="uid://cxwyyabg6elpq" path="res://Scenes/UI/Inventory/Player Inventory Displayer.tscn" id="2_xqtoy"]
 [ext_resource type="PackedScene" uid="uid://ddxk8hvdarn1v" path="res://Scenes/UI/Inventory/Party Inspector.tscn" id="3_77ttr"]
 [ext_resource type="PackedScene" uid="uid://bn5nts3ewsda1" path="res://Scenes/UI/Inventory/Item Slot UI.tscn" id="4_qetuj"]

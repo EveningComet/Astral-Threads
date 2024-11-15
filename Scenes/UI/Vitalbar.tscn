@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dncn4di2g60np"]
 
-[ext_resource type="Script" path="res://Scripts/UI/General/Vitalbar.gd" id="1_7joyf"]
+[ext_resource type="Script" path="res://Scripts/UI/Party/Vitalbar.gd" id="1_7joyf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1cbc"]
 bg_color = Color(0.6, 1, 0, 1)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bo0nvc14cnaxw"]
 
-[ext_resource type="Script" path="res://Scripts/UI/General/PartyMemberSlot.gd" id="1_j4nxw"]
+[ext_resource type="Script" path="res://Scripts/UI/Party/PartyMemberSlot.gd" id="1_j4nxw"]
 [ext_resource type="PackedScene" uid="uid://dncn4di2g60np" path="res://Scenes/UI/Vitalbar.tscn" id="2_owo0x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_riay1"]

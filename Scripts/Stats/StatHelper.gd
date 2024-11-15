@@ -74,6 +74,6 @@ static func get_non_attributes_as_list() -> Array[int]:
 	var to_return: Array[int] = []
 	for i in range(StatTypes.size()):
 		to_return.append(i)
-	for i in range(StatTypes.MaxHP, -1, -1):
+	for i in range(StatTypes.MaxHP - 1, -1, -1):
 		to_return.erase(i)
 	return to_return
