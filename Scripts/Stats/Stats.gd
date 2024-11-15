@@ -57,11 +57,11 @@ func initialize_with_enemy_data(ed: EnemyData) -> void:
 ## Initialize the HP and SP.
 func _initialize_vitals() -> void:
 	stats[StatHelper.StatTypes.MaxHP]     = Stat.new(
-		stats[StatHelper.StatTypes.Vitality].get_calculated_value() * VITALITY_HP_SCALER
+		_calculate_base_max_hp()
 	)
 	stats[StatHelper.StatTypes.CurrentHP] = get_max_hp()
 	stats[StatHelper.StatTypes.MaxSP]     = Stat.new(
-		stats[StatHelper.StatTypes.Will].get_calculated_value() * WILL_SP_SCALER
+		_calculate_base_max_sp()
 	)
 	stats[StatHelper.StatTypes.CurrentSP] = get_max_sp()
 
@@ -80,10 +80,10 @@ func _initialize_other_stats() -> void:
 ## Used to update the max hp and sp values when the related attributes are raised.
 func _update_vitals() -> void:
 	var true_max_hp: Stat = Stat.new(
-		stats[StatHelper.StatTypes.Vitality].get_calculated_value() * VITALITY_HP_SCALER
+		_calculate_base_max_hp()
 	)
 	var true_max_sp: Stat = Stat.new(
-		stats[StatHelper.StatTypes.Will].get_calculated_value() * WILL_SP_SCALER
+		_calculate_base_max_sp()
 	)
 	
 	for hp_mod: StatModifier in stats[StatHelper.StatTypes.MaxHP].get_modifiers():
@@ -98,6 +98,18 @@ func _update_vitals() -> void:
 		stats[StatHelper.StatTypes.CurrentHP] = get_max_hp()
 	if get_curr_sp() > get_max_sp():
 		stats[StatHelper.StatTypes.CurrentSP] = get_max_sp()
+
+## Before any modifiers, calculate the base max hp.
+func _calculate_base_max_hp() -> int:
+	var true_val: int = get_calculated_value(StatHelper.StatTypes.Vitality)
+	true_val *= VITALITY_HP_SCALER
+	return true_val
+
+## Before any modifiers, calculate the base, max sp.
+func _calculate_base_max_sp() -> int:
+	var true_val: int = get_calculated_value(StatHelper.StatTypes.Will)
+	true_val *= WILL_SP_SCALER
+	return true_val
 
 ## Wrapper/Helper for getting the calculated value for a cached stat.
 func get_calculated_value(stat_type: StatHelper.StatTypes) -> float:

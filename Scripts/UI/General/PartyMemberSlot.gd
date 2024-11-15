@@ -19,17 +19,17 @@ func set_combatant(pc: PlayerCombatant) -> void:
 	
 	# When the player character exists, display the relevant information to the player
 	if combatant != null:
-		combatant.stat_changed.connect( on_stat_changed )
+		combatant.stat_changed.connect( _on_stat_changed )
 		char_name_label.set_text(pc.char_name)
-		combatant.experience_gained.connect( on_experience_gained )
-		on_stat_changed(combatant)
+		combatant.experience_gained.connect( _on_experience_gained )
+		_on_stat_changed(combatant)
 		
 		# Enable the things the player should see
 		for c in content_container.get_children():
 			c.show()
 
 ## When the stats of the monitored character changes, update the vital bars.
-func on_stat_changed(pc: Combatant) -> void:
+func _on_stat_changed(pc: Combatant) -> void:
 	var curr_health: int = combatant.stats.get_curr_hp()
 	var max_health:  int = combatant.stats.get_max_hp()
 	var curr_sp:     int = combatant.stats.get_curr_sp()
@@ -40,7 +40,7 @@ func on_stat_changed(pc: Combatant) -> void:
 
 ## When the monitored player character gains experience points, update to show
 ## the visual change.
-func on_experience_gained(growth_data: Array) -> void:
+func _on_experience_gained(growth_data: Array) -> void:
 	for line in growth_data:
 		var desired_experience = line[0]
 		var max_experience     = line[1]
