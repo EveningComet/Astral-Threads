@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cou2j1qg824cm"]
+
+[ext_resource type="Script" path="res://Scripts/UI/General/TooltipHandler.gd" id="1_lxmej"]
+[ext_resource type="PackedScene" uid="uid://jd441pnf8tc7" path="res://Scenes/UI/Tooltip.tscn" id="2_g3i0b"]
+
+[node name="Tooltip Handler" type="CanvasLayer"]
+layer = 99
+script = ExtResource("1_lxmej")
+tooltip_scene = ExtResource("2_g3i0b")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

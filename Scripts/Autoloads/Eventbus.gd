@@ -27,3 +27,9 @@ signal player_turn_started()
 signal side_finished_turn(stored_actions: Array[StoredAction])
 
 signal battle_ended()
+
+## Taking the passed object, display the needed information to the player.
+signal tooltip_needed(object: Control)
+
+## Used to remove any and all tooltips.
+signal tooltip_unneeded()

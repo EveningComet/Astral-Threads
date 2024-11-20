@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bn5nts3ewsda1" path="res://Scenes/UI/Inventory/Item Slot UI.tscn" id="4_qetuj"]
 
 [node name="Player Dashboard" type="CanvasLayer" node_paths=PackedStringArray("player_inventory_displayer", "party_inspector", "external_inventory_displayer", "grabbed_slot_ui")]
-layer = 2
 script = ExtResource("1_q3o46")
 player_inventory_displayer = NodePath("Control/HBoxContainer/Player Inventory Displayer")
 party_inspector = NodePath("Control/HBoxContainer/Party Inspector")

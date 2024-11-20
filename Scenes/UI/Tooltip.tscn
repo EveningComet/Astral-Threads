@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://jd441pnf8tc7"]
+
+[ext_resource type="Script" path="res://Scripts/UI/General/Tooltip.gd" id="1_boulp"]
+
+[node name="Tooltip" type="PanelContainer" node_paths=PackedStringArray("title", "descriptor")]
+custom_minimum_size = Vector2(200, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_boulp")
+title = NodePath("MarginContainer/VBoxContainer/Title")
+descriptor = NodePath("MarginContainer/VBoxContainer/Description")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 28
+text = "Title"
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 22
+text = "This is where a cool description will go."

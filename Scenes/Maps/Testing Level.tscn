@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dxdkvgf7831js"]
+[gd_scene load_steps=54 format=3 uid="uid://dxdkvgf7831js"]
 
 [ext_resource type="Texture2D" uid="uid://cxymice35l0bo" path="res://Imported Assets/KenneyNL Prototyping Textures/Dark/texture_01.png" id="1_alguh"]
 [ext_resource type="PackedScene" uid="uid://cvcjhhiyqaotu" path="res://Scenes/Player.tscn" id="2_4df4m"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Scripts/Inventory/ItemData.gd" id="12_0oyl1"]
 [ext_resource type="PackedScene" uid="uid://24t7j5vea0bq" path="res://Scenes/UI/Skills/Skill Menu.tscn" id="12_aack8"]
 [ext_resource type="Script" path="res://Scripts/Stats/StatModifier.gd" id="13_72q8j"]
+[ext_resource type="PackedScene" uid="uid://cou2j1qg824cm" path="res://Scenes/UI/Tooltip Handler.tscn" id="22_sbf57"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tly4j"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -330,6 +331,8 @@ inventory = SubResource("Resource_1njun")
 [node name="Player Dashboard" parent="." instance=ExtResource("9_845o5")]
 
 [node name="SkillMenu" parent="." instance=ExtResource("12_aack8")]
+
+[node name="Tooltip Handler" parent="." instance=ExtResource("22_sbf57")]
 
 [connection signal="interacted" from="CSGCombiner3D/Switch/Interactable" to="CSGCombiner3D/Door/Door" method="_on_interacted"]
 [connection signal="interacted" from="CSGCombiner3D/Switch2/Interactable" to="CSGCombiner3D/Door/Door" method="_on_interacted"]

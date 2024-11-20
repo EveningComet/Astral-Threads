@@ -10,25 +10,27 @@ signal item_slot_selected(index: int, button_index: int)
 @export var amount_label: Label
 
 ## The attached slot data.
-var _slot: ItemSlotData
+var slot: ItemSlotData
 
 ## Represents where the item is located in an inventory. Used to help with sorting items.
 var _index: int = -1
 
 func _ready() -> void:
-	gui_input.connect( on_gui_input )
+	gui_input.connect( _on_gui_input )
+	mouse_entered.connect( _on_mouse_over )
+	mouse_exited.connect( _on_mouse_exit )
 
 ## Set the item to display.
 func set_slot_data(slot_data: ItemSlotData, new_index: int = -1) -> void:
-	_slot  = slot_data
+	slot  = slot_data
 	_index = new_index
 	
-	update_quantity_text(_slot)
-	if _slot != null:
-		display_icon.set_texture( _slot.stored_item.image )
+	_update_quantity_text(slot)
+	if slot != null:
+		display_icon.set_texture( slot.stored_item.image )
 	
-func update_quantity_text(slot_data: ItemSlotData) -> void:
-	if _slot == null:
+func _update_quantity_text(slot_data: ItemSlotData) -> void:
+	if slot == null:
 		amount_label.set_text( str(1) )
 		amount_label.hide()
 		return
@@ -41,7 +43,7 @@ func update_quantity_text(slot_data: ItemSlotData) -> void:
 		amount_label.hide()
 
 ## Works with the engine's input system to see what button was used to select this.
-func on_gui_input(event: InputEvent) -> void:
+func _on_gui_input(event: InputEvent) -> void:
 	# TODO: Figure out how to handle gamepad input.
 	if event is InputEventMouseButton \
 		and (event.button_index == MOUSE_BUTTON_LEFT \
@@ -55,3 +57,10 @@ func on_gui_input(event: InputEvent) -> void:
 				_index if _index > -1 else get_index(),
 				event.button_index
 			)
+
+func _on_mouse_over() -> void:
+	if slot != null:
+		Eventbus.tooltip_needed.emit( self )
+
+func _on_mouse_exit() -> void:
+	Eventbus.tooltip_unneeded.emit()
