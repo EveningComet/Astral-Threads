@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgfk6sf7fq7gp"]
+
+[ext_resource type="Texture2D" uid="uid://ckiup8xm3ffy" path="res://Imported Assets/KenneyNL Prototyping Textures/Red/texture_08.png" id="1_lw4s4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t8w5p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63gga"]
+albedo_texture = ExtResource("1_lw4s4")
+uv1_triplanar = true
+
+[node name="Physics Ball" type="RigidBody3D"]
+collision_mask = 3
+mass = 10.0
+angular_damp = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_t8w5p")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+material = SubResource("StandardMaterial3D_63gga")

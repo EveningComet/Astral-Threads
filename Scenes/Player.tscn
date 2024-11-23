@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvcjhhiyqaotu"]
+[gd_scene load_steps=9 format=3 uid="uid://cvcjhhiyqaotu"]
 
 [ext_resource type="Script" path="res://Scripts/Player/CameraController.gd" id="1_oii8x"]
 [ext_resource type="Script" path="res://Scripts/Player/Locomotion/PlayerLocomotionController.gd" id="1_r1d1o"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/Locomotion/States/PLAir.gd" id="4_ejjph"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerInputController.gd" id="5_k5e32"]
 [ext_resource type="Script" path="res://Scripts/Player/InteractionHandler.gd" id="6_w3y61"]
+[ext_resource type="Script" path="res://Scripts/World/Pusher.gd" id="7_2eu7l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bdikr"]
 
@@ -49,3 +50,6 @@ script = ExtResource("5_k5e32")
 script = ExtResource("6_w3y61")
 interaction_cast = NodePath("../Camera Rig/Camera3D/Interaction Cast")
 input_controller = NodePath("../PlayerInputController")
+
+[node name="Pusher" type="Node" parent="."]
+script = ExtResource("7_2eu7l")
