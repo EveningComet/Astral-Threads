@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwnhaciyp2bgc"]
+
+[ext_resource type="PackedScene" uid="uid://dnfaojl0h028m" path="res://Imported Assets/Models/Environments/Big Lake Map/Big Lake Map.glb" id="1_mduag"]
+
+[node name="Big Lake Map" instance=ExtResource("1_mduag")]
