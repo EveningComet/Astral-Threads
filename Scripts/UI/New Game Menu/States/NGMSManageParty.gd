@@ -12,12 +12,14 @@ func enter(msgs: Dictionary = {}) -> void:
 	manage_party_buttons_container.show()
 	manage_party_buttons_container.get_child(0).grab_focus()
 	
-	new_character_button.pressed.connect( on_new_character_button_pressed )
-	check_if_new_characters_can_be_added()
+	new_character_button.pressed.connect( _on_new_character_button_pressed )
+	remove_character_button.pressed.connect( _on_remove_character_button_pressed )
+	_check_if_new_characters_can_be_added()
 
 func exit() -> void:
 	manage_party_buttons_container.hide()
-	new_character_button.pressed.disconnect( on_new_character_button_pressed )
+	new_character_button.pressed.disconnect( _on_new_character_button_pressed )
+	remove_character_button.pressed.disconnect( _on_remove_character_button_pressed )
 
 func check_for_handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -26,11 +28,18 @@ func check_for_handle_input(event: InputEvent) -> void:
 
 ## Checks if there are any open slots in the party. If not, prevent anyone else
 ## from being added.
-func check_if_new_characters_can_be_added() -> void:
+func _check_if_new_characters_can_be_added() -> void:
 	for pm: PlayerCombatant in PlayerPartyController.get_party():
 		if pm == null:
+			new_character_button.disabled = false
 			return
 	new_character_button.disabled = true
 
-func on_new_character_button_pressed() -> void:
+func _on_new_character_button_pressed() -> void:
 	my_state_machine.change_to_state("NGMSSelectJob")
+
+func _on_remove_character_button_pressed() -> void:
+	# TODO: Create a state explicitly for managing the removal of party members.
+	# For now, only the last party member added will be removed.
+	PlayerPartyController.remove_last_member()
+	_check_if_new_characters_can_be_added()

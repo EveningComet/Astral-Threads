@@ -18,9 +18,28 @@ func add_to_party(pm: PlayerCombatant) -> void:
 			break
 	Eventbus.party_composition_changed.emit(active_party)
 
+func remove_from_party(pm: PlayerCombatant) -> void:
+	for slot: int in active_party.size():
+		if active_party[slot] != null and active_party[slot] == pm:
+			active_party[slot] = null
+			break
+	Eventbus.party_composition_changed.emit(active_party)
+
+## Helper function for removing the character at the last index of the party,
+## if someone exists.
+func remove_last_member() -> void:
+	var i: int = active_party.size() - 1
+	while i >= 0:
+		if active_party[i] != null:
+			active_party[i] = null
+			break
+		i -= 1
+	Eventbus.party_composition_changed.emit(active_party)
+
 func get_party() -> Array[PlayerCombatant]:
 	return active_party
 
+## Get the party members that can currently be targeted.
 func get_targetable_party() -> Array[PlayerCombatant]:
 	var to_return: Array[PlayerCombatant]
 	for pm: PlayerCombatant in get_party():

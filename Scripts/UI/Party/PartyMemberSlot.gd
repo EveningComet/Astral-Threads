@@ -25,8 +25,9 @@ func set_combatant(pc: PlayerCombatant) -> void:
 		_on_stat_changed(combatant)
 		
 		# Enable the things the player should see
-		for c in content_container.get_children():
-			c.show()
+		display_contents(true)
+	else:
+		display_contents(false)
 
 ## When the stats of the monitored character changes, update the vital bars.
 func _on_stat_changed(pc: Combatant) -> void:
@@ -55,3 +56,10 @@ func animate_xp_bar(target, duration: float = 1.0) -> void:
 	tween.tween_property(xp_bar, "value", target,
 	duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	await tween.finished
+
+func display_contents(display: bool) -> void:
+	for c in content_container.get_children():
+		if display == true:
+			c.show()
+		else:
+			c.hide()
