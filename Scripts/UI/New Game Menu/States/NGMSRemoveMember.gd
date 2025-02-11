@@ -17,10 +17,11 @@ func enter(msgs: Dictionary = {}) -> void:
 	remove_character_button.hide()
 	
 	for slot in active_party_container.get_children():
-		if slot is PartyMemberSlot:
-			slot.gui_input.connect(_on_party_member_slot_clicked.bind(slot))
+		if (slot as PartyMemberSlot).combatant != null:
+			slot.enable_highlight_on_hover(true)
+			slot.gui_input.connect(_on_party_member_slot_input.bind(slot))
 
-func _on_party_member_slot_clicked(event, slot: PartyMemberSlot) -> void:
+func _on_party_member_slot_input(event, slot: PartyMemberSlot) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		PlayerPartyController.remove_from_party(slot.combatant)
 
@@ -30,7 +31,7 @@ func exit() -> void:
 	new_character_button.pressed.disconnect( _on_new_character_button_pressed )
 	for slot in active_party_container.get_children():
 		if slot is PartyMemberSlot:
-			slot.gui_input.disconnect(_on_party_member_slot_clicked)
+			slot.gui_input.disconnect(_on_party_member_slot_input)
 
 func check_for_handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
