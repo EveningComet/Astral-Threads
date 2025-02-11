@@ -29,6 +29,22 @@ func set_combatant(pc: PlayerCombatant) -> void:
 	else:
 		display_contents(false)
 
+func enable_highlight_on_hover(enabled: bool) -> void:
+	if enabled:
+		mouse_entered.connect(highlight)
+		mouse_exited.connect(unhighlight)
+	else:
+		mouse_entered.disconnect(highlight)
+		mouse_exited.disconnect(unhighlight)
+
+func highlight() -> void:
+	if combatant != null:
+		char_name_label.set_text('>' + combatant.char_name)
+
+func unhighlight() -> void:
+	if combatant != null:
+		char_name_label.set_text(combatant.char_name)
+
 ## When the stats of the monitored character changes, update the vital bars.
 func _on_stat_changed(pc: Combatant) -> void:
 	var curr_health: int = combatant.stats.get_curr_hp()

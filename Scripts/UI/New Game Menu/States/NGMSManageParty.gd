@@ -39,7 +39,4 @@ func _on_new_character_button_pressed() -> void:
 	my_state_machine.change_to_state("NGMSSelectJob")
 
 func _on_remove_character_button_pressed() -> void:
-	# TODO: Create a state explicitly for managing the removal of party members.
-	# For now, only the last party member added will be removed.
-	PlayerPartyController.remove_last_member()
-	_check_if_new_characters_can_be_added()
+	my_state_machine.change_to_state("NGMSRemoveMember")
