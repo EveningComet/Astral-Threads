@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d20j14agk0xhd"]
+[gd_scene load_steps=16 format=3 uid="uid://d20j14agk0xhd"]
 
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/NewGameController.gd" id="1_al584"]
 [ext_resource type="PackedScene" uid="uid://5a4bwrowsmnr" path="res://Scenes/UI/Portrait Displayer Panel.tscn" id="2_o2gpb"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bo0nvc14cnaxw" path="res://Scenes/UI/Party Member Slot.tscn" id="4_k01rt"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSSelectJob.gd" id="5_0dnxh"]
 [ext_resource type="PackedScene" uid="uid://b2ro8tps610ld" path="res://Scenes/UI/Character Job Button.tscn" id="6_ij4rg"]
+[ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSRemoveMember.gd" id="6_lap32"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSSelectStartingSkills.gd" id="7_qa6fg"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/States/NGMSEnterName.gd" id="8_bregl"]
 [ext_resource type="Script" path="res://Scripts/UI/New Game Menu/DescriptionDisplayer.gd" id="11_di7lv"]
@@ -35,6 +36,14 @@ description_displayer = NodePath("../../Description Displayer")
 
 [node name="NGMSManageParty" type="Node" parent="NewGameController" node_paths=PackedStringArray("new_character_button", "remove_character_button", "manage_party_buttons_container", "active_party_container", "description_displayer")]
 script = ExtResource("3_j8r74")
+new_character_button = NodePath("../../Manage Party Buttons/Create New Character")
+remove_character_button = NodePath("../../Manage Party Buttons/Remove Character")
+manage_party_buttons_container = NodePath("../../Manage Party Buttons")
+active_party_container = NodePath("../../Active Party Displayer")
+description_displayer = NodePath("../../Description Displayer")
+
+[node name="NGMSRemoveMember" type="Node" parent="NewGameController" node_paths=PackedStringArray("new_character_button", "remove_character_button", "manage_party_buttons_container", "active_party_container", "description_displayer")]
+script = ExtResource("6_lap32")
 new_character_button = NodePath("../../Manage Party Buttons/Create New Character")
 remove_character_button = NodePath("../../Manage Party Buttons/Remove Character")
 manage_party_buttons_container = NodePath("../../Manage Party Buttons")
