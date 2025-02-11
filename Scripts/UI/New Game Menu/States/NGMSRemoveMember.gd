@@ -31,6 +31,7 @@ func exit() -> void:
 	new_character_button.pressed.disconnect( _on_new_character_button_pressed )
 	for slot in active_party_container.get_children():
 		if slot is PartyMemberSlot:
+			slot.enable_highlight_on_hover(false)
 			slot.gui_input.disconnect(_on_party_member_slot_input)
 
 func check_for_handle_input(event: InputEvent) -> void:
