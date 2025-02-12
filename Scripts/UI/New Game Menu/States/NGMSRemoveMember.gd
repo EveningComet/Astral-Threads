@@ -24,6 +24,9 @@ func enter(msgs: Dictionary = {}) -> void:
 func _on_party_member_slot_input(event, slot: PartyMemberSlot) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		PlayerPartyController.remove_from_party(slot.combatant)
+		
+		# Quick cleanup to remove empty spaces between party members
+		PlayerPartyController.cleanup_empty_spaces()
 
 func exit() -> void:
 	new_character_button.text = _old_text_new_character_button

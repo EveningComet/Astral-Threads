@@ -4,10 +4,10 @@ class_name EquipmentHolder extends Inventory
 const MAX_NUMBER_OF_EQUIP_SLOTS: int = 4
 
 ## The combatant that will have their stats altered.
-var monitored_combatant: Combatant
+var _monitored_combatant: Combatant
 
 func _init(com: Combatant):
-	monitored_combatant = com
+	_monitored_combatant = com
 	
 	for i in MAX_NUMBER_OF_EQUIP_SLOTS:
 		stored_items.insert(i, null)
@@ -115,7 +115,7 @@ func _meets_attribute_requirements(item_data: ItemData) -> bool:
 	if item_data.attribute_requirements.size() == 0:
 		return true
 	
-	var stats: Dictionary = monitored_combatant.stats.stats
+	var stats: Dictionary = _monitored_combatant.stats.stats
 	for sr: StatRequirement in item_data.attribute_requirements:
 		var attribute_value: int = floor(stats[sr.attribute].get_calculated_value())
 		if attribute_value < sr.requirement:
@@ -125,8 +125,8 @@ func _meets_attribute_requirements(item_data: ItemData) -> bool:
 
 func add_modifiers_from_equipment(item_data: ItemData) -> void:
 	for sm: StatModifier in item_data.stat_modifiers:
-		monitored_combatant.stats.add_modifier(sm.stat_changing, sm)
+		_monitored_combatant.stats.add_modifier(sm.stat_changing, sm)
 
 func remove_modifiers_from_equipment(item_data: ItemData) -> void:
 	for sm: StatModifier in item_data.stat_modifiers:
-		monitored_combatant.stats.remove_modifier(sm.stat_changing, sm)
+		_monitored_combatant.stats.remove_modifier(sm.stat_changing, sm)

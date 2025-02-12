@@ -61,6 +61,14 @@ func is_party_fightable() -> bool:
 			break
 	return status
 
+## "Sorts" the active party to remove spaces between characters.
+func cleanup_empty_spaces() -> void:
+	for i: int in MAX_PMS_IN_ACTIVE_PARTY:
+		var null_idx: int = active_party.find(null)
+		active_party.remove_at(null_idx)
+		active_party.append(null)
+	Eventbus.party_composition_changed.emit(active_party)
+
 ## Fully heal the party.
 func fully_restore_party() -> void:
 	for pm: PlayerCombatant in active_party:
