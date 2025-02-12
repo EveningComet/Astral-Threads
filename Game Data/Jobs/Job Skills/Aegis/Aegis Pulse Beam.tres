@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=5 format=3 uid="uid://rx0a02jikklt"]
+
+[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="1_m3w6m"]
+[ext_resource type="Texture2D" uid="uid://b7j220k0ewh35" path="res://addons/dialogic/Editor/Images/Dropdown/join.svg" id="1_s34ks"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="2_aht0l"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillTier.gd" id="7_81a3n"]
+
+[resource]
+script = ExtResource("1_m3w6m")
+localization_name = "Pulse Beam"
+localization_description = "Fire a laser beam at the enemy. It will hit twice."
+display_texture = ExtResource("1_s34ks")
+is_starting_skill = true
+base_cost = 5
+is_passive = false
+num_activations = 2
+action_type = 0
+effects = Array[ExtResource("2_aht0l")]([])
+tiers = Array[ExtResource("7_81a3n")]([])

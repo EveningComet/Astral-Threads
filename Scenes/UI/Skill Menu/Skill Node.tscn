@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgcys4q5fe4rj"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Skill Menu/SkillNode.gd" id="2_w3iii"]
+
+[node name="Skill Node" type="Button" node_paths=PackedStringArray("display_icon", "rank_label", "line_2d")]
+custom_minimum_size = Vector2(90, 90)
+offset_right = 88.0
+offset_bottom = 88.0
+script = ExtResource("2_w3iii")
+display_icon = NodePath("MarginContainer/Display Icon")
+rank_label = NodePath("Level Label")
+inactive_color = Color(1, 1, 1, 0.498039)
+line_2d = NodePath("Line2D")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Display Icon" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Level Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "n / nn"
+horizontal_alignment = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+show_behind_parent = true
+top_level = true
+z_index = -1
+width = 5.0

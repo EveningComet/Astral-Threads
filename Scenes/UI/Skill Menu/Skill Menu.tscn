@@ -1,0 +1,174 @@
+[gd_scene load_steps=6 format=3 uid="uid://nimo8k7qtqsa"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Skill Menu/SkillMenuController.gd" id="1_qqvha"]
+[ext_resource type="Script" path="res://Scripts/UI/Skill Menu/AttributesMenu.gd" id="4_p8lrj"]
+[ext_resource type="PackedScene" uid="uid://bqo0wxls0cbeu" path="res://Scenes/UI/Skill Menu/Attribute Menu Entry.tscn" id="5_bcf1b"]
+[ext_resource type="Script" path="res://Scripts/UI/Skill Menu/ClassUpgrader.gd" id="5_f68im"]
+[ext_resource type="Script" path="res://Scripts/UI/Skill Menu/AttributesUpgrader.gd" id="6_x1qmq"]
+
+[node name="Skill Menu" type="CanvasLayer"]
+
+[node name="SkillMenuController" type="Node" parent="." node_paths=PackedStringArray("tree_container", "character_tab_bar", "class_tabs", "exit_button", "undo_skill_points_button", "skill_points_label", "canvas", "attributes_menu", "class_upgrader", "attributes_upgrader")]
+script = ExtResource("1_qqvha")
+tree_container = NodePath("../OverviewPanel/SkillsPanel/ScrollContainer")
+character_tab_bar = NodePath("../OverviewPanel/Character Tabs")
+class_tabs = NodePath("../OverviewPanel/SkillsPanel/Class Tabs")
+exit_button = NodePath("../OverviewPanel/ExitButton")
+undo_skill_points_button = NodePath("../OverviewPanel/SkillsPanel/UndoButton")
+skill_points_label = NodePath("../OverviewPanel/SkillsPanel/SkillPointsLabel")
+canvas = NodePath("..")
+attributes_menu = NodePath("../AttributesMenu")
+class_upgrader = NodePath("../ClassUpgrader")
+attributes_upgrader = NodePath("../AttributesUpgrader")
+
+[node name="AttributesMenu" type="Node" parent="." node_paths=PackedStringArray("points_label", "container", "upgrader", "undo_button")]
+script = ExtResource("4_p8lrj")
+points_label = NodePath("../OverviewPanel/AttributesPanel/AttributePointsLabel")
+container = NodePath("../OverviewPanel/AttributesPanel/AttributesContainer")
+menu_entry_template = ExtResource("5_bcf1b")
+upgrader = NodePath("../AttributesUpgrader")
+undo_button = NodePath("../OverviewPanel/SkillsPanel/UndoButton")
+
+[node name="ClassUpgrader" type="Node" parent="." node_paths=PackedStringArray("info_container", "upgrade_button", "upgrader")]
+script = ExtResource("5_f68im")
+info_container = NodePath("../OverviewPanel/SkillsPanel/ClassInfoContainer")
+upgrade_button = NodePath("../OverviewPanel/SkillsPanel/ClassUpgradeButton")
+upgrader = NodePath("../AttributesUpgrader")
+
+[node name="AttributesUpgrader" type="Node" parent="."]
+script = ExtResource("6_x1qmq")
+
+[node name="OverviewPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1500, 800)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -400.0
+offset_right = 750.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Character Tabs" type="TabBar" parent="OverviewPanel"]
+layout_mode = 1
+offset_top = -39.0
+offset_right = 220.0
+offset_bottom = 1.0
+clip_tabs = false
+tab_count = 2
+tab_0/title = "Character 1"
+tab_1/title = "Character 2"
+
+[node name="SkillsPanel" type="Panel" parent="OverviewPanel"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 35.0
+offset_right = 1137.0
+offset_bottom = 683.0
+
+[node name="Class Tabs" type="TabBar" parent="OverviewPanel/SkillsPanel"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+clip_tabs = false
+
+[node name="AttributesHeaderLabel" type="Label" parent="OverviewPanel/SkillsPanel"]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 564.0
+offset_right = 669.0
+offset_bottom = 587.0
+text = "SKILLS & CLASS LEVELS"
+uppercase = true
+
+[node name="SkillPointsLabel" type="Label" parent="OverviewPanel/SkillsPanel"]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 596.0
+offset_right = 680.0
+offset_bottom = 619.0
+text = "No available skills point"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="OverviewPanel/SkillsPanel"]
+custom_minimum_size = Vector2(1000, 440)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 88.0
+offset_right = 1040.0
+offset_bottom = 528.0
+follow_focus = true
+
+[node name="ClassInfoContainer" type="VBoxContainer" parent="OverviewPanel/SkillsPanel"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 528.0
+offset_right = 272.0
+offset_bottom = 632.0
+
+[node name="ClassUpgradeButton" type="Button" parent="OverviewPanel/SkillsPanel"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 560.0
+offset_right = 392.0
+offset_bottom = 608.0
+disabled = true
+text = "Upgrade"
+
+[node name="UndoButton" type="Button" parent="OverviewPanel/SkillsPanel"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = 1144.0
+offset_top = 384.0
+offset_right = 1424.0
+offset_bottom = 434.0
+disabled = true
+text = "Undo points"
+
+[node name="AttributesPanel" type="Panel" parent="OverviewPanel"]
+layout_mode = 0
+offset_left = 1177.0
+offset_top = 43.0
+offset_right = 1457.0
+offset_bottom = 334.0
+
+[node name="AttributesHeaderLabel" type="Label" parent="OverviewPanel/AttributesPanel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 118.0
+offset_bottom = 47.0
+text = "Attributes"
+uppercase = true
+
+[node name="AttributePointsLabel" type="Label" parent="OverviewPanel/AttributesPanel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 48.0
+offset_right = 187.0
+offset_bottom = 71.0
+text = "Available attribute points: 0"
+
+[node name="AttributesContainer" type="VBoxContainer" parent="OverviewPanel/AttributesPanel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 88.0
+offset_right = 72.0
+offset_bottom = 128.0
+
+[node name="ExitButton" type="Button" parent="OverviewPanel"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_top = -35.0
+offset_bottom = -4.0
+grow_horizontal = 0
+text = "X"

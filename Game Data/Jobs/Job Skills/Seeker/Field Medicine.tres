@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="SkillData" load_steps=5 format=3 uid="uid://de0dpc63x4jog"]
+[gd_resource type="Resource" script_class="SkillData" load_steps=6 format=3 uid="uid://de0dpc63x4jog"]
 
 [ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="1_vqe1b"]
 [ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/HealEffect.gd" id="2_cylxv"]
 [ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_hfrum"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillTier.gd" id="4_tguwo"]
 
 [sub_resource type="Resource" id="Resource_mmxgt"]
 script = ExtResource("2_cylxv")
@@ -19,3 +20,4 @@ is_passive = false
 num_activations = 1
 action_type = 2
 effects = Array[ExtResource("1_vqe1b")]([SubResource("Resource_mmxgt")])
+tiers = Array[ExtResource("4_tguwo")]([])

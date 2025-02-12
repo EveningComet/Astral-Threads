@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=5 format=3 uid="uid://m0xa3wmjtcq0"]
+
+[ext_resource type="Texture2D" uid="uid://c5laykjsxaxtl" path="res://addons/dialogic/Editor/Images/Dropdown/divide.svg" id="1_w10or"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_62rrr"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="2_mnu1g"]
+[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillTier.gd" id="3_p3xws"]
+
+[resource]
+script = ExtResource("2_62rrr")
+localization_name = "Vanguard"
+localization_description = "Deploy a shield that protects all allies for a few turns."
+display_texture = ExtResource("1_w10or")
+is_starting_skill = true
+base_cost = 5
+is_passive = false
+num_activations = 1
+action_type = 1
+effects = Array[ExtResource("2_mnu1g")]([])
+tiers = Array[ExtResource("3_p3xws")]([])
