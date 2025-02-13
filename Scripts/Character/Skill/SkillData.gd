@@ -5,6 +5,7 @@ class_name SkillData extends Resource
 @export_category("Base Info")
 @export var localization_name:                  String = "New Skill"
 @export_multiline var localization_description: String = "New description."
+@export var display_texture: Texture2D
 
 ## For player characters, is this skill automatically usable from the start?
 @export var is_starting_skill: bool = false
@@ -19,6 +20,14 @@ class_name SkillData extends Resource
 
 ## The objects that define a how skill work.
 @export var effects: Array[SkillEffect] = []
+
+## The tier tiers for this skill. Think of this as above rank 1.
+@export var tiers: Array[SkillTier] = []
+
+## The max rank is determined by the amount of tiers.
+var max_rank: int = 1:
+	get:
+		return tiers.size()
 
 ## Modify the passed action based on the skill user and the skill effects.
 func get_usable_data(activator: Combatant, action: StoredAction) -> StoredAction:

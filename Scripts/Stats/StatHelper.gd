@@ -77,3 +77,15 @@ static func get_non_attributes_as_list() -> Array[int]:
 	for i in range(StatTypes.MaxHP - 1, -1, -1):
 		to_return.erase(i)
 	return to_return
+
+static func stat_types_to_string(stat_type: StatTypes) -> String:
+	var lookup: Dictionary = {
+		StatTypes.Vitality : "Vitality",
+		StatTypes.Will : "Will",
+		StatTypes.Perception : "Perception",
+		StatTypes.Evasion : "Evasion",
+		StatTypes.Speed : "Speed",
+	}
+	if stat_type in lookup.keys():
+		return lookup[stat_type]
+	return "Unknown stat type"

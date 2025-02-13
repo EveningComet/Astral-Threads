@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx78jpobn58x1"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Skill Menu/SkillTree.gd" id="1_5cd7i"]
+[ext_resource type="PackedScene" uid="uid://dgcys4q5fe4rj" path="res://Scenes/UI/Skill Menu/Skill Node.tscn" id="2_ght1d"]
+[ext_resource type="Resource" uid="uid://rx0a02jikklt" path="res://Game Data/Jobs/Job Skills/Aegis/Aegis Pulse Beam.tres" id="3_a63an"]
+[ext_resource type="Resource" uid="uid://m0xa3wmjtcq0" path="res://Game Data/Jobs/Job Skills/Aegis/Aegis Vanguard.tres" id="4_jhaax"]
+
+[node name="Aegis Skill Tree" type="Control"]
+custom_minimum_size = Vector2(1000, 1080)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -1080.0
+offset_right = 500.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_5cd7i")
+
+[node name="Vanguard" parent="." instance=ExtResource("2_ght1d")]
+layout_mode = 0
+offset_left = 575.0
+offset_top = 980.0
+offset_right = 665.0
+offset_bottom = 1070.0
+associated_skill = ExtResource("4_jhaax")
+
+[node name="Pulse Beam" parent="." instance=ExtResource("2_ght1d")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -100.0
+offset_right = 45.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+associated_skill = ExtResource("3_a63an")
