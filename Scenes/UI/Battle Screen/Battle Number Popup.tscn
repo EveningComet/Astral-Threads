@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvhpfrl5eqa8a"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Battle UI/BattleNumberPopup.gd" id="1_8diey"]
+[ext_resource type="Script" uid="uid://lweo8a64yl17" path="res://Scripts/UI/Battle UI/BattleNumberPopup.gd" id="1_8diey"]
 
 [node name="Battle Number Popup" type="Label"]
 custom_minimum_size = Vector2(64, 64)

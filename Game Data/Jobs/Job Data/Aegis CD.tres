@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Job" load_steps=11 format=3 uid="uid://cpif2tli5do3g"]
 
-[ext_resource type="Script" path="res://Scripts/UI/General/PortraitData.gd" id="1_lwk54"]
-[ext_resource type="Script" path="res://Scripts/Character/Job.gd" id="1_ogyeu"]
+[ext_resource type="Script" uid="uid://q6vdwnv7eqof" path="res://Scripts/UI/General/PortraitData.gd" id="1_lwk54"]
+[ext_resource type="Script" uid="uid://ug8w0va0viyv" path="res://Scripts/Character/Job.gd" id="1_ogyeu"]
 [ext_resource type="Texture2D" uid="uid://csl78weulk5xi" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (142).png" id="2_2fsdv"]
-[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_udf68"]
+[ext_resource type="Script" uid="uid://d3fbwfu1mrfvs" path="res://Scripts/Character/Skill/SkillData.gd" id="2_udf68"]
 [ext_resource type="Texture2D" uid="uid://bme6mc2c4tf40" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (36).png" id="3_3jlng"]
 [ext_resource type="Resource" uid="uid://con0txiulx7kp" path="res://Game Data/Jobs/Job Skills/Aegis/Shell.tres" id="3_iyif5"]
-[ext_resource type="Script" path="res://Scripts/Inventory/ItemData.gd" id="7_wo8cf"]
+[ext_resource type="Script" uid="uid://b4la4doxrngs2" path="res://Scripts/Inventory/ItemData.gd" id="7_wo8cf"]
 [ext_resource type="Resource" uid="uid://b20lqpf8a1rr4" path="res://Game Data/Items/Equipment/Cool Hat.tres" id="8_2s8m8"]
 
 [sub_resource type="Resource" id="Resource_8uxdj"]

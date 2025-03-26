@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://5a4bwrowsmnr"]
 
-[ext_resource type="Script" path="res://Scripts/UI/General/PortraitDisplayerPanel.gd" id="1_6u7wf"]
+[ext_resource type="Script" uid="uid://da5jaaecf1gko" path="res://Scripts/UI/General/PortraitDisplayerPanel.gd" id="1_6u7wf"]
 [ext_resource type="Texture2D" uid="uid://csl78weulk5xi" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (142).png" id="2_7xv7e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_magyf"]

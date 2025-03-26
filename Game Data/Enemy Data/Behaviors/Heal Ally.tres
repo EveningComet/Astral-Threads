@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="UtilityAIBehavior" load_steps=12 format=3 uid="uid://cnsi3v06mccpl"]
 
-[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_behavior.gd" id="1_753ng"]
-[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_response_curve.gd" id="1_u7smk"]
-[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_consideration.gd" id="2_c7m5t"]
+[ext_resource type="Script" uid="uid://dq4rxtfe214wl" path="res://addons/utility_ai/core/utility_ai_behavior.gd" id="1_753ng"]
+[ext_resource type="Script" uid="uid://uqug5xqav8rs" path="res://addons/utility_ai/core/utility_ai_response_curve.gd" id="1_u7smk"]
+[ext_resource type="Script" uid="uid://vurj17rp6qpx" path="res://addons/utility_ai/core/utility_ai_consideration.gd" id="2_c7m5t"]
 
 [sub_resource type="Curve" id="Curve_qcauv"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.79008, 0.0, 0, 0]

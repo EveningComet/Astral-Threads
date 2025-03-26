@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpcirattn6o47"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Party/Inventory/EquipSlotUI.gd" id="1_xjcv0"]
+[ext_resource type="Script" uid="uid://okvn0q45k4gk" path="res://Scripts/UI/Party/Inventory/EquipSlotUI.gd" id="1_xjcv0"]
 [ext_resource type="Texture2D" uid="uid://d3vlawnvw3k58" path="res://icon.svg" id="2_kmxsb"]
 
 [node name="Equip Slot UI" type="Button" node_paths=PackedStringArray("display_icon", "amount_label")]

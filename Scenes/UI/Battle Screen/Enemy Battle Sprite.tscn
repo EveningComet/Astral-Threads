@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfg0s8vxh3ogg"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Battle UI/EnemyBattleSprite.gd" id="1_4s0rd"]
+[ext_resource type="Script" uid="uid://dxgmuav6nc7x8" path="res://Scripts/UI/Battle UI/EnemyBattleSprite.gd" id="1_4s0rd"]
 [ext_resource type="Texture2D" uid="uid://c35wnyaqdw1td" path="res://Imported Assets/Aekashics Librarium Battle Sprites/Fire Volcanic Maiden.png" id="2_o10qa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7sbdq"]

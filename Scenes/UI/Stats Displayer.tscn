@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt3brxt02moq0"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Party/StatsDisplayer.gd" id="1_ysebq"]
+[ext_resource type="Script" uid="uid://bk66hdeaqec63" path="res://Scripts/UI/Party/StatsDisplayer.gd" id="1_ysebq"]
 [ext_resource type="PackedScene" uid="uid://dwxfk6xsgr5um" path="res://Scenes/UI/Stat Displayer.tscn" id="2_qu05o"]
 
 [node name="Stats Displayer" type="PanelContainer" node_paths=PackedStringArray("attributes_container", "derived_stats_container")]

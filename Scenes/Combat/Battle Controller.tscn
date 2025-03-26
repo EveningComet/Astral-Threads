@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://ma6jdj5waylr"]
 
-[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/BattleController.gd" id="1_54j50"]
-[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/Battle States/BattleStart.gd" id="2_j1ygd"]
-[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/Battle States/EndBattle.gd" id="3_5ywlc"]
-[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/Battle States/PlayerTurn.gd" id="4_ipiwj"]
-[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/Battle States/AwaitingBattleStart.gd" id="4_nus2s"]
-[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/Battle States/EnemyTurn.gd" id="6_pj3b2"]
-[ext_resource type="Script" path="res://Scripts/Combat/Battle Controller/Battle States/ResolveTurn.gd" id="6_swt0i"]
+[ext_resource type="Script" uid="uid://csfsfx6h0vqhs" path="res://Scripts/Combat/Battle Controller/BattleController.gd" id="1_54j50"]
+[ext_resource type="Script" uid="uid://oeuph482lblh" path="res://Scripts/Combat/Battle Controller/Battle States/BattleStart.gd" id="2_j1ygd"]
+[ext_resource type="Script" uid="uid://b2883t7t306xh" path="res://Scripts/Combat/Battle Controller/Battle States/EndBattle.gd" id="3_5ywlc"]
+[ext_resource type="Script" uid="uid://cobu8b4g126i6" path="res://Scripts/Combat/Battle Controller/Battle States/PlayerTurn.gd" id="4_ipiwj"]
+[ext_resource type="Script" uid="uid://dwgd7l3hye3qr" path="res://Scripts/Combat/Battle Controller/Battle States/AwaitingBattleStart.gd" id="4_nus2s"]
+[ext_resource type="Script" uid="uid://dcqdke6mo08pg" path="res://Scripts/Combat/Battle Controller/Battle States/EnemyTurn.gd" id="6_pj3b2"]
+[ext_resource type="Script" uid="uid://di5ged8ti8cae" path="res://Scripts/Combat/Battle Controller/Battle States/ResolveTurn.gd" id="6_swt0i"]
 
 [node name="Battle Controller" type="Node"]
 script = ExtResource("1_54j50")

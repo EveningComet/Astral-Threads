@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=14 format=3 uid="uid://dx2lf7e2hqeoe"]
 
-[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_behavior.gd" id="1_nc73q"]
+[ext_resource type="Script" uid="uid://dq4rxtfe214wl" path="res://addons/utility_ai/core/utility_ai_behavior.gd" id="1_nc73q"]
 [ext_resource type="Resource" uid="uid://clp5m14utgxbx" path="res://Game Data/Enemy Data/Behaviors/Attack Weakest.tres" id="2_vht1g"]
 [ext_resource type="Resource" uid="uid://cnsi3v06mccpl" path="res://Game Data/Enemy Data/Behaviors/Heal Ally.tres" id="3_de177"]
 [ext_resource type="Texture2D" uid="uid://c35wnyaqdw1td" path="res://Imported Assets/Aekashics Librarium Battle Sprites/Fire Volcanic Maiden.png" id="4_vnbxp"]
-[ext_resource type="Script" path="res://Scripts/Combat/Enemy/EnemyData.gd" id="5_veso8"]
-[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="6_vukmc"]
+[ext_resource type="Script" uid="uid://culcx3nhdp1tp" path="res://Scripts/Combat/Enemy/EnemyData.gd" id="5_veso8"]
+[ext_resource type="Script" uid="uid://d3fbwfu1mrfvs" path="res://Scripts/Character/Skill/SkillData.gd" id="6_vukmc"]
 [ext_resource type="Resource" uid="uid://de0dpc63x4jog" path="res://Game Data/Jobs/Job Skills/Seeker/Field Medicine.tres" id="7_dwh1o"]
 [ext_resource type="Resource" uid="uid://dkp2f288i1a0v" path="res://Game Data/Generic Skills/Phyiscal Attack.tres" id="8_scn0d"]
-[ext_resource type="Script" path="res://Scripts/Stats/StatModifier.gd" id="9_26vjp"]
+[ext_resource type="Script" uid="uid://b1c6vwvnbt36t" path="res://Scripts/Stats/StatModifier.gd" id="9_26vjp"]
 
 [sub_resource type="Resource" id="Resource_mtfw8"]
 script = ExtResource("9_26vjp")

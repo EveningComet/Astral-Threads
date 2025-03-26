@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dx78jpobn58x1"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Skill Menu/SkillTree.gd" id="1_5cd7i"]
+[ext_resource type="Script" uid="uid://cdaas4fdjuqw4" path="res://Scripts/UI/Skill Menu/SkillTree.gd" id="1_5cd7i"]
 [ext_resource type="PackedScene" uid="uid://dgcys4q5fe4rj" path="res://Scenes/UI/Skill Menu/Skill Node.tscn" id="2_ght1d"]
 [ext_resource type="Resource" uid="uid://rx0a02jikklt" path="res://Game Data/Jobs/Job Skills/Aegis/Aegis Pulse Beam.tres" id="3_a63an"]
 [ext_resource type="Resource" uid="uid://m0xa3wmjtcq0" path="res://Game Data/Jobs/Job Skills/Aegis/Aegis Vanguard.tres" id="4_jhaax"]

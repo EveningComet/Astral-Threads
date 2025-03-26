@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bj5fakyx2vebd"]
 
-[ext_resource type="Script" path="res://Scripts/UI/General/PlayerHud.gd" id="1_0ed0h"]
+[ext_resource type="Script" uid="uid://c6w7sh0ujwj5r" path="res://Scripts/UI/General/PlayerHud.gd" id="1_0ed0h"]
 [ext_resource type="PackedScene" uid="uid://bo0nvc14cnaxw" path="res://Scenes/UI/Party Member Slot.tscn" id="2_h6gwk"]
 
 [node name="Player Hud" type="CanvasLayer" node_paths=PackedStringArray("party_container")]

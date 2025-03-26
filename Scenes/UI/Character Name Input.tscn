@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cjo7c4uptsy7i"]
 
-[ext_resource type="Script" path="res://Scripts/UI/General/CharacterNameInput.gd" id="1_dkqte"]
+[ext_resource type="Script" uid="uid://bxeikov05x1f5" path="res://Scripts/UI/General/CharacterNameInput.gd" id="1_dkqte"]
 
 [node name="Character Name Input" type="Control" node_paths=PackedStringArray("name_entry", "randomize_name_button")]
 custom_minimum_size = Vector2(600, 600)

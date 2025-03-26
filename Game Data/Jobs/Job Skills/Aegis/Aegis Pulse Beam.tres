@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="SkillData" load_steps=5 format=3 uid="uid://rx0a02jikklt"]
 
-[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="1_m3w6m"]
+[ext_resource type="Script" uid="uid://d3fbwfu1mrfvs" path="res://Scripts/Character/Skill/SkillData.gd" id="1_m3w6m"]
 [ext_resource type="Texture2D" uid="uid://b7j220k0ewh35" path="res://addons/dialogic/Editor/Images/Dropdown/join.svg" id="1_s34ks"]
-[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="2_aht0l"]
-[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillTier.gd" id="7_81a3n"]
+[ext_resource type="Script" uid="uid://b6rcalbettfqg" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="2_aht0l"]
+[ext_resource type="Script" uid="uid://byqf4twav6d37" path="res://Scripts/Character/Skill/SkillTier.gd" id="7_81a3n"]
 
 [resource]
 script = ExtResource("1_m3w6m")

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="SkillData" load_steps=6 format=3 uid="uid://cw37rxoaqbjn3"]
 
-[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="1_k4qg2"]
-[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_hhqiq"]
-[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/DamageEffect.gd" id="2_wu5lp"]
-[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillTier.gd" id="4_a7phn"]
+[ext_resource type="Script" uid="uid://b6rcalbettfqg" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="1_k4qg2"]
+[ext_resource type="Script" uid="uid://d3fbwfu1mrfvs" path="res://Scripts/Character/Skill/SkillData.gd" id="2_hhqiq"]
+[ext_resource type="Script" uid="uid://b7e1jwi4v7hay" path="res://Scripts/Character/Skill/Skill Effects/DamageEffect.gd" id="2_wu5lp"]
+[ext_resource type="Script" uid="uid://byqf4twav6d37" path="res://Scripts/Character/Skill/SkillTier.gd" id="4_a7phn"]
 
 [sub_resource type="Resource" id="Resource_1asby"]
 script = ExtResource("2_wu5lp")

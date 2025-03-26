@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="SkillData" load_steps=5 format=3 uid="uid://ciiary04ee22j"]
+[gd_resource type="Resource" script_class="SkillData" load_steps=6 format=3 uid="uid://ciiary04ee22j"]
 
-[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="1_hr50j"]
-[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/DamageEffect.gd" id="2_03i0d"]
-[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_y5tsa"]
+[ext_resource type="Script" uid="uid://b6rcalbettfqg" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="1_hr50j"]
+[ext_resource type="Script" uid="uid://b7e1jwi4v7hay" path="res://Scripts/Character/Skill/Skill Effects/DamageEffect.gd" id="2_03i0d"]
+[ext_resource type="Script" uid="uid://d3fbwfu1mrfvs" path="res://Scripts/Character/Skill/SkillData.gd" id="2_y5tsa"]
+[ext_resource type="Script" uid="uid://byqf4twav6d37" path="res://Scripts/Character/Skill/SkillTier.gd" id="4_u67fy"]
 
 [sub_resource type="Resource" id="Resource_g2xcb"]
 script = ExtResource("2_03i0d")
@@ -16,8 +17,10 @@ stat_used = 12
 script = ExtResource("2_y5tsa")
 localization_name = "Flare Shot"
 localization_description = "Attack a single enemy with a ball of fire."
+is_starting_skill = false
 base_cost = 5
 is_passive = false
 num_activations = 1
 action_type = 0
 effects = Array[ExtResource("1_hr50j")]([SubResource("Resource_g2xcb")])
+tiers = Array[ExtResource("4_u67fy")]([])

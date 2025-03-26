@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://cvcjhhiyqaotu"]
 
-[ext_resource type="Script" path="res://Scripts/Player/CameraController.gd" id="1_oii8x"]
-[ext_resource type="Script" path="res://Scripts/Player/Locomotion/PlayerLocomotionController.gd" id="1_r1d1o"]
-[ext_resource type="Script" path="res://Scripts/Player/Locomotion/States/PLGround.gd" id="3_yf2ii"]
-[ext_resource type="Script" path="res://Scripts/Player/Locomotion/States/PLAir.gd" id="4_ejjph"]
-[ext_resource type="Script" path="res://Scripts/Player/PlayerInputController.gd" id="5_k5e32"]
-[ext_resource type="Script" path="res://Scripts/Player/InteractionHandler.gd" id="6_w3y61"]
-[ext_resource type="Script" path="res://Scripts/World/Pusher.gd" id="7_2eu7l"]
+[ext_resource type="Script" uid="uid://brlbsf5skel17" path="res://Scripts/Player/CameraController.gd" id="1_oii8x"]
+[ext_resource type="Script" uid="uid://b2kcrkebmhiej" path="res://Scripts/Player/Locomotion/PlayerLocomotionController.gd" id="1_r1d1o"]
+[ext_resource type="Script" uid="uid://b0n6egeedoc8y" path="res://Scripts/Player/Locomotion/States/PLGround.gd" id="3_yf2ii"]
+[ext_resource type="Script" uid="uid://da84aubnch7e" path="res://Scripts/Player/Locomotion/States/PLAir.gd" id="4_ejjph"]
+[ext_resource type="Script" uid="uid://bk4sksdj08tu7" path="res://Scripts/Player/PlayerInputController.gd" id="5_k5e32"]
+[ext_resource type="Script" uid="uid://8gup68psfn1s" path="res://Scripts/Player/InteractionHandler.gd" id="6_w3y61"]
+[ext_resource type="Script" uid="uid://v350c0rews4q" path="res://Scripts/World/Pusher.gd" id="7_2eu7l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bdikr"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://8ueywip1r6ra"]
 
 [ext_resource type="Texture2D" uid="uid://d3vlawnvw3k58" path="res://icon.svg" id="1_w5764"]
-[ext_resource type="Script" path="res://Scripts/UI/Battle UI/CombatCursor.gd" id="1_y1ib4"]
+[ext_resource type="Script" uid="uid://bhaj1xguqtytk" path="res://Scripts/UI/Battle UI/CombatCursor.gd" id="1_y1ib4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7pulc"]
 

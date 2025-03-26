@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://qvkhx57j56qi"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Party/Inventory/InventoryDisplayer.gd" id="1_bv31x"]
+[ext_resource type="Script" uid="uid://chqitosube6by" path="res://Scripts/UI/Party/Inventory/InventoryDisplayer.gd" id="1_bv31x"]
 [ext_resource type="PackedScene" uid="uid://dpcirattn6o47" path="res://Scenes/UI/Inventory/Equip Slot UI.tscn" id="2_2n00o"]
 
 [node name="Equipment Displayer" type="Control" node_paths=PackedStringArray("item_container")]

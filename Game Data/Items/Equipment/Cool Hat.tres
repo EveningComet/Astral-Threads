@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=6 format=3 uid="uid://b20lqpf8a1rr4"]
 
-[ext_resource type="Script" path="res://Scripts/Stats/StatRequirement.gd" id="1_kqt3b"]
-[ext_resource type="Script" path="res://Scripts/Inventory/ItemData.gd" id="1_wpdo7"]
+[ext_resource type="Script" uid="uid://hccl3kxvypmw" path="res://Scripts/Stats/StatRequirement.gd" id="1_kqt3b"]
+[ext_resource type="Script" uid="uid://b4la4doxrngs2" path="res://Scripts/Inventory/ItemData.gd" id="1_wpdo7"]
 [ext_resource type="Texture2D" uid="uid://b5bfri3afnnlu" path="res://Imported Assets/Lovelyloop Free RPG Item Icons/Head Armor/43.png" id="2_pdrro"]
-[ext_resource type="Script" path="res://Scripts/Stats/StatModifier.gd" id="3_bcj1l"]
+[ext_resource type="Script" uid="uid://b1c6vwvnbt36t" path="res://Scripts/Stats/StatModifier.gd" id="3_bcj1l"]
 
 [sub_resource type="Resource" id="Resource_gwr6p"]
 script = ExtResource("3_bcj1l")

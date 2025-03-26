@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="SkillData" load_steps=5 format=3 uid="uid://cawxpuisnu4wn"]
+[gd_resource type="Resource" script_class="SkillData" load_steps=6 format=3 uid="uid://cawxpuisnu4wn"]
 
-[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="1_wyqa5"]
-[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_acjon"]
-[ext_resource type="Script" path="res://Scripts/Character/Skill/Skill Effects/DamageEffect.gd" id="2_tk8w0"]
+[ext_resource type="Script" uid="uid://b6rcalbettfqg" path="res://Scripts/Character/Skill/Skill Effects/SkillEffect.gd" id="1_wyqa5"]
+[ext_resource type="Script" uid="uid://d3fbwfu1mrfvs" path="res://Scripts/Character/Skill/SkillData.gd" id="2_acjon"]
+[ext_resource type="Script" uid="uid://b7e1jwi4v7hay" path="res://Scripts/Character/Skill/Skill Effects/DamageEffect.gd" id="2_tk8w0"]
+[ext_resource type="Script" uid="uid://byqf4twav6d37" path="res://Scripts/Character/Skill/SkillTier.gd" id="4_qw6xv"]
 
 [sub_resource type="Resource" id="Resource_kdhc1"]
 script = ExtResource("2_tk8w0")
@@ -16,8 +17,10 @@ stat_used = 12
 script = ExtResource("2_acjon")
 localization_name = "Sickle Shard"
 localization_description = "Let loose a shard of ice at a single enemy."
+is_starting_skill = false
 base_cost = 5
 is_passive = false
 num_activations = 1
 action_type = 0
 effects = Array[ExtResource("1_wyqa5")]([SubResource("Resource_kdhc1")])
+tiers = Array[ExtResource("4_qw6xv")]([])

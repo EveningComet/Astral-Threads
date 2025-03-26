@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bn5nts3ewsda1"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Party/Inventory/ItemSlotUI.gd" id="1_24ldo"]
+[ext_resource type="Script" uid="uid://cd807ymmcxv4w" path="res://Scripts/UI/Party/Inventory/ItemSlotUI.gd" id="1_24ldo"]
 [ext_resource type="Texture2D" uid="uid://d3vlawnvw3k58" path="res://icon.svg" id="2_508rb"]
 
 [node name="Item Slot UI" type="Button" node_paths=PackedStringArray("display_icon", "amount_label")]

@@ -6,20 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://bqmmh046f32ti" path="res://Imported Assets/KenneyNL Prototyping Textures/Orange/texture_10.png" id="4_2bder"]
 [ext_resource type="PackedScene" uid="uid://bq2c1sqe6bf25" path="res://Scenes/UI/Pause Menu.tscn" id="4_t1nc6"]
 [ext_resource type="Texture2D" uid="uid://ctibbgbxb1wtf" path="res://Imported Assets/KenneyNL Prototyping Textures/Green/texture_10.png" id="5_38dgo"]
-[ext_resource type="Script" path="res://Scripts/World/Interactable/Door.gd" id="5_qssjh"]
-[ext_resource type="Script" path="res://Scripts/Inventory/WorldInventory.gd" id="6_ana6k"]
+[ext_resource type="Script" uid="uid://b3nfeis6bw4e5" path="res://Scripts/World/Interactable/Door.gd" id="5_qssjh"]
+[ext_resource type="Script" uid="uid://bpga6jtovuuqp" path="res://Scripts/Inventory/WorldInventory.gd" id="6_ana6k"]
 [ext_resource type="PackedScene" uid="uid://hpxw5wmcqogq" path="res://Scenes/World/Test Enemy.tscn" id="6_lofm8"]
-[ext_resource type="Script" path="res://Scripts/World/Interactable/Interactable.gd" id="6_o3ral"]
-[ext_resource type="Script" path="res://Scripts/Inventory/Inventory.gd" id="7_l3ht2"]
-[ext_resource type="Script" path="res://Scripts/Inventory/ItemSlotData.gd" id="8_11riy"]
+[ext_resource type="Script" uid="uid://dhptrfve3vqro" path="res://Scripts/World/Interactable/Interactable.gd" id="6_o3ral"]
+[ext_resource type="Script" uid="uid://belc88mc85qvw" path="res://Scripts/Inventory/Inventory.gd" id="7_l3ht2"]
+[ext_resource type="Script" uid="uid://xxidxtuojb6" path="res://Scripts/Inventory/ItemSlotData.gd" id="8_11riy"]
 [ext_resource type="Resource" uid="uid://dp1ruy7u22143" path="res://Game Data/Items/Test Item.tres" id="8_ch562"]
 [ext_resource type="PackedScene" uid="uid://cw34c8yrs3mye" path="res://Scenes/UI/Inventory/Player Dashboard.tscn" id="9_845o5"]
-[ext_resource type="Script" path="res://Scripts/Stats/StatRequirement.gd" id="10_htflv"]
+[ext_resource type="Script" uid="uid://hccl3kxvypmw" path="res://Scripts/Stats/StatRequirement.gd" id="10_htflv"]
 [ext_resource type="Texture2D" uid="uid://vfurdpam4ni6" path="res://Imported Assets/Lovelyloop Free RPG Item Icons/Boots/8.png" id="11_1m0w6"]
 [ext_resource type="PackedScene" uid="uid://bj8juo06amjy5" path="res://Scenes/World/Test NPC.tscn" id="11_tniak"]
-[ext_resource type="Script" path="res://Scripts/Inventory/ItemData.gd" id="12_0oyl1"]
+[ext_resource type="Script" uid="uid://b4la4doxrngs2" path="res://Scripts/Inventory/ItemData.gd" id="12_0oyl1"]
 [ext_resource type="PackedScene" uid="uid://24t7j5vea0bq" path="res://Scenes/UI/Skills/Skill Menu.tscn" id="12_aack8"]
-[ext_resource type="Script" path="res://Scripts/Stats/StatModifier.gd" id="13_72q8j"]
+[ext_resource type="Script" uid="uid://b1c6vwvnbt36t" path="res://Scripts/Stats/StatModifier.gd" id="13_72q8j"]
 [ext_resource type="PackedScene" uid="uid://cou2j1qg824cm" path="res://Scenes/UI/Tooltip Handler.tscn" id="22_sbf57"]
 [ext_resource type="PackedScene" uid="uid://cgfk6sf7fq7gp" path="res://Scenes/World/Physics Ball.tscn" id="23_hedy3"]
 [ext_resource type="PackedScene" uid="uid://cgadf31osnsv8" path="res://Scenes/World/Physics Box.tscn" id="24_62na0"]
@@ -166,10 +166,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8d3tu"]
 _data = {
-"Close": SubResource("Animation_hae6j"),
-"Closed": SubResource("Animation_ews2c"),
-"Open": SubResource("Animation_72y7i"),
-"RESET": SubResource("Animation_6vmek")
+&"Close": SubResource("Animation_hae6j"),
+&"Closed": SubResource("Animation_ews2c"),
+&"Open": SubResource("Animation_72y7i"),
+&"RESET": SubResource("Animation_6vmek")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gkwa2"]

@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Job" load_steps=10 format=3 uid="uid://b6oo8fgm4y4mw"]
 
-[ext_resource type="Script" path="res://Scripts/UI/General/PortraitData.gd" id="1_k8s3s"]
-[ext_resource type="Script" path="res://Scripts/Character/Job.gd" id="1_y2tuq"]
+[ext_resource type="Script" uid="uid://q6vdwnv7eqof" path="res://Scripts/UI/General/PortraitData.gd" id="1_k8s3s"]
+[ext_resource type="Script" uid="uid://ug8w0va0viyv" path="res://Scripts/Character/Job.gd" id="1_y2tuq"]
 [ext_resource type="Texture2D" uid="uid://d04oamgdpt4d3" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (138).png" id="2_6c5p3"]
 [ext_resource type="Texture2D" uid="uid://fbiacn1aka7f" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (130).png" id="2_7am3t"]
-[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="2_71pwt"]
+[ext_resource type="Script" uid="uid://d3fbwfu1mrfvs" path="res://Scripts/Character/Skill/SkillData.gd" id="2_71pwt"]
 [ext_resource type="Resource" uid="uid://de0dpc63x4jog" path="res://Game Data/Jobs/Job Skills/Seeker/Field Medicine.tres" id="3_a6j6c"]
-[ext_resource type="Script" path="res://Scripts/Inventory/ItemData.gd" id="6_v2xwd"]
+[ext_resource type="Script" uid="uid://b4la4doxrngs2" path="res://Scripts/Inventory/ItemData.gd" id="6_v2xwd"]
 
 [sub_resource type="Resource" id="Resource_ae5ul"]
 script = ExtResource("1_k8s3s")

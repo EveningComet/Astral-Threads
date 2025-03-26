@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Job" load_steps=10 format=3 uid="uid://d1dpqeqvk2q6p"]
 
-[ext_resource type="Script" path="res://Scripts/UI/General/PortraitData.gd" id="1_sxd60"]
+[ext_resource type="Script" uid="uid://q6vdwnv7eqof" path="res://Scripts/UI/General/PortraitData.gd" id="1_sxd60"]
 [ext_resource type="Texture2D" uid="uid://c33e2wbfn21k7" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (166).png" id="2_24p5u"]
 [ext_resource type="Texture2D" uid="uid://deq2lu3rkw7ir" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (76).png" id="3_15hnm"]
-[ext_resource type="Script" path="res://Scripts/Character/Job.gd" id="4_k6et5"]
-[ext_resource type="Script" path="res://Scripts/Character/Skill/SkillData.gd" id="5_nn30b"]
+[ext_resource type="Script" uid="uid://ug8w0va0viyv" path="res://Scripts/Character/Job.gd" id="4_k6et5"]
+[ext_resource type="Script" uid="uid://d3fbwfu1mrfvs" path="res://Scripts/Character/Skill/SkillData.gd" id="5_nn30b"]
 [ext_resource type="Resource" uid="uid://cmd3sieqnbwmw" path="res://Game Data/Jobs/Job Skills/Theorist/First Aid.tres" id="6_ewsu3"]
-[ext_resource type="Script" path="res://Scripts/Inventory/ItemData.gd" id="6_fgay2"]
+[ext_resource type="Script" uid="uid://b4la4doxrngs2" path="res://Scripts/Inventory/ItemData.gd" id="6_fgay2"]
 
 [sub_resource type="Resource" id="Resource_ah6u7"]
 script = ExtResource("1_sxd60")

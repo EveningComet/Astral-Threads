@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://nimo8k7qtqsa"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Skill Menu/SkillMenuController.gd" id="1_qqvha"]
-[ext_resource type="Script" path="res://Scripts/UI/Skill Menu/AttributesMenu.gd" id="4_p8lrj"]
+[ext_resource type="Script" uid="uid://kjl1rqsw7s1n" path="res://Scripts/UI/Skill Menu/SkillMenuController.gd" id="1_qqvha"]
+[ext_resource type="Script" uid="uid://5twfybuhvhab" path="res://Scripts/UI/Skill Menu/AttributesMenu.gd" id="4_p8lrj"]
 [ext_resource type="PackedScene" uid="uid://bqo0wxls0cbeu" path="res://Scenes/UI/Skill Menu/Attribute Menu Entry.tscn" id="5_bcf1b"]
-[ext_resource type="Script" path="res://Scripts/UI/Skill Menu/ClassUpgrader.gd" id="5_f68im"]
-[ext_resource type="Script" path="res://Scripts/UI/Skill Menu/AttributesUpgrader.gd" id="6_x1qmq"]
+[ext_resource type="Script" uid="uid://d2qo0ofxsygiw" path="res://Scripts/UI/Skill Menu/ClassUpgrader.gd" id="5_f68im"]
+[ext_resource type="Script" uid="uid://k6fe7lg747v3" path="res://Scripts/UI/Skill Menu/AttributesUpgrader.gd" id="6_x1qmq"]
 
 [node name="Skill Menu" type="CanvasLayer"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://chvqk786y8c4"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Battle UI/BattleSkillsMenu.gd" id="1_s14xk"]
+[ext_resource type="Script" uid="uid://etacs30nv3yl" path="res://Scripts/UI/Battle UI/BattleSkillsMenu.gd" id="1_s14xk"]
 [ext_resource type="PackedScene" uid="uid://cigoeq7lw4aua" path="res://Scenes/UI/Battle Screen/Battle Action Button.tscn" id="2_ah2gr"]
 
 [node name="Battle Skills Menu" type="Control" node_paths=PackedStringArray("spawned_buttons_container", "skill_description_label")]

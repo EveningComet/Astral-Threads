@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddxk8hvdarn1v"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Party/PartyInspector.gd" id="1_xadsv"]
+[ext_resource type="Script" uid="uid://c5gai7k5c60lw" path="res://Scripts/UI/Party/PartyInspector.gd" id="1_xadsv"]
 [ext_resource type="PackedScene" uid="uid://c5xtovj8asaxe" path="res://Scenes/UI/Inventory/Party Inspector Slot.tscn" id="3_830j5"]
 [ext_resource type="PackedScene" uid="uid://qvkhx57j56qi" path="res://Scenes/UI/Equipment Displayer.tscn" id="4_p3jjh"]
 [ext_resource type="PackedScene" uid="uid://dt3brxt02moq0" path="res://Scenes/UI/Stats Displayer.tscn" id="5_c24mv"]

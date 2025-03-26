@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgcys4q5fe4rj"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Skill Menu/SkillNode.gd" id="2_w3iii"]
+[ext_resource type="Script" uid="uid://k3dre0kr38kd" path="res://Scripts/UI/Skill Menu/SkillNode.gd" id="2_w3iii"]
 
 [node name="Skill Node" type="Button" node_paths=PackedStringArray("display_icon", "rank_label", "line_2d")]
 custom_minimum_size = Vector2(90, 90)

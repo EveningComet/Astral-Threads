@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cyjssyn07bliy"]
 
-[ext_resource type="Script" path="res://Scripts/UI/General/PortraitDisplayerButton.gd" id="1_k8ett"]
+[ext_resource type="Script" uid="uid://bmkv0tmnolkbk" path="res://Scripts/UI/General/PortraitDisplayerButton.gd" id="1_k8ett"]
 [ext_resource type="Texture2D" uid="uid://csl78weulk5xi" path="res://Imported Assets/coraxdigitalart-space-station-inhabitants/coraxdigitalart-space-station-portraits (142).png" id="2_7u4cw"]
 
 [node name="Portrait Displayer Button" type="Button" node_paths=PackedStringArray("display_icon")]

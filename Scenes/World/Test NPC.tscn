@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bj8juo06amjy5"]
 
-[ext_resource type="Script" path="res://Scripts/World/NPCData.gd" id="1_3jb30"]
-[ext_resource type="Resource" path="res://Game Data/Dialogic Data/Timelines/Testing NPC Timeline.dtl" id="2_tgkqc"]
+[ext_resource type="Script" uid="uid://bl5teqgvakdnq" path="res://Scripts/World/NPCData.gd" id="1_3jb30"]
+[ext_resource type="Resource" uid="uid://d2usly610500i" path="res://Game Data/Dialogic Data/Timelines/Testing NPC Timeline.dtl" id="2_tgkqc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0v7q"]
 

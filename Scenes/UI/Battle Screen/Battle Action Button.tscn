@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cigoeq7lw4aua"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Battle UI/BattleActionButton.gd" id="1_8q5x4"]
+[ext_resource type="Script" uid="uid://d3w4j1p0xbbwj" path="res://Scripts/UI/Battle UI/BattleActionButton.gd" id="1_8q5x4"]
 
 [node name="Battle Action Button" type="Button"]
 custom_minimum_size = Vector2(200, 50)
