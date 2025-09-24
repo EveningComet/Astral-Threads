@@ -48,23 +48,14 @@ quantity = 3
 
 [sub_resource type="Resource" id="Resource_wml1s"]
 script = ExtResource("13_72q8j")
-stat_changing = 0
-stat_modifier_type = 0
 value = 5.0
-sort_order = 0
 
 [sub_resource type="Resource" id="Resource_v1dvm"]
 script = ExtResource("12_0oyl1")
-localization_name = "New Item"
-localization_description = "An item."
 item_type = 1
 image = ExtResource("11_1m0w6")
-max_stack_size = 1
-base_cost = 10
 equip_type = 2
 stat_modifiers = Array[ExtResource("13_72q8j")]([SubResource("Resource_wml1s")])
-attribute_requirements = Array[ExtResource("10_htflv")]([])
-weapon_type = 0
 
 [sub_resource type="Resource" id="Resource_s5rb1"]
 script = ExtResource("8_11riy")
@@ -332,7 +323,7 @@ script = ExtResource("5_qssjh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Environment/Building/Door"]
 libraries = {
-"": SubResource("AnimationLibrary_8d3tu")
+&"": SubResource("AnimationLibrary_8d3tu")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="Environment/Building/Door"]

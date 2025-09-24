@@ -17,10 +17,10 @@ func close() -> void:
 
 func setup() -> void:
 	hide()
-	Eventbus.party_composition_changed.connect( on_party_composition_changed )
+	Eventbus.party_composition_changed.connect( _on_party_composition_changed )
 
 ## Update the displayed party when changes are made.
-func on_party_composition_changed(party: Array[PlayerCombatant]) -> void:
+func _on_party_composition_changed(party: Array[PlayerCombatant]) -> void:
 	clear_displayed_party()
 	for pm: PlayerCombatant in PlayerPartyController.get_party():
 		if pm != null:

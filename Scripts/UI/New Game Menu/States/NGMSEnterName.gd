@@ -7,12 +7,12 @@ func enter(msgs: Dictionary = {}) -> void:
 	character_namer.start_accepting_name(
 		my_state_machine.curr_created_character
 	)
-	character_namer.name_entered.connect( on_finalized )
+	character_namer.name_entered.connect( _on_finalized )
 
 func exit() -> void:
-	character_namer.name_entered.disconnect( on_finalized )
+	character_namer.name_entered.disconnect( _on_finalized )
 
-func on_finalized() -> void:
+func _on_finalized() -> void:
 	# Add the newly created character to the party
 	var new_pm: PlayerCombatant = my_state_machine.curr_created_character
 	PlayerPartyController.add_to_party(new_pm)

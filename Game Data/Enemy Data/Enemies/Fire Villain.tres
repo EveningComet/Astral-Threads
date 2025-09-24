@@ -13,30 +13,22 @@
 [sub_resource type="Resource" id="Resource_mtfw8"]
 script = ExtResource("9_26vjp")
 stat_changing = 3
-stat_modifier_type = 0
 value = 41.0
-sort_order = 0
 
 [sub_resource type="Resource" id="Resource_s6a0m"]
 script = ExtResource("9_26vjp")
 stat_changing = 5
-stat_modifier_type = 0
 value = 35.0
-sort_order = 0
 
 [sub_resource type="Resource" id="Resource_ryro7"]
 script = ExtResource("9_26vjp")
 stat_changing = 12
-stat_modifier_type = 0
 value = 10.0
-sort_order = 0
 
 [sub_resource type="Resource" id="Resource_vwwbt"]
 script = ExtResource("9_26vjp")
 stat_changing = 17
-stat_modifier_type = 0
 value = -3.0
-sort_order = 0
 
 [resource]
 script = ExtResource("5_veso8")
@@ -46,10 +38,7 @@ portrait = ExtResource("4_vnbxp")
 dimensions = Vector2(157, 211)
 vitality = 3
 technique = 3
-will = 5
 stat_modifiers = Array[ExtResource("9_26vjp")]([SubResource("Resource_mtfw8"), SubResource("Resource_s6a0m"), SubResource("Resource_ryro7"), SubResource("Resource_vwwbt")])
 skills = Array[ExtResource("6_vukmc")]([ExtResource("8_scn0d"), ExtResource("7_dwh1o")])
-xp_on_death = 25
-money_on_death = 30
 efficiency = 0.3
 behaviors = Array[ExtResource("1_nc73q")]([ExtResource("2_vht1g"), ExtResource("3_de177")])

@@ -5,8 +5,15 @@ class_name Combatant extends Resource
 ## Event that gets fired whenever a stat changed.
 signal stat_changed(com: Combatant)
 
+var char_name: String:
+	get: return char_name
+	set(value):
+		char_name = value
+
+@export var char_level: CharLevel = CharLevel.new()
+
 ## The component that stores all of a characters stats for tidyness.
-@export var stats: Stats = Stats.new(self)
+@export var stats: Stats = Stats.new()
 
 ## The holder for a character's status effects.
 var status_effect_holder: StatusEffectHolder = StatusEffectHolder.new(self)
